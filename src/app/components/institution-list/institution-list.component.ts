@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institution-list',
@@ -11,13 +12,18 @@ export class InstitutionListComponent implements OnInit {
 
   institutions: Institution[]
 
-  constructor(private institutionService: InstitutionService) { }
+  constructor(private institutionService: InstitutionService, private router: Router) { }
 
   ngOnInit() {
     this.institutionService.getAllInstitutions()
       .subscribe(institutions => {
         this.institutions = institutions;
       })
+  }
+
+  public onAddInstitutionClick() {
+    this.router.navigate(['institutions/add']);
+    console.log('institutions/add');
   }
 
 }

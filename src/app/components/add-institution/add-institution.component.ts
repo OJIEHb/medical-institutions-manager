@@ -44,6 +44,7 @@ export class AddInstitutionComponent {
 
   public saveInstitution() {
     this.institutionService.addInstitution(Object.assign({}, this.mainFormGroup.value, this.contactFormGroup.value, this.legalFormGroup.value));
-  }
+    this.router.navigate(['']);
+  } 
 
 }

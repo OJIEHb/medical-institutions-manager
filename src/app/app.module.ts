@@ -23,6 +23,10 @@ import { InstitutionListComponent } from './components/institution-list/institut
     RouterModule.forRoot([
       {
         path: '',
+        component: InstitutionListComponent
+      },
+      {
+        path: 'institutions/add',
         component: AddInstitutionComponent
       }
     ]),

@@ -1,20 +1,21 @@
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{}}
-      </mat-panel-title>
-      <mat-panel-description>
-        Type your name and age
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+<div class="col-md-8 offset-md-2">
+  <div style="margin-bottom: 20px;">
+    <button mat-fab color="primary" style="margin-right: 20px;" (click)="onAddInstitutionClick()">+</button>
+    <mat-label>Додати новий заклад</mat-label>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let institution of institutions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-label>{{institution.fullName}}</mat-label>
+        </mat-panel-title>
+        <!-- <mat-panel-description>
+            This is a summary of the content
+          </mat-panel-description> -->
+      </mat-expansion-panel-header>
 
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
+      <p>Інформація про заклад</p>
 
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
-  </mat-expansion-panel>
-</mat-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
