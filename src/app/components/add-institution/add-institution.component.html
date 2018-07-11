@@ -1,0 +1,93 @@
+<mat-horizontal-stepper linear="true" #stepper>
+  <mat-step [stepControl]="mainFormGroup">
+    <form class="col-md-4 offset-md-4" [formGroup]="mainFormGroup">
+      <ng-template matStepLabel>Основна інформація</ng-template>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Повна офіційна назва" formControlName="fullName" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Місце розташування" formControlName="place" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Тип закладу" formControlName="geographicalInstitutionType" required>
+          <mat-option value="міський">
+            Міський
+          </mat-option>
+          <mat-option value="районний">
+            Районний
+          </mat-option>
+          <mat-option value="обласний">
+            Обласний
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Тип населеного пункту місця розташування" formControlName="placeType" required>
+          <mat-option value="місто">
+            Місто
+          </mat-option>
+          <mat-option value="село">
+            Село
+          </mat-option>
+          <mat-option value="селище">
+            Селище
+          </mat-option>
+          <mat-option value="смт">
+            СМТ
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Повна юридична адреса" formControlName="fullAddress" required>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperNext>Далі</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="contactFormGroup">
+    <form class="col-md-4 offset-md-4" [formGroup]="contactFormGroup">
+      <ng-template matStepLabel>Контактна інформація</ng-template>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email установи" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Контактний телефон закладу" formControlName="phone">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Факс" formControlName="fax">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Сайт в Internet" formControlName="site">
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
+        <button mat-stroked-button matStepperNext>Далі</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="legalFormGroup">
+    <form class="col-md-4 offset-md-4" [formGroup]="legalFormGroup">
+      <ng-template matStepLabel>Правова інформація</ng-template>
+      <mat-checkbox class="full-width" formControlName="legalStatus">
+        Статус юридичної особи
+      </mat-checkbox>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Код ЄДРПОУ" formControlName="stateRegisterCode">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Код території КОАТУУ" formControlName="classifierObjectCode">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Форма власності" formControlName="ownership">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Код організаційно-правової форми" formControlName="legalFormCode">
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
+        <button mat-stroked-button (click)="saveInstitution()">Зберегти</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container" fullscreen>
+    <mat-sidenav
+      #drawer
+      class="sidenav"
+      fixedInViewport="true">
+      <mat-toolbar color="primary">Меню</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item href="#">Заклади 1 <mat-icon class="menu-icon">location_city</mat-icon></a>
+        <a mat-list-item href="#">Заклади 2 <mat-icon class="menu-icon">domain</mat-icon></a>
+        <a mat-list-item href="#">Заклади 3 <mat-icon class="menu-icon">local_hospital</mat-icon></a>
+        <a mat-list-item href="#">Заклади 4 <mat-icon class="menu-icon">store</mat-icon></a>
+        <a mat-list-item href="#">Заклади 5 <mat-icon class="menu-icon">local_hotel</mat-icon></a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="height: 100%;">
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Мережа закладів охорони здоров'я УОЗ Черкаської ОДА</span>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
