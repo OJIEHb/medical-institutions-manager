@@ -14,8 +14,9 @@ export class InstitutionService {
     this.institutions = db.list(this.institutionPath);
   }
 
-  public addInstitution(customer: Institution): void {
-    this.institutions.push(customer);
+  public addInstitution(institution: Institution): void {
+    console.log(institution);
+    this.institutions.push(institution);
   }
 
   getAllInstitutions(): Observable<Institution[]> {

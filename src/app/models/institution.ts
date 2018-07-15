@@ -1,9 +1,8 @@
 import { Contact } from "./contact";
-import { License } from "./license";
 
 export class Institution {
     place: string;
-    geographicalInstitutionType: string;
+    subordinationLevel: string;
     placeType: string;
     fullName: string;
     fullAddress: string;
@@ -26,8 +25,41 @@ export class Institution {
     medicalСare: string;
     іnstitutionType: string;
     medicalAidTypes: string[];
-    license: License;
+    declaredAssistanceForms: string;
+    license: boolean;
+    licenseNumber: string;
+    licenseDate: Date;
+    startLicenseValidity: Date;
+    endLicenseValidity: Date;
+    accreditationCategoryType: string;
+    accreditationСategoryNumber: string;
+    lastAccreditation: Date;
+    startAccreditationValidity: Date;
+    endAccreditationValidity: Date;
+    hospitalBedsNumber: number;
+    hospitalCapacity: number;
+    regularDoctorNumber: number;
+    busyDoctorNumber: number;
+    individualsDoctorNumber: number;
+    middleRegularPersonalNumber: number;
+    middleBusyPersonalNumber: number;
+    middleIndividualsPersonalNumber: number;
+    otherRegularPersonalNumber: number;
+    otherBusyPersonalNumber: number;
+    otherIndividualsPersonalNumber: number;
+    totalRegularPersonalNumber: number;
+    totalBusyPersonalNumber: number;
+    totalIndividualsPersonalNumber: number; 
+    heatingType: string;
     typicalBuilding: boolean;
     coldWaterSupply: boolean;
     hotWaterSupply: boolean; 
+    internetSupply: boolean;
+    equipment: number;
+    medicamentEquipment: number;
+    vehiclesNeed: number;
+    vehiclesReality: number;
+    vehiclesWay: number;
+    computerEquipmentNeed: number;
+    computerEquipmentReality: number;
 }

@@ -13,38 +13,107 @@ export class AddInstitutionComponent {
 
   mainFormGroup: FormGroup;
   contactFormGroup: FormGroup;
-  legalFormGroup: FormGroup;
+  resourceFormGroup: FormGroup;
+  fullFormGroup: FormGroup;
 
-  constructor(private institutionService: InstitutionService, 
-              private router: Router,
-              private formBuilder: FormBuilder) { }
+  constructor(private institutionService: InstitutionService,
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.mainFormGroup = this.formBuilder.group({
-      place: ['']  ,
-      geographicalInstitutionType: [''],
-      placeType: [''],
-      fullName: [''],
-      fullAddress: ['']
+      place: ['', Validators.required],
+      subordinationLevel: ['', Validators.required],
+      placeType: ['', Validators.required],
+      іnstitutionType: ['', Validators.required],
+      fullName: ['', Validators.required],
+      fullAddress: ['', Validators.required],
+      legalStatus: [false, Validators.required],
+      stateRegisterCode: ['', Validators.required],
+      classifierObjectCode: ['', Validators.required],
+      ownership: ['', Validators.required],
+      legalFormCode: ['', Validators.required]
     });
     this.contactFormGroup = this.formBuilder.group({
-      email: [''],
+      email: ['', Validators.email],
       phone: [''],
       fax: [''],
-      site: ['']
+      site: [''],
+      headDoctor: this.formBuilder.group({
+        name: [''],
+        workPhone: [''],
+        homePhone: ['']
+      }),
+      headDoctorSecretary: this.formBuilder.group({
+        name: [''],
+        workPhone: ['']
+      }),
     });
-    this.legalFormGroup = this.formBuilder.group({
-      legalStatus: [''],
-      stateRegisterCode: [''],
-      classifierObjectCode: [''],
-      ownership: [''],
-      legalFormCode: ['']
+    this.fullFormGroup = this.formBuilder.group({
+      receptionOffice: [false],
+      receptionOfficePhone: [''],
+      registryOffice: [false],
+      registryOfficePhone: [''],
+      medicalСare: [''],
+      medicalAidTypes:[[]],
+      declaredAssistanceForms: [''],
+      license: false,
+      licenseNumber: [''],
+      licenseDate: new Date(),
+      startLicenseValidity: new Date(),
+      endLicenseValidity: new Date(),
+      accreditationCategoryType: [''],
+      accreditationСategoryNumber: [''],
+      lastAccreditation: new Date(),
+      startAccreditationValidity: new Date(),
+      endAccreditationValidity: new Date()
     });
+    this.resourceFormGroup = this.formBuilder.group({
+      hospitalBedsNumber: [],
+      hospitalCapacity: [],
+      regularDoctorNumber: [],
+      busyDoctorNumber: [],
+      individualsDoctorNumber: [],
+      middleRegularPersonalNumber: [],
+      middleBusyPersonalNumber: [],
+      middleIndividualsPersonalNumber: [],
+      otherRegularPersonalNumber: [],
+      otherBusyPersonalNumber: [],
+      otherIndividualsPersonalNumber: [],
+      totalRegularPersonalNumber: [],
+      totalBusyPersonalNumber: [],
+      totalIndividualsPersonalNumber: [],
+      typicalBuilding: [false],
+      heatingType: [''],
+      coldWaterSupply: [false],
+      hotWaterSupply: [false],
+      internetSupply: [false],
+      equipment: [],
+      medicamentEquipment: [],
+      vehiclesNeed: [],
+      vehiclesReality: [],
+      vehiclesWay: [],
+      computerEquipmentNeed: [],
+      computerEquipmentReality: []
+    })
   }
 
   public saveInstitution() {
-    this.institutionService.addInstitution(Object.assign({}, this.mainFormGroup.value, this.contactFormGroup.value, this.legalFormGroup.value));
+    this.fullFormGroup.value.licenseDate = this.fullFormGroup.value.licenseDate.getTime();
+    this.fullFormGroup.value.startLicenseValidity = this.fullFormGroup.value.startLicenseValidity.getTime();
+    this.fullFormGroup.value.endLicenseValidity = this.fullFormGroup.value.endLicenseValidity.getTime();
+    this.fullFormGroup.value.lastAccreditation = this.fullFormGroup.value.lastAccreditation.getTime();
+    this.fullFormGroup.value.startAccreditationValidity = this.fullFormGroup.value.startAccreditationValidity.getTime();
+    this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
+    this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
+    this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
+    this.institutionService.addInstitution(Object.assign({}, 
+      this.mainFormGroup.value, 
+      this.contactFormGroup.value, 
+      this.resourceFormGroup.value,
+      this.fullFormGroup.value)
+    );
     this.router.navigate(['']);
-  } 
+  }
 
 }
