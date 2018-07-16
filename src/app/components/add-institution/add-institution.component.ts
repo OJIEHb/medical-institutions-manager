@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Institution } from '../../models/institution';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -15,10 +15,19 @@ export class AddInstitutionComponent {
   contactFormGroup: FormGroup;
   resourceFormGroup: FormGroup;
   fullFormGroup: FormGroup;
+  parentId: string;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder) { 
+      this.route
+      .queryParams
+      .subscribe(params => {
+        this.parentId = params['parent'];
+        console.log(params);
+      });
+    }
 
   ngOnInit() {
     this.mainFormGroup = this.formBuilder.group({
@@ -32,7 +41,8 @@ export class AddInstitutionComponent {
       stateRegisterCode: ['', Validators.required],
       classifierObjectCode: ['', Validators.required],
       ownership: ['', Validators.required],
-      legalFormCode: ['', Validators.required]
+      legalFormCode: ['', Validators.required],
+      controlledBy: []
     });
     this.contactFormGroup = this.formBuilder.group({
       email: ['', Validators.email],
@@ -97,6 +107,7 @@ export class AddInstitutionComponent {
       computerEquipmentReality: [],
       population: []
     })
+    
   }
 
   public saveInstitution() {
@@ -108,14 +119,17 @@ export class AddInstitutionComponent {
     this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
     this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
     this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
-    
+    if (this.parentId)
+      this.mainFormGroup.value.controlledBy = this.parentId;
     let institution = Object.assign({}, 
       this.mainFormGroup.value, 
       this.contactFormGroup.value, 
       this.resourceFormGroup.value,
       this.fullFormGroup.value);
 
-    institution.id = this.institutionService.create(institution);
+    console.log(institution);
+
+    this.institutionService.create(institution);
     this.router.navigate(['']);
   }
 

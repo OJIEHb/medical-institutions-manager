@@ -15,7 +15,7 @@ export class InstitutionHierarchyComponent {
   nestedDataSource: MatTreeNestedDataSource<Institution>;
 
   constructor(private institutionService: InstitutionService) {
-    this.nestedTreeControl = new NestedTreeControl<Institution>(this._getChildren);
+    this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
     this.institutionService.getHierarchy()
@@ -27,5 +27,5 @@ export class InstitutionHierarchyComponent {
 
   hasNestedChild = (_: number, institution: Institution) => institution.controlledInstitutions;
 
-  private _getChildren = (institution: Institution) => of (institution.controlledInstitutions);
+  private getChildren = (institution: Institution) => of (institution.controlledInstitutions);
 }

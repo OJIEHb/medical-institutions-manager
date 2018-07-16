@@ -3,6 +3,9 @@
       <li class="mat-tree-node">
         <button mat-icon-button disabled></button>
         {{node.fullName}}
+        <a [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id }">
+          <mat-icon color="primary">add</mat-icon>
+        </a>
       </li>
     </mat-tree-node>
   
@@ -16,10 +19,14 @@
             </mat-icon>
           </button>
           {{node.fullName}}
+          <a [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id }">
+            <mat-icon color="primary">add</mat-icon>
+          </a>
         </div>
         <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
-          <ng-container matTreeNodeOutlet></ng-container>
+          <ng-container matTreeNodeOutlet>dgfdfg</ng-container>
         </ul>
       </li>
+     
     </mat-nested-tree-node>
   </mat-tree>
