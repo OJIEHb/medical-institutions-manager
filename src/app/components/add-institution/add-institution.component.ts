@@ -25,7 +25,7 @@ export class AddInstitutionComponent {
       place: ['', Validators.required],
       subordinationLevel: ['', Validators.required],
       placeType: ['', Validators.required],
-      іnstitutionType: ['', Validators.required],
+      institutionType: ['', Validators.required],
       fullName: ['', Validators.required],
       fullAddress: ['', Validators.required],
       legalStatus: [false, Validators.required],
@@ -88,13 +88,14 @@ export class AddInstitutionComponent {
       coldWaterSupply: [false],
       hotWaterSupply: [false],
       internetSupply: [false],
-      equipment: [],
-      medicamentEquipment: [],
+      equipment: [0],
+      medicamentEquipment: [0],
       vehiclesNeed: [],
       vehiclesReality: [],
       vehiclesWay: [],
       computerEquipmentNeed: [],
-      computerEquipmentReality: []
+      computerEquipmentReality: [],
+      population: []
     })
   }
 
@@ -107,12 +108,14 @@ export class AddInstitutionComponent {
     this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
     this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
     this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
-    this.institutionService.addInstitution(Object.assign({}, 
+    let institution = Object.assign({}, 
       this.mainFormGroup.value, 
       this.contactFormGroup.value, 
       this.resourceFormGroup.value,
-      this.fullFormGroup.value)
-    );
+      this.fullFormGroup.value);
+
+    institution.id = this.institutionService.create(institution);
+    this.institutionService.addControlledInstitution('-LHU8vof1fOCNd8mx_iP', institution);
     this.router.navigate(['']);
   }
 

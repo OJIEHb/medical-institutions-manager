@@ -1,11 +1,13 @@
 import { Contact } from "./contact";
 
 export class Institution {
+    id: string;
     place: string;
     subordinationLevel: string;
     placeType: string;
     fullName: string;
     fullAddress: string;
+    institutionType: string;
     email: string;
     phone: string;
     fax: string;
@@ -62,4 +64,5 @@ export class Institution {
     vehiclesWay: number;
     computerEquipmentNeed: number;
     computerEquipmentReality: number;
+    controlledInstitutions: Institution[];
 }

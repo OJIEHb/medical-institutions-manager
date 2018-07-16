@@ -8,18 +8,21 @@ export class InstitutionService {
 
   private institutionPath: string = '/institutions';
 
-  private institutions: AngularFireList <Institution> = null;
+  private institutions: AngularFireList<Institution> = null;
 
   constructor(private db: AngularFireDatabase) {
     this.institutions = db.list(this.institutionPath);
   }
 
-  public addInstitution(institution: Institution): void {
-    console.log(institution);
-    this.institutions.push(institution);
+  public create(institution: Institution): string {
+    return this.institutions.push(institution).key;
   }
 
-  getAllInstitutions(): Observable<Institution[]> {
+  public update(id: string, institution: Institution) {
+    this.institutions.set(id, institution)
+  }
+
+  getAll(): Observable<Institution[]> {
     return this.institutions.valueChanges();
   }
 }

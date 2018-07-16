@@ -57,7 +57,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-select placeholder="Тип закладу" formControlName="іnstitutionType" required>
+        <mat-select placeholder="Тип закладу" formControlName="institutionType" required>
           <mat-option value="міська лікарня">Міська лікарня</mat-option>
           <mat-option value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
           <mat-option value="міська інфекційна лікарня">Міська інфекційна лікарня</mat-option>
@@ -169,6 +169,10 @@
       </mat-form-field>
       <mat-form-field class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
+      </mat-form-field>
+      <mat-form-field *ngIf="!(mainFormGroup.value.institutionType == 'ЦПМСД' || mainFormGroup.value.institutionType == 'юридична особа ЛА ОТГ')" class="full-width">
+        <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
+          formControlName="population">
       </mat-form-field>
       <mat-form-field class="full-width">
         <input type="number" min="0" matInput placeholder="Лікарі (штатні)" formControlName="regularDoctorNumber">

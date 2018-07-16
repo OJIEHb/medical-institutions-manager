@@ -12,18 +12,20 @@ import { RouterModule } from '@angular/router';
 import { AddInstitutionComponent } from './components/add-institution/add-institution.component';
 import { InstitutionService } from './services/institution.service';
 import { InstitutionListComponent } from './components/institution-list/institution-list.component';
+import { InstitutionHierarchyComponent } from './components/institution-hierarchy/institution-hierarchy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddInstitutionComponent,
     InstitutionListComponent,
+    InstitutionHierarchyComponent,
   ],
   imports: [
     RouterModule.forRoot([
       {
         path: '',
-        component: InstitutionListComponent
+        component: InstitutionHierarchyComponent
       },
       {
         path: 'institutions/add',
