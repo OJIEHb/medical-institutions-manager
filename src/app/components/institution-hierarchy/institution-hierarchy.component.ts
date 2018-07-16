@@ -18,7 +18,7 @@ export class InstitutionHierarchyComponent {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this._getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
-    this.institutionService.getAll()
+    this.institutionService.getHierarchy()
       .subscribe(institutions => {
         this.nestedDataSource.data = institutions;
         console.log(institutions);

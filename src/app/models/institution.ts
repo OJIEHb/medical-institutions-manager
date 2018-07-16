@@ -65,4 +65,5 @@ export class Institution {
     computerEquipmentNeed: number;
     computerEquipmentReality: number;
     controlledInstitutions: Institution[];
+    controlledBy: string;
 }

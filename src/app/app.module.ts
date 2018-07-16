@@ -30,6 +30,10 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
       {
         path: 'institutions/add',
         component: AddInstitutionComponent
+      },
+      {
+        path: 'institutions/hierarchy',
+        component: InstitutionHierarchyComponent
       }
     ]),
     BrowserModule,
