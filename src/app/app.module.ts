@@ -25,7 +25,7 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
     RouterModule.forRoot([
       {
         path: '',
-        component: InstitutionHierarchyComponent
+        component: InstitutionListComponent
       },
       {
         path: 'institutions/add',

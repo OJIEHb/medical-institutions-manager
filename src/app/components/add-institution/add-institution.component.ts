@@ -108,6 +108,7 @@ export class AddInstitutionComponent {
     this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
     this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
     this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
+    
     let institution = Object.assign({}, 
       this.mainFormGroup.value, 
       this.contactFormGroup.value, 
@@ -115,7 +116,6 @@ export class AddInstitutionComponent {
       this.fullFormGroup.value);
 
     institution.id = this.institutionService.create(institution);
-    this.institutionService.addControlledInstitution('-LHU8vof1fOCNd8mx_iP', institution);
     this.router.navigate(['']);
   }
 

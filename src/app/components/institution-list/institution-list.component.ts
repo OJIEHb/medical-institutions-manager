@@ -15,7 +15,7 @@ export class InstitutionListComponent implements OnInit {
   constructor(private institutionService: InstitutionService, private router: Router) { }
 
   ngOnInit() {
-    this.institutionService.getAllInstitutions()
+    this.institutionService.getAll()
       .subscribe(institutions => {
         this.institutions = institutions;
       })
