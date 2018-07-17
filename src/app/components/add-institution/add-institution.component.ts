@@ -17,7 +17,7 @@ export class AddInstitutionComponent {
   fullFormGroup: FormGroup;
   villageFormGroup: FormGroup;
   parentId: string;
-  type: string;
+  type: number;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
@@ -134,7 +134,7 @@ export class AddInstitutionComponent {
     if (this.parentId)
       institution.controlledBy = this.parentId;
     
-    institution.type = parseInt(this.type);
+    institution.type = parseInt(''+this.type);
     console.log(institution);
 
     this.institutionService.create(institution);
