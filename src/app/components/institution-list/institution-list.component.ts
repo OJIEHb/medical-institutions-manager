@@ -12,7 +12,7 @@ export class InstitutionListComponent implements OnInit {
 
   institutions: Institution[]
 
-  constructor(private institutionService: InstitutionService, private router: Router) { }
+  constructor(private institutionService: InstitutionService) { }
 
   ngOnInit() {
     this.institutionService.getAll()
@@ -20,10 +20,4 @@ export class InstitutionListComponent implements OnInit {
         this.institutions = institutions;
       })
   }
-
-  public onAddInstitutionClick() {
-    this.router.navigate(['institutions/add']);
-    console.log('institutions/add');
-  }
-
 }

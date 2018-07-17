@@ -15,7 +15,9 @@ export class AddInstitutionComponent {
   contactFormGroup: FormGroup;
   resourceFormGroup: FormGroup;
   fullFormGroup: FormGroup;
+  villageFormGroup: FormGroup;
   parentId: string;
+  type: string;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
@@ -25,24 +27,24 @@ export class AddInstitutionComponent {
       .queryParams
       .subscribe(params => {
         this.parentId = params['parent'];
-        console.log(params);
+        this.type = params['type']||1;
       });
     }
 
   ngOnInit() {
     this.mainFormGroup = this.formBuilder.group({
-      place: ['', Validators.required],
-      subordinationLevel: ['', Validators.required],
-      placeType: ['', Validators.required],
-      institutionType: ['', Validators.required],
-      fullName: ['', Validators.required],
-      fullAddress: ['', Validators.required],
-      legalStatus: [false, Validators.required],
-      stateRegisterCode: ['', Validators.required],
-      classifierObjectCode: ['', Validators.required],
-      ownership: ['', Validators.required],
-      legalFormCode: ['', Validators.required],
-      controlledBy: []
+      place: [''],
+      subordinationLevel: [''],
+      placeType: [''],
+      institutionType: [''],
+      fullName: [''],
+      fullAddress: [''],
+      legalStatus: [false],
+      stateRegisterCode: [''],
+      classifierObjectCode: [''],
+      ownership: [''],
+      legalFormCode: [''],
+      type:[0]
     });
     this.contactFormGroup = this.formBuilder.group({
       email: ['', Validators.email],
@@ -106,6 +108,9 @@ export class AddInstitutionComponent {
       computerEquipmentNeed: [],
       computerEquipmentReality: [],
       population: []
+    });
+    this.villageFormGroup = this.formBuilder.group({
+      population: []
     })
     
   }
@@ -119,14 +124,17 @@ export class AddInstitutionComponent {
     this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
     this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
     this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
-    if (this.parentId)
-      this.mainFormGroup.value.controlledBy = this.parentId;
+    
     let institution = Object.assign({}, 
       this.mainFormGroup.value, 
       this.contactFormGroup.value, 
       this.resourceFormGroup.value,
       this.fullFormGroup.value);
 
+    if (this.parentId)
+      institution.controlledBy = this.parentId;
+    
+    institution.type = parseInt(this.type);
     console.log(institution);
 
     this.institutionService.create(institution);

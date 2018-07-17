@@ -25,15 +25,15 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
     RouterModule.forRoot([
       {
         path: '',
-        component: InstitutionListComponent
+        component: InstitutionHierarchyComponent
       },
       {
         path: 'institutions/add',
         component: AddInstitutionComponent
       },
       {
-        path: 'institutions/hierarchy',
-        component: InstitutionHierarchyComponent
+        path: 'institutions',
+        component: InstitutionListComponent
       }
     ]),
     BrowserModule,

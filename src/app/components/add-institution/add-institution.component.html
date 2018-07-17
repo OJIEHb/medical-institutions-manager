@@ -5,7 +5,7 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Повна офіційна назва" formControlName="fullName" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Місце розташування" formControlName="place" required>
           <mat-optgroup label="Міста">
             <mat-option value="м. Черкаси">м. Черкаси</mat-option>
@@ -41,14 +41,14 @@
           </mat-optgroup>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Рівень підпорядкування" formControlName="subordinationLevel" required>
           <mat-option value="міський">Міський</mat-option>
           <mat-option value="районний">Районний</mat-option>
           <mat-option value="обласний">Обласний</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Тип населеного пункту місця розташування" formControlName="placeType" required>
           <mat-option value="місто">Місто</mat-option>
           <mat-option value="село">Село</mat-option>
@@ -58,61 +58,62 @@
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-select placeholder="Тип закладу" formControlName="institutionType" required>
-          <mat-option value="міська лікарня">Міська лікарня</mat-option>
-          <mat-option value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
-          <mat-option value="міська інфекційна лікарня">Міська інфекційна лікарня</mat-option>
-          <mat-option value="пологовий будинок">Пологовий будинок</mat-option>
-          <mat-option value="дитяча лікарня">Дитяча лікарня</mat-option>
-          <mat-option value="обласна лікарня">Обласна лікарня</mat-option>
-          <mat-option value="обласна дитяча лікарня">Обласна дитяча лікарня</mat-option>
-          <mat-option value="ОПЛ">ОПЛ</mat-option>
-          <mat-option value="госпіталь ВВ">Госпіталь ВВ</mat-option>
-          <mat-option value="міська поліклініка">Міська поліклініка</mat-option>
-          <mat-option value="дитяча поліклініка">Дитяча поліклініка</mat-option>
-          <mat-option value="ЦПМСД">ЦПМСД</mat-option>
-          <mat-option value="юридична особа ЛА ОТГ">Юридична особа ЛА ОТГ</mat-option>
-          <mat-option value="базова ЛА">Базова ЛА</mat-option>
-          <mat-option value="ЛА">ЛА</mat-option>
-          <mat-option value="АГ">АГ</mat-option>
-          <mat-option value="АМ">АМ</mat-option>
-          <mat-option value="ПЗ">ПЗ</mat-option>
-          <mat-option value="ФАП">ФАП</mat-option>
-          <mat-option value="ФП">ФП</mat-option>
-          <mat-option value="ЦРЛ">ЦРЛ</mat-option>
-          <mat-option value="самостійна РЛ">Самостійна РЛ</mat-option>
-          <mat-option value="диспансер">Диспансер</mat-option>
-          <mat-option value="стоматологічна поліклініка">Стоматологічна поліклініка</mat-option>
-          <mat-option value="санаторій">Санаторій</mat-option>
-          <mat-option value="ШМД">ШМД</mat-option>
-          <mat-option value="ІАЦ">ІАЦ</mat-option>
-          <mat-option value="МСЕК">МСЕК</mat-option>
-          <mat-option value="центр здоров'я">Центр здоров'я</mat-option>
-          <mat-option value="центр підвищення кваліфікації">Центр підвищення кваліфікації</mat-option>
-          <mat-option value="коледж">Коледж</mat-option>
-          <mat-option value="центр СНІД">Центр СНІД</mat-option>
-          <mat-option value="центр планування сім'ї">Центр планування сім'ї</mat-option>
-          <mat-option value="аптека">Аптека</mat-option>
-          <mat-option value="ОСПК">ОСПК</mat-option>
-          <mat-option value="СМЕ">СМЕ</mat-option>
-          <mat-option value="БД">БД</mat-option>
+          <mat-option *ngIf="type == 1" value="міська лікарня">Міська лікарня</mat-option>
+          <mat-option *ngIf="type == 1" value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
+          <mat-option *ngIf="type == 1" value="міська інфекційна лікарня">Міська інфекційна лікарня</mat-option>
+          <mat-option *ngIf="type == 1" value="пологовий будинок">Пологовий будинок</mat-option>
+          <mat-option *ngIf="type == 1" value="дитяча лікарня">Дитяча лікарня</mat-option>
+          <mat-option *ngIf="type == 1" value="обласна лікарня">Обласна лікарня</mat-option>
+          <mat-option *ngIf="type == 1" value="обласна дитяча лікарня">Обласна дитяча лікарня</mat-option>
+          <mat-option *ngIf="type == 1" value="ОПЛ">ОПЛ</mat-option>
+          <mat-option *ngIf="type == 1" value="госпіталь ВВ">Госпіталь ВВ</mat-option>
+          <mat-option *ngIf="type == 1" value="міська поліклініка">Міська поліклініка</mat-option>
+          <mat-option *ngIf="type == 1" value="дитяча поліклініка">Дитяча поліклініка</mat-option>
+          <mat-option *ngIf="type == 1" value="ЦПМСД">ЦПМСД</mat-option>
+          <mat-option *ngIf="type == 1" value="юридична особа ЛА ОТГ">Юридична особа ЛА ОТГ</mat-option>
+          <mat-option *ngIf="type == 2" value="базова ЛА">Базова ЛА</mat-option>
+          <mat-option *ngIf="type == 2" value="ЛА">ЛА</mat-option>
+          <mat-option *ngIf="type == 2" value="АГ">АГ</mat-option>
+          <mat-option *ngIf="type == 2" value="АМ">АМ</mat-option>
+          <mat-option *ngIf="type == 3" value="ПЗ">ПЗ</mat-option>
+          <mat-option *ngIf="type == 3" value="ФАП">ФАП</mat-option>
+          <mat-option *ngIf="type == 3" value="ФП">ФП</mat-option>
+          <mat-option *ngIf="type == 1" value="ЦРЛ">ЦРЛ</mat-option>
+          <mat-option *ngIf="type == 1" value="самостійна РЛ">Самостійна РЛ</mat-option>
+          <mat-option *ngIf="type == 1" value="диспансер">Диспансер</mat-option>
+          <mat-option *ngIf="type == 1" value="стоматологічна поліклініка">Стоматологічна поліклініка</mat-option>
+          <mat-option *ngIf="type == 1" value="санаторій">Санаторій</mat-option>
+          <mat-option *ngIf="type == 1" value="ШМД">ШМД</mat-option>
+          <mat-option *ngIf="type == 1" value="ІАЦ">ІАЦ</mat-option>
+          <mat-option *ngIf="type == 1" value="МСЕК">МСЕК</mat-option>
+          <mat-option *ngIf="type == 1" value="центр здоров'я">Центр здоров'я</mat-option>
+          <mat-option *ngIf="type == 1" value="центр підвищення кваліфікації">Центр підвищення кваліфікації</mat-option>
+          <mat-option *ngIf="type == 1" value="коледж">Коледж</mat-option>
+          <mat-option *ngIf="type == 1" value="центр СНІД">Центр СНІД</mat-option>
+          <mat-option *ngIf="type == 1" value="центр планування сім'ї">Центр планування сім'ї</mat-option>
+          <mat-option *ngIf="type == 1" value="аптека">Аптека</mat-option>
+          <mat-option *ngIf="type == 1" value="ОСПК">ОСПК</mat-option>
+          <mat-option *ngIf="type == 1" value="СМЕ">СМЕ</mat-option>
+          <mat-option *ngIf="type == 1" value="БД">БД</mat-option>
+          <mat-option *ngIf="type > 1" value="село">Село</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput placeholder="Повна юридична адреса" formControlName="fullAddress" required>
       </mat-form-field>
-      <mat-slide-toggle class="full-width" formControlName="legalStatus" required>
+      <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="legalStatus" required>
         Статус юридичної особи
       </mat-slide-toggle>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input matInput placeholder="Код ЄДРПОУ" formControlName="stateRegisterCode" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input matInput placeholder="Код території КОАТУУ" formControlName="classifierObjectCode" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input matInput placeholder="Форма власності" formControlName="ownership" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input matInput placeholder="Код організаційно-правової форми" formControlName="legalFormCode" required>
       </mat-form-field>
       <div>
@@ -120,10 +121,10 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="contactFormGroup">
+  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="contactFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="contactFormGroup">
       <ng-template matStepLabel>Контактна інформація</ng-template>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type < 3" class="full-width">
         <input matInput placeholder="Email установи" formControlName="email">
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -132,10 +133,10 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Факс" formControlName="fax">
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type < 3" class="full-width">
         <input matInput placeholder="Сайт в Internet" formControlName="site">
       </mat-form-field>
-      <div formGroupName="headDoctor">
+      <div *ngIf="type == 1" formGroupName="headDoctor">
         <mat-form-field class="full-width">
           <input matInput placeholder="ПІП головного лікаря (повністю)" formControlName="name">
         </mat-form-field>
@@ -146,7 +147,7 @@
           <input matInput placeholder="Мобільний телефон" formControlName="homePhone">
         </mat-form-field>
       </div>
-      <div formGroupName="headDoctorSecretary">
+      <div *ngIf="type == 1" formGroupName="headDoctorSecretary">
         <mat-form-field class="full-width">
           <input matInput placeholder="ПІП секретаря головного лікаря" formControlName="name">
         </mat-form-field>
@@ -161,16 +162,16 @@
     </form>
   </mat-step>
 
-  <mat-step [stepControl]="resourceFormGroup">
+  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="resourceFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="resourceFormGroup">
       <ng-template matStepLabel>Ресури закладу</ng-template>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова кількість ліжок стаціонару" formControlName="hospitalBedsNumber">
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
       </mat-form-field>
-      <mat-form-field *ngIf="!(mainFormGroup.value.institutionType == 'ЦПМСД' || mainFormGroup.value.institutionType == 'юридична особа ЛА ОТГ')" class="full-width">
+      <mat-form-field *ngIf="type > 2" class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
           formControlName="population">
       </mat-form-field>
@@ -223,7 +224,7 @@
       <mat-slide-toggle class="full-width" formControlName="internetSupply">
         Наявність доступу до мережі інтернет
       </mat-slide-toggle>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type < 3" class="full-width">
         <mat-select placeholder="Оснащеність медичним обладнанням та інвентарем" formControlName="equipment">
           <mat-option value=30>до 30%</mat-option>
           <mat-option value=50>до 50%</mat-option>
@@ -232,7 +233,7 @@
           <mat-option value=100>100%</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type < 3" class="full-width">
         <mat-select placeholder="Забезпеченість медикаментамидля надання невідкладної допомоги" formControlName="medicamentEquipment">
           <mat-option value=30>до 30%</mat-option>
           <mat-option value=50>до 50%</mat-option>
@@ -241,16 +242,18 @@
           <mat-option value=100>100%</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-label>Транспорті засоби (автомобілі):</mat-label>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Потреба (кількість)" formControlName="vehiclesNeed">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Наявність (кількість)" formControlName="vehiclesReality">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="В т.ч. на ходу (кількість)" formControlName="vehiclesWay">
-      </mat-form-field>
+      <div *ngIf="type < 3">
+        <mat-label>Транспорті засоби (автомобілі):</mat-label>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Потреба (кількість)" formControlName="vehiclesNeed">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Наявність (кількість)" formControlName="vehiclesReality">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="В т.ч. на ходу (кількість)" formControlName="vehiclesWay">
+        </mat-form-field>
+      </div>
       <mat-label>Забезпеченість ЗОЗ комп'ютерною технікою:</mat-label>
       <mat-form-field class="full-width">
         <input type="number" min="0" matInput placeholder="Потреба (кількість)" formControlName="computerEquipmentNeed">
@@ -264,18 +267,16 @@
       </div>
     </form>
   </mat-step>
-
-
-  <mat-step [stepControl]="fullFormGroup">
+  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="fullFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="fullFormGroup">
       <ng-template matStepLabel>Повна інформація</ng-template>
-      <mat-slide-toggle class="full-width" formControlName="receptionOffice">
+      <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="receptionOffice">
         Приймальне відділення
       </mat-slide-toggle>
       <mat-form-field *ngIf="fullFormGroup.value.receptionOffice" class="full-width">
         <input matInput placeholder="Телефон" formControlName="receptionOfficePhone">
       </mat-form-field>
-      <mat-slide-toggle class="full-width" formControlName="registryOffice">
+      <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="registryOffice">
         Реєстратура амбулаторно-поліклінічного підрозділу
       </mat-slide-toggle>
       <mat-form-field *ngIf="fullFormGroup.value.registryOffice" class="full-width">
@@ -303,10 +304,10 @@
           <mat-option value="Наявність госпрозрахункового відділення">Наявність госпрозрахункового відділення</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <input matInput placeholder="Задекларовані види допомоги" formControlName="declaredAssistanceForms">
       </mat-form-field>
-      <mat-slide-toggle class="full-width" formControlName="license">
+      <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="license">
         Наявність ліцензії
       </mat-slide-toggle>
       <div *ngIf="fullFormGroup.value.license">
@@ -329,7 +330,7 @@
           <mat-datepicker #endLicensePicker></mat-datepicker>
         </mat-form-field>
       </div>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Акредитаційна категорія" formControlName="accreditationCategoryType">
           <mat-option value="наявна">Наявна</mat-option>
           <mat-option value="відсутня">Відсутня</mat-option>
@@ -362,4 +363,17 @@
       </div>
     </form>
   </mat-step>
+  <mat-step *ngIf="mainFormGroup.value.institutionType === 'село'" [stepControl]="villageFormGroup">
+      <form class="col-md-6 offset-md-3" [formGroup]="villageFormGroup">
+        <ng-template matStepLabel>Ресури</ng-template>
+        <mat-form-field *ngIf="type > 2" class="full-width">
+            <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території на 01.01"
+              formControlName="population">
+          </mat-form-field>
+        <div>
+          <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
+          <button mat-stroked-button (click)="saveInstitution()">Зберегти</button>
+        </div>
+      </form>
+    </mat-step>
 </mat-horizontal-stepper>
