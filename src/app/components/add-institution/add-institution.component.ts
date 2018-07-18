@@ -22,14 +22,14 @@ export class AddInstitutionComponent {
   constructor(private institutionService: InstitutionService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder) { 
-      this.route
+    private formBuilder: FormBuilder) {
+    this.route
       .queryParams
       .subscribe(params => {
         this.parentId = params['parent'];
-        this.type = params['type']||1;
+        this.type = params['type'] || 1;
       });
-    }
+  }
 
   ngOnInit() {
     this.mainFormGroup = this.formBuilder.group({
@@ -44,7 +44,7 @@ export class AddInstitutionComponent {
       classifierObjectCode: [''],
       ownership: [''],
       legalFormCode: [''],
-      type:[0]
+      type: [0]
     });
     this.contactFormGroup = this.formBuilder.group({
       email: ['', Validators.email],
@@ -67,7 +67,7 @@ export class AddInstitutionComponent {
       registryOffice: [false],
       registryOfficePhone: [''],
       medicalСare: [''],
-      medicalAidTypes:[[]],
+      medicalAidTypes: [[]],
       declaredAssistanceForms: [''],
       license: false,
       licenseNumber: [''],
@@ -112,7 +112,7 @@ export class AddInstitutionComponent {
     this.villageFormGroup = this.formBuilder.group({
       population: []
     })
-    
+
   }
 
   public saveInstitution() {
@@ -124,18 +124,20 @@ export class AddInstitutionComponent {
     this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
     this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
     this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
-    
-    let institution = Object.assign({}, 
-      this.mainFormGroup.value, 
-      this.contactFormGroup.value, 
+
+    let institution = Object.assign({},
+      this.mainFormGroup.value,
+      this.contactFormGroup.value,
       this.resourceFormGroup.value,
       this.fullFormGroup.value);
 
     if (this.parentId)
       institution.controlledBy = this.parentId;
-    
-    institution.type = parseInt(''+this.type);
-    console.log(institution);
+
+    if (institution.type === 'ceло')
+      institution.type = 4;
+    else
+      institution.type = parseInt('' + this.type);
 
     this.institutionService.create(institution);
     this.router.navigate(['']);

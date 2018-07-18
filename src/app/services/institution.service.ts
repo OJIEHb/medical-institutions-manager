@@ -34,17 +34,21 @@ export class InstitutionService {
   getHierarchy(): Observable<Institution[]> {
     return this.institutions.valueChanges()
       .pipe(map(institutions => {
+        //TODO: move this to firebase side
+        institutions.sort((a, b) => {
+          return a.type > b.type ? -1 : a.type < b.type ? 1 : 0;
+        });
         for (let i = 0; i < institutions.length; i++) {
-          if(institutions[i].controlledBy) {
-            let parentIndex = institutions.findIndex(parentInstitution => parentInstitution.id == institutions[i].controlledBy);
-            if(!institutions[parentIndex].controlledInstitutions) {
+          if (institutions[i].controlledBy) {
+            let parentIndex = institutions.findIndex(parentInstitution => parentInstitution.id === institutions[i].controlledBy);
+            if (!institutions[parentIndex].controlledInstitutions) {
               institutions[parentIndex].controlledInstitutions = [];
             }
             institutions[parentIndex].controlledInstitutions.push(institutions[i]);
             institutions.splice(i, 1);
             i--;
           }
-        } 
+        }
         return institutions;
       }))
   }
