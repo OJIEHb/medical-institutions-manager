@@ -22,7 +22,6 @@ export class InstitutionHierarchyComponent {
     this.institutionService.getHierarchy()
       .subscribe(institutions => {
         this.nestedDataSource.data = institutions;
-        console.log(institutions);
       })
   }
 

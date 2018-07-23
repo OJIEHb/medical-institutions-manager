@@ -8,7 +8,7 @@
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
       <li class="mat-tree-node">
         <button mat-icon-button disabled></button>
-        {{node.fullName}}
+        {{node.fullName}} : {{node.totalPopulation}} ({{node.population}})
         <a *ngIf="node.type == 2 || node.type == 3 || node.institutionType === 'ЦПМСД' || node.institutionType === 'юридична особа ЛА ОТГ'"
           [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
           <mat-icon color="primary">add</mat-icon>
@@ -24,7 +24,7 @@
               {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          {{node.fullName}}
+          {{node.fullName}} : {{node.totalPopulation}} ({{node.population}})
           <a *ngIf="node.type == 2 || node.type == 3 || node.institutionType === 'ЦПМСД' || node.institutionType === 'юридична особа ЛА ОТГ'"
             [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
             <mat-icon color="primary">add</mat-icon>

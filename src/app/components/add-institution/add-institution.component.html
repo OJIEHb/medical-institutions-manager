@@ -171,7 +171,7 @@
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
       </mat-form-field>
-      <mat-form-field *ngIf="type > 2" class="full-width">
+      <mat-form-field *ngIf="mainFormGroup.value.institutionType !== 'ЦПМСД' && mainFormGroup.value.institutionType !== 'юридична особа ЛА ОТГ'" class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
           formControlName="population">
       </mat-form-field>
@@ -366,9 +366,9 @@
   <mat-step *ngIf="mainFormGroup.value.institutionType === 'село'" [stepControl]="villageFormGroup">
       <form class="col-md-6 offset-md-3" [formGroup]="villageFormGroup">
         <ng-template matStepLabel>Ресури</ng-template>
-        <mat-form-field *ngIf="type > 2" class="full-width">
+        <mat-form-field class="full-width">
             <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території на 01.01"
-              formControlName="population">
+              formControlName="totalPopulation">
           </mat-form-field>
         <div>
           <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
