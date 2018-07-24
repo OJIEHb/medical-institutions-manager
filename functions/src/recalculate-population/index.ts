@@ -1,9 +1,8 @@
 import * as functions from 'firebase-functions'
-import { Institution } from '../models/institution';
 
 export const listener = functions.database.ref('/institutions/{id}')
     .onWrite(async (event) => {
-        let institutionsRef = event.after.ref.parent;
+        const institutionsRef = event.after.ref.parent;
         let id = event.after.val().id;
 
         if (!event.after.exists())
@@ -13,7 +12,7 @@ export const listener = functions.database.ref('/institutions/{id}')
             const institutions = snapshot.val();
             const keys = Object.keys(institutions);
             while (id) {
-                let populationSum = keys.reduce((total, key) => {
+                const populationSum = keys.reduce((total, key) => {
                     return (institutions[key].controlledBy === id) ? total + institutions[key].totalPopulation : total;
                 }, 0);
                 await institutionsRef.child(id + '/totalPopulation').set(populationSum + institutions[id].population);
