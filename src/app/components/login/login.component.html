@@ -1,0 +1,11 @@
+<form class="col-md-4 offset-md-4" [formGroup]="loginFormGroup">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Логін" formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Пароль" formControlName="password" type="password" required>
+  </mat-form-field>
+  <div>
+    <button mat-stroked-button (click)="login()">Увійти</button>
+  </div>
+</form>

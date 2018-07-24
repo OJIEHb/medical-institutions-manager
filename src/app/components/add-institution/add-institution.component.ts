@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Institution } from '../../models/institution';
-import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

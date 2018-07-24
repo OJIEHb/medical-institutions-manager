@@ -4,7 +4,7 @@ import {MatTreeNestedDataSource} from '@angular/material/tree';
 import { of } from "rxjs";
 import { Institution } from '../../models/institution';
 import { InstitutionService } from '../../services/institution.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-institution-hierarchy',

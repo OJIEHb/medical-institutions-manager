@@ -14,10 +14,18 @@
     </mat-sidenav>
     <mat-sidenav-content style="height: 100%;">
       <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <span>Мережа закладів охорони здоров'я Черкаської ОДА</span>
+        <span class="spacer"></span>
+        <mat-label *ngIf="user">{{user.email}}</mat-label>
+        <button *ngIf="!user" mat-mini-fab color="black" (click)="login()">
+          <mat-icon color="primary">person</mat-icon>
+        </button>
+        <button *ngIf="user" mat-mini-fab color="black" (click)="logout()">
+          <mat-icon color="primary">directions_walk</mat-icon>
+        </button>
       </mat-toolbar>
     <div class="basic-container">
       <router-outlet></router-outlet>

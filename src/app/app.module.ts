@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from './../environments/environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './meterial.module';
@@ -13,6 +14,9 @@ import { AddInstitutionComponent } from './components/add-institution/add-instit
 import { InstitutionService } from './services/institution.service';
 import { InstitutionListComponent } from './components/institution-list/institution-list.component';
 import { InstitutionHierarchyComponent } from './components/institution-hierarchy/institution-hierarchy.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
     AddInstitutionComponent,
     InstitutionListComponent,
     InstitutionHierarchyComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot([
@@ -28,8 +33,13 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
         component: InstitutionHierarchyComponent
       },
       {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
         path: 'institutions/add',
-        component: AddInstitutionComponent
+        component: AddInstitutionComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'institutions',
@@ -42,10 +52,15 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     LayoutModule,
     MaterialModule
   ],
-  providers: [InstitutionService],
+  providers: [
+    InstitutionService, 
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
