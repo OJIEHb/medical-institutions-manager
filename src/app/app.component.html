@@ -19,7 +19,7 @@
         </button>
         <span>Мережа закладів охорони здоров'я Черкаської ОДА</span>
         <span class="spacer"></span>
-        <mat-label *ngIf="user">{{user.email}}</mat-label>
+        <mat-label class="user-email" *ngIf="user">{{user.email}}</mat-label>
         <button *ngIf="!user" mat-mini-fab color="black" (click)="login()">
           <mat-icon color="primary">person</mat-icon>
         </button>
