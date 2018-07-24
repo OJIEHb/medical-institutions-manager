@@ -3,30 +3,21 @@ import { Institution } from '../models/institution';
 
 export const listener = functions.database.ref('/institutions/{id}')
     .onWrite(async (event) => {
-        let institution = event.after.val() as Institution;
         let institutionsRef = event.after.ref.parent;
+        let id = event.after.val().id;
 
-        if (!event.after.exists()) {
-            institution = event.before.val() as Institution;
-            institutionsRef = event.before.ref.parent;
-        }
+        if (!event.after.exists())
+            id = event.before.val().controlledBy;
 
-        await institutionsRef.once('value').then(async function(snapshot) {
-            const institutions = [];
-            for (let key in snapshot.val()) {
-                institutions.push(snapshot.val()[key]);
-            }
-            let type = institution.type;
-            let controlledBy = institution.controlledBy || '';
-            while(type > 1) {
-                let populationSum = institutions.reduce((totalPopulation, currentInstitution) => {
-                    if (currentInstitution.controlledBy && currentInstitution.controlledBy === controlledBy)
-                        return totalPopulation + currentInstitution.totalPopulation;
-                    return totalPopulation;
+        await institutionsRef.once('value').then(async function (snapshot) {
+            const institutions = snapshot.val();
+            const keys = Object.keys(institutions);
+            while (id) {
+                let populationSum = keys.reduce((total, key) => {
+                    return (institutions[key].controlledBy === id) ? total + institutions[key].totalPopulation : total;
                 }, 0);
-                await institutionsRef.child(controlledBy + '/totalPopulation').set(populationSum + snapshot.val()[controlledBy].population);
-                type = snapshot.val()[controlledBy].type;
-                controlledBy = snapshot.val()[controlledBy].controlledBy;
+                await institutionsRef.child(id + '/totalPopulation').set(populationSum + institutions[id].population);
+                id = institutions[id].controlledBy;
             }
-          });
+        });
     })
