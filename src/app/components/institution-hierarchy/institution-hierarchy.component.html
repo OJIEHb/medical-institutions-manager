@@ -15,6 +15,7 @@
           [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
           <mat-icon color="primary">add</mat-icon>
         </a>
+        <mat-icon color="primary" (click)="onDeleteInstitutionClick(node)">delete_forever</mat-icon>
       </li>
     </mat-tree-node>
 
@@ -31,6 +32,7 @@
             [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
             <mat-icon color="primary">add</mat-icon>
           </a>
+          <mat-icon color="primary" (click)="onDeleteInstitutionClick(node)">delete_forever</mat-icon>
         </div>
         <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
           <ng-container matTreeNodeOutlet></ng-container>

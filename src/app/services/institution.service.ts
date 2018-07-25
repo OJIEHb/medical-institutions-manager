@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Institution } from '../models/institution';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UUID } from 'angular2-uuid';
 
@@ -27,11 +27,16 @@ export class InstitutionService {
     this.institutions.set(id, institution)
   }
 
-  getAll(): Observable<Institution[]> {
+  public getAll(): Observable<Institution[]> {
     return this.institutions.valueChanges();
   }
 
-  getHierarchy(): Observable<Institution[]> {
+  public delete(institution: Institution) {
+    //TODO: Remove children
+    this.institutions.remove(institution.id);
+  }
+
+  public getHierarchy(): Observable<Institution[]> {
     return this.institutions.valueChanges()
       .pipe(map(institutions => {
         //TODO: move this to firebase side

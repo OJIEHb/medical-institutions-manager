@@ -3,10 +3,12 @@ import * as functions from 'firebase-functions'
 export const listener = functions.database.ref('/institutions/{id}')
     .onWrite(async (event) => {
         const institutionsRef = event.after.ref.parent;
-        let id = event.after.val().id;
+        let id;
 
         if (!event.after.exists())
             id = event.before.val().controlledBy;
+        else 
+            id = event.after.val().id;
 
         await institutionsRef.once('value').then(async function (snapshot) {
             const institutions = snapshot.val();
