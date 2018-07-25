@@ -15,7 +15,6 @@ import { isNgTemplate } from '../../../../node_modules/@angular/compiler';
 export class InstitutionHierarchyComponent {
   nestedTreeControl: NestedTreeControl<Institution>;
   nestedDataSource: MatTreeNestedDataSource<Institution>;
-  expanded = {};
 
   constructor(private institutionService: InstitutionService, private router: Router) {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
@@ -23,22 +22,9 @@ export class InstitutionHierarchyComponent {
 
     this.institutionService.getHierarchy()
       .subscribe(institutions => {
-        //TODO: REFACTOR!!!
-        this.nestedDataSource.data.forEach(element => {
-          this.expanded[element.id] = this.nestedTreeControl.isExpanded(element);
-          this.nestedTreeControl.getDescendants(element).forEach(child => {
-            this.expanded[child.id] = this.nestedTreeControl.isExpanded(child);
-          })
-        });
+        let nodesState = this.getIsExpandedNode();
         this.nestedDataSource.data = institutions;
-        this.nestedDataSource.data.forEach(element => {
-          if (this.expanded[element.id])
-            this.nestedTreeControl.expand(element);
-          this.nestedTreeControl.getDescendants(element).forEach(child => {
-            if (this.expanded[child.id])
-              this.nestedTreeControl.expand(child);
-          })
-        });
+        this.setIsExpandedNode(nodesState);
       })
   }
 
@@ -52,5 +38,27 @@ export class InstitutionHierarchyComponent {
 
   public onDeleteInstitutionClick(institution) {
     this.institutionService.delete(institution);
+  }
+
+  private getIsExpandedNode(): Map<string, boolean> {
+    let expanded = new Map<string, boolean>();
+    this.nestedDataSource.data.forEach(element => {
+      expanded.set(element.id, this.nestedTreeControl.isExpanded(element));
+      this.nestedTreeControl.getDescendants(element).forEach(child => {
+        expanded.set(child.id, this.nestedTreeControl.isExpanded(child));
+      })
+    });
+    return expanded;
+  }
+
+  private setIsExpandedNode(nodesState: Map<string, boolean>) {
+    this.nestedDataSource.data.forEach(element => {
+      if (nodesState.get(element.id))
+        this.nestedTreeControl.expand(element);
+      this.nestedTreeControl.getDescendants(element).forEach(child => {
+        if (nodesState.get(child.id))
+          this.nestedTreeControl.expand(child);
+      })
+    });
   }
 }
