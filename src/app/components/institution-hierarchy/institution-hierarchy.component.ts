@@ -7,6 +7,7 @@ import { InstitutionService } from '../../services/institution.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '../../../../node_modules/@angular/material';
 import { RemoveInstitutionDialogComponent } from './remove-institution-dialog/remove-institution-dialog.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-institution-hierarchy',
@@ -16,8 +17,12 @@ import { RemoveInstitutionDialogComponent } from './remove-institution-dialog/re
 export class InstitutionHierarchyComponent {
   nestedTreeControl: NestedTreeControl<Institution>;
   nestedDataSource: MatTreeNestedDataSource<Institution>;
+  isLoggedIn: boolean = false;
 
-  constructor(private institutionService: InstitutionService, private router: Router, public dialog: MatDialog) {
+  constructor(private institutionService: InstitutionService,
+    private router: Router,
+    public dialog: MatDialog,
+    private authService: AuthService) {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
@@ -26,7 +31,9 @@ export class InstitutionHierarchyComponent {
         let nodesState = this.getIsExpandedNode();
         this.nestedDataSource.data = institutions;
         this.setIsExpandedNode(nodesState);
-      })
+      });
+    this.authService.isLoggedIn()
+      .subscribe(result => this.isLoggedIn = result);
   }
 
   hasNestedChild = (_: number, institution: Institution) => institution.controlledInstitutions;

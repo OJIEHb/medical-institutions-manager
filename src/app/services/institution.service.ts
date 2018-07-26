@@ -52,16 +52,11 @@ export class InstitutionService {
   public getHierarchy(): Observable<Institution[]> {
     return this.institutions.valueChanges()
       .pipe(map(institutions => {
-        //TODO: move this to firebase side
-
         institutions.sort((a, b) => {
           if (b.type === a.type)
             return a.fullName.toLowerCase() > b.fullName.toLowerCase() ? 1 : a.fullName.toLowerCase() < b.fullName.toLowerCase() ? -1 : 0;
           return b.type - a.type;
         });
-
-
-
         for (let i = 0; i < institutions.length; i++) {
           if (institutions[i].controlledBy) {
             let parentIndex = institutions.findIndex(parentInstitution => parentInstitution.id === institutions[i].controlledBy);

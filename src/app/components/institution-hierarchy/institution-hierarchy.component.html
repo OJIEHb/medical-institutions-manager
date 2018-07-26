@@ -1,5 +1,5 @@
 <div class="col-md-8 offset-md-2">
-  <div>
+  <div *ngIf="isLoggedIn">
     <button mat-fab color="primary" style="margin-right: 20px;" (click)="onAddInstitutionClick()">
       <mat-icon>add</mat-icon>
     </button>
@@ -12,12 +12,14 @@
         <button mat-icon-button disabled></button>
         {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
         <span class="spacer"></span>
-        <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
-          [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
-          <mat-icon color="primary">add</mat-icon>
-        </a>
-        <mat-icon color="primary">edit</mat-icon>
-        <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
+        <div *ngIf="isLoggedIn">
+          <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+            [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
+            <mat-icon color="primary">add</mat-icon>
+          </a>
+          <mat-icon color="primary">edit</mat-icon>
+          <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
+        </div>
       </li>
     </mat-tree-node>
 
@@ -31,12 +33,14 @@
           </button>
           {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
           <span class="spacer"></span>
-          <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
-            [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
-            <mat-icon color="primary">add</mat-icon>
-          </a>
-          <mat-icon color="primary">edit</mat-icon>
-          <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
+          <div *ngIf="isLoggedIn">
+            <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+              [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
+              <mat-icon color="primary">add</mat-icon>
+            </a>
+            <mat-icon color="primary">edit</mat-icon>
+            <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
+          </div>
         </div>
         <ul [class.hierarchy-tree-invisible]="!nestedTreeControl.isExpanded(institution)">
           <ng-container matTreeNodeOutlet></ng-container>
