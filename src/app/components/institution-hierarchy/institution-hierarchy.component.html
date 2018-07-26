@@ -6,35 +6,37 @@
     <mat-label>Додати новий заклад</mat-label>
   </div>
 
-  <mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+  <mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="hierarchy-tree">
+    <mat-tree-node *matTreeNodeDef="let institution" matTreeNodeToggle>
       <li class="mat-tree-node">
         <button mat-icon-button disabled></button>
-        {{node.fullName}} : {{node.totalPopulation}} ({{node.population}})
-        <a *ngIf="node.type == 2 || node.type == 3 || node.institutionType === 'ЦПМСД' || node.institutionType === 'юридична особа ЛА ОТГ'"
-          [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
+        {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
+        <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+          [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
           <mat-icon color="primary">add</mat-icon>
         </a>
-        <mat-icon color="primary" (click)="onDeleteInstitutionClick(node)">delete_forever</mat-icon>
+        <mat-icon color="primary">edit</mat-icon>
+        <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
       </li>
     </mat-tree-node>
 
-    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+    <mat-nested-tree-node *matTreeNodeDef="let institution; when: hasNestedChild">
       <li>
         <div class="mat-tree-node">
-          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.fullName">
+          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + institution.fullName">
             <mat-icon class="mat-icon-rtl-mirror">
-              {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              {{nestedTreeControl.isExpanded(institution) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          {{node.fullName}} : {{node.totalPopulation}} ({{node.population}})
-          <a *ngIf="node.type == 2 || node.type == 3 || node.institutionType === 'ЦПМСД' || node.institutionType === 'юридична особа ЛА ОТГ'"
-            [routerLink]="['/institutions/add']" [queryParams]="{ parent: node.id, type: node.type + 1 }">
+          {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
+          <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+            [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
             <mat-icon color="primary">add</mat-icon>
-          </a>
-          <mat-icon color="primary" (click)="onDeleteInstitutionClick(node)">delete_forever</mat-icon>
+          </a>  
+          <mat-icon color="primary">edit</mat-icon>
+          <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
         </div>
-        <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
+        <ul [class.hierarchy-tree-invisible]="!nestedTreeControl.isExpanded(institution)">
           <ng-container matTreeNodeOutlet></ng-container>
         </ul>
       </li>
