@@ -107,10 +107,10 @@ export class AddInstitutionComponent {
       vehiclesWay: [],
       computerEquipmentNeed: [],
       computerEquipmentReality: [],
-      population: []
+      population: [0]
     });
     this.villageFormGroup = this.formBuilder.group({
-      totalPopulation: [0]
+      population: [0]
     })
 
   }
@@ -130,25 +130,17 @@ export class AddInstitutionComponent {
       this.contactFormGroup.value,
       this.resourceFormGroup.value,
       this.fullFormGroup.value,
-      this.villageFormGroup.value
+      
     );
-    console.log(institution);
     if (this.parentId)
       institution.controlledBy = this.parentId;
 
-    console.log(institution.institutionType === "село");
-    if (institution.institutionType === "село") 
+    if (institution.institutionType === "село") {
+      institution.population = this.villageFormGroup.value.population
       institution.type = 4;
+    }
     else
       institution.type = parseInt('' + this.type);
-   
-    if(!institution.totalPopulation)
-      institution.totalPopulation = institution.population || 0;
-
-    if(!institution.population)
-      institution.population = institution.totalPopulation || 0;
-    
-    console.log(institution);
 
     this.institutionService.create(institution);
     this.router.navigate(['']);
