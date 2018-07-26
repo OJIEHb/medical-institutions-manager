@@ -11,6 +11,7 @@
       <li class="mat-tree-node">
         <button mat-icon-button disabled></button>
         {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
+        <span class="spacer"></span>
         <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
           [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
           <mat-icon color="primary">add</mat-icon>
@@ -29,10 +30,11 @@
             </mat-icon>
           </button>
           {{institution.fullName}} : {{institution.totalPopulation}} ({{institution.population}})
+          <span class="spacer"></span>
           <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
             [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
             <mat-icon color="primary">add</mat-icon>
-          </a>  
+          </a>
           <mat-icon color="primary">edit</mat-icon>
           <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
         </div>
