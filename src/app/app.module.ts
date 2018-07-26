@@ -17,6 +17,7 @@ import { InstitutionHierarchyComponent } from './components/institution-hierarch
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard';
 import { LoginComponent } from './components/login/login.component';
+import { RemoveInstitutionDialogComponent } from './components/institution-hierarchy/remove-institution-dialog/remove-institution-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
     InstitutionListComponent,
     InstitutionHierarchyComponent,
     LoginComponent,
+    RemoveInstitutionDialogComponent
   ],
   imports: [
     RouterModule.forRoot([
@@ -61,6 +63,7 @@ import { LoginComponent } from './components/login/login.component';
     AuthService,
     AuthGuard
   ],
+  entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

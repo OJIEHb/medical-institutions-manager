@@ -5,7 +5,8 @@ import { of } from "rxjs";
 import { Institution } from '../../models/institution';
 import { InstitutionService } from '../../services/institution.service';
 import { Router } from '@angular/router';
-import { isNgTemplate } from '../../../../node_modules/@angular/compiler';
+import { MatDialog } from '../../../../node_modules/@angular/material';
+import { RemoveInstitutionDialogComponent } from './remove-institution-dialog/remove-institution-dialog.component';
 
 @Component({
   selector: 'app-institution-hierarchy',
@@ -16,7 +17,7 @@ export class InstitutionHierarchyComponent {
   nestedTreeControl: NestedTreeControl<Institution>;
   nestedDataSource: MatTreeNestedDataSource<Institution>;
 
-  constructor(private institutionService: InstitutionService, private router: Router) {
+  constructor(private institutionService: InstitutionService, private router: Router, public dialog: MatDialog) {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
@@ -37,7 +38,9 @@ export class InstitutionHierarchyComponent {
   }
 
   public onDeleteInstitutionClick(institution) {
-    this.institutionService.delete(institution);
+    this.dialog.open(RemoveInstitutionDialogComponent, {
+      data: institution
+    });
   }
 
   private getIsExpandedNode(): Map<string, boolean> {

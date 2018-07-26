@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Видалити</h1>
+<div mat-dialog-content>
+  {{data.fullName}}?
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onYesClick()">Так</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Ні</button>
+</div>
