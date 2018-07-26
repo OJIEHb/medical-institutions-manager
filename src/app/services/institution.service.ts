@@ -32,8 +32,20 @@ export class InstitutionService {
   }
 
   public delete(institution: Institution) {
-    //TODO: Remove children
-    this.institutions.remove(institution.id);
+    this.institutions.valueChanges()
+      .subscribe(async institutions => {
+        await this.deleteControlledInstitutions(institution.id, institutions);
+        await this.institutions.remove(institution.id);
+      })
+  }
+
+  private deleteControlledInstitutions(controlledId: string, institutions: Institution[]) {
+    institutions.forEach(async institution => {
+      if (institution.controlledBy == controlledId) {
+        this.deleteControlledInstitutions(institution.id, institutions);
+        await this.institutions.remove(institution.id);
+      }
+    })
   }
 
   public getHierarchy(): Observable<Institution[]> {

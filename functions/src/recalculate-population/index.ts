@@ -5,15 +5,16 @@ export const listener = functions.database.ref('/institutions/{id}')
         const institutionsRef = event.after.ref.parent;
         let id;
 
-        if (!event.after.exists())
+        if (!event.after.exists()) {
             id = event.before.val().controlledBy;
-        else 
+        }
+        else
             id = event.after.val().id;
 
         await institutionsRef.once('value').then(async function (snapshot) {
             const institutions = snapshot.val();
             const keys = Object.keys(institutions);
-            while (id) {
+            while (id && institutions[id]) {
                 const populationSum = keys.reduce((total, key) => {
                     return (institutions[key].controlledBy === id) ? total + institutions[key].totalPopulation : total;
                 }, 0);
