@@ -19,6 +19,7 @@ import {
     MatTreeModule,
     MatDialogModule,
     MatCardModule,
+    MatMenuModule,
 } from '@angular/material';
 
 
@@ -42,6 +43,7 @@ import {
     MatTreeModule,
     MatDialogModule,
     MatCardModule,
+    MatMenuModule,
   ],
   exports: [
     MatButtonModule,
@@ -61,7 +63,8 @@ import {
     MatNativeDateModule,
     MatTreeModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule,
   ]
 })
 export class MaterialModule {}

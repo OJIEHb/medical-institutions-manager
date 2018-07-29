@@ -3,7 +3,7 @@
 }
   
 .sidenav {
-  width: 200px;
+  width: 260px;
 }
   
 .mat-toolbar.mat-primary {
@@ -24,3 +24,26 @@
   font-size: 12pt;
   margin-right: 10px;
 } 
+
+.mat-sidenav-fixed {
+  overflow: hidden;
+}
+
+.sidenav-submenu {
+  padding-left: 25px;
+}
+
+.menu-list {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+
+.menu-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 60px
+}

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
 
   user: firebase.User;
+  showMenu = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
