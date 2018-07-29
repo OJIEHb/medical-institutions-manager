@@ -1,6 +1,6 @@
 <mat-horizontal-stepper class="col-md-10 offset-md-1" linear="true" #stepper>
-  <mat-step [stepControl]="mainFormGroup">
-    <form class="col-md-6 offset-md-3" [formGroup]="mainFormGroup">
+  <mat-step [stepControl]="institutionFormGroup">
+    <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Основна інформація</ng-template>
       <mat-form-field class="full-width">
         <input matInput placeholder="Повна офіційна назва" formControlName="fullName" required>
@@ -121,8 +121,8 @@
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="contactFormGroup">
-    <form class="col-md-6 offset-md-3" [formGroup]="contactFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+    <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Контактна інформація</ng-template>
       <mat-form-field *ngIf="type < 3" class="full-width">
         <input matInput placeholder="Email установи" formControlName="email">
@@ -162,8 +162,8 @@
     </form>
   </mat-step>
 
-  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="resourceFormGroup">
-    <form class="col-md-6 offset-md-3" [formGroup]="resourceFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+    <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Ресури закладу</ng-template>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова кількість ліжок стаціонару" formControlName="hospitalBedsNumber">
@@ -171,7 +171,8 @@
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
       </mat-form-field>
-      <mat-form-field *ngIf="mainFormGroup.value.institutionType !== 'ЦПМСД' && mainFormGroup.value.institutionType !== 'юридична особа ЛА ОТГ'" class="full-width">
+      <mat-form-field *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'юридична особа ЛА ОТГ'"
+        class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
           formControlName="population">
       </mat-form-field>
@@ -267,19 +268,19 @@
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="mainFormGroup.value.institutionType !== 'село'" [stepControl]="fullFormGroup">
-    <form class="col-md-6 offset-md-3" [formGroup]="fullFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+    <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Повна інформація</ng-template>
       <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="receptionOffice">
         Приймальне відділення
       </mat-slide-toggle>
-      <mat-form-field *ngIf="fullFormGroup.value.receptionOffice" class="full-width">
+      <mat-form-field *ngIf="institutionFormGroup.value.receptionOffice" class="full-width">
         <input matInput placeholder="Телефон" formControlName="receptionOfficePhone">
       </mat-form-field>
       <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="registryOffice">
         Реєстратура амбулаторно-поліклінічного підрозділу
       </mat-slide-toggle>
-      <mat-form-field *ngIf="fullFormGroup.value.registryOffice" class="full-width">
+      <mat-form-field *ngIf="institutionFormGroup.value.registryOffice" class="full-width">
         <input matInput placeholder="Телефон" formControlName="registryOfficePhone">
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -310,24 +311,27 @@
       <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="license">
         Наявність ліцензії
       </mat-slide-toggle>
-      <div *ngIf="fullFormGroup.value.license">
+      <div *ngIf="institutionFormGroup.value.license">
         <mat-form-field class="full-width">
           <input matInput placeholder="Номер ліцензії" formControlName="licenseNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Дата" formControlName="licenseDate">
+          <input matInput placeholder="Дата" formControlName="licenseDate">
+          <!-- <input matInput [matDatepicker]="picker" placeholder="Дата" formControlName="licenseDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker></mat-datepicker> -->
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="startLicensePicker" placeholder="Початок терміну дії" formControlName="startLicenseValidity">
+          <input matInput placeholder="Початок терміну дії" formControlName="startLicenseValidity">
+          <!-- <input matInput [matDatepicker]="startLicensePicker" placeholder="Початок терміну дії" formControlName="startLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="startLicensePicker"></mat-datepicker-toggle>
-          <mat-datepicker #startLicensePicker></mat-datepicker>
+          <mat-datepicker #startLicensePicker></mat-datepicker> -->
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="endLicensePicker" placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
+          <input matInput placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
+          <!-- <input matInput [matDatepicker]="endLicensePicker" placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="endLicensePicker"></mat-datepicker-toggle>
-          <mat-datepicker #endLicensePicker></mat-datepicker>
+          <mat-datepicker #endLicensePicker></mat-datepicker> -->
         </mat-form-field>
       </div>
       <mat-form-field *ngIf="type == 1" class="full-width">
@@ -337,43 +341,48 @@
           <mat-option value="не підлягає акредитації">Не підлягає акредитації</mat-option>
         </mat-select>
       </mat-form-field>
-      <div *ngIf="fullFormGroup.value.accreditationCategoryType === 'наявна'">
+      <div *ngIf="institutionFormGroup.value.accreditationCategoryType === 'наявна'">
         <mat-form-field class="full-width">
           <input matInput placeholder="Номер акредитаційної категорії" formControlName="accreditationСategoryNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="lastAccreditationPicker" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
+          <input matInput placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
+          <!-- <input matInput [matDatepicker]="lastAccreditationPicker" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
           <mat-datepicker-toggle matSuffix [for]="lastAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #lastAccreditationPicker></mat-datepicker>
+          <mat-datepicker #lastAccreditationPicker></mat-datepicker> -->
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="startAccreditationPicker" placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
+          <input matInput placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
+          <!-- <input matInput [matDatepicker]="startAccreditationPicker" placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="startAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #startAccreditationPicker></mat-datepicker>
+          <mat-datepicker #startAccreditationPicker></mat-datepicker> -->
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="endAccreditationPicker" placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
+          <input matInput placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
+          <!-- <input matInput [matDatepicker]="endAccreditationPicker" placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="endAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #endAccreditationPicker></mat-datepicker>
+          <mat-datepicker #endAccreditationPicker></mat-datepicker> -->
         </mat-form-field>
       </div>
       <div>
         <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
-        <button mat-stroked-button (click)="saveInstitution()">Зберегти</button>
+        <button *ngIf="!isUpdating" mat-stroked-button (click)="saveInstitution()">Зберегти</button>
+        <button *ngIf="isUpdating" mat-stroked-button (click)="updateInstitution()">Оновити</button>
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="mainFormGroup.value.institutionType === 'село'" [stepControl]="villageFormGroup">
-      <form class="col-md-6 offset-md-3" [formGroup]="villageFormGroup">
-        <ng-template matStepLabel>Ресури</ng-template>
-        <mat-form-field class="full-width">
-            <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території на 01.01"
-              formControlName="population">
-          </mat-form-field>
-        <div>
-          <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
-          <button mat-stroked-button (click)="saveInstitution()">Зберегти</button>
-        </div>
-      </form>
-    </mat-step>
+  <mat-step *ngIf="institutionFormGroup.value.institutionType === 'село'" [stepControl]="institutionFormGroup">
+    <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
+      <ng-template matStepLabel>Ресури</ng-template>
+      <mat-form-field class="full-width">
+        <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території на 01.01"
+          formControlName="population">
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
+        <button *ngIf="!isUpdating" mat-stroked-button (click)="saveInstitution()">Зберегти</button>
+        <button *ngIf="isUpdating" mat-stroked-button (click)="updateInstitution()">Оновити</button>
+      </div>
+    </form>
+  </mat-step>
 </mat-horizontal-stepper>

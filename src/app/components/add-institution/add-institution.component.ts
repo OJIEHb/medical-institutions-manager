@@ -3,6 +3,7 @@ import { Institution } from '../../models/institution';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'add-institution',
@@ -11,13 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddInstitutionComponent {
 
-  mainFormGroup: FormGroup;
-  contactFormGroup: FormGroup;
-  resourceFormGroup: FormGroup;
-  fullFormGroup: FormGroup;
-  villageFormGroup: FormGroup;
+  institutionFormGroup: FormGroup;
   parentId: string;
   type: number;
+  institution: Institution;
+  isUpdating: boolean;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
@@ -29,58 +28,88 @@ export class AddInstitutionComponent {
         this.parentId = params['parent'];
         this.type = params['type'] || 1;
       });
+
+
+    this.initForms();
+    this.route.params.subscribe(params => {
+      this.isUpdating = params['id']? true: false;
+      if (params['id'])
+        this.institutionService.getById(params['id'])
+          .subscribe(institution => {
+            this.institution = institution;
+            this.institutionFormGroup.patchValue(institution)
+          });
+    })
   }
 
-  ngOnInit() {
-    this.mainFormGroup = this.formBuilder.group({
-      place: [''],
-      subordinationLevel: [''],
-      placeType: [''],
-      institutionType: [''],
-      fullName: [''],
-      fullAddress: [''],
+  public saveInstitution() {
+    let institution = this.institutionFormGroup.value as Institution;
+
+    institution.equipment = +institution.equipment;
+    institution.medicamentEquipment = +institution.medicamentEquipment;
+
+    if (this.parentId)
+      institution.controlledBy = this.parentId;
+
+    if (institution.institutionType === "село")
+      institution.type = 4;
+    else
+      institution.type = +this.type;
+
+    this.institutionService.create(institution);
+    this.router.navigate(['']);
+  }
+
+  public updateInstitution() {
+    let institution = Object.assign(this.institution, this.institutionFormGroup.value);
+    this.institutionService.update(institution.id, institution);
+    this.router.navigate(['']);
+  }
+
+  private initForms() {
+    this.institutionFormGroup = this.formBuilder.group({
+      place: [],
+      subordinationLevel: [],
+      placeType: [],
+      institutionType: [],
+      fullName: [],
+      fullAddress: [],
       legalStatus: [false],
-      stateRegisterCode: [''],
-      classifierObjectCode: [''],
-      ownership: [''],
-      legalFormCode: [''],
-      type: [0]
-    });
-    this.contactFormGroup = this.formBuilder.group({
-      email: ['', Validators.email],
-      phone: [''],
-      fax: [''],
-      site: [''],
+      stateRegisterCode: [],
+      classifierObjectCode: [],
+      ownership: [],
+      legalFormCode: [],
+      type: [],
+      email: [, Validators.email],
+      phone: [],
+      fax: [],
+      site: [],
       headDoctor: this.formBuilder.group({
-        name: [''],
-        workPhone: [''],
-        homePhone: ['']
+        name: [],
+        workPhone: [],
+        homePhone: []
       }),
       headDoctorSecretary: this.formBuilder.group({
-        name: [''],
-        workPhone: ['']
+        name: [],
+        workPhone: []
       }),
-    });
-    this.fullFormGroup = this.formBuilder.group({
       receptionOffice: [false],
-      receptionOfficePhone: [''],
+      receptionOfficePhone: [],
       registryOffice: [false],
-      registryOfficePhone: [''],
-      medicalСare: [''],
+      registryOfficePhone: [],
+      medicalСare: [],
       medicalAidTypes: [[]],
-      declaredAssistanceForms: [''],
+      declaredAssistanceForms: [],
       license: false,
-      licenseNumber: [''],
-      licenseDate: new Date(),
-      startLicenseValidity: new Date(),
-      endLicenseValidity: new Date(),
-      accreditationCategoryType: [''],
-      accreditationСategoryNumber: [''],
-      lastAccreditation: new Date(),
-      startAccreditationValidity: new Date(),
-      endAccreditationValidity: new Date()
-    });
-    this.resourceFormGroup = this.formBuilder.group({
+      licenseNumber: [],
+      licenseDate: [111111111],
+      startLicenseValidity: [],
+      endLicenseValidity: [],
+      accreditationCategoryType: [],
+      accreditationСategoryNumber: [],
+      lastAccreditation: [],
+      startAccreditationValidity: [],
+      endAccreditationValidity: [],
       hospitalBedsNumber: [],
       hospitalCapacity: [],
       regularDoctorNumber: [],
@@ -100,50 +129,14 @@ export class AddInstitutionComponent {
       coldWaterSupply: [false],
       hotWaterSupply: [false],
       internetSupply: [false],
-      equipment: [0],
-      medicamentEquipment: [0],
+      equipment: [],
+      medicamentEquipment: [],
       vehiclesNeed: [],
       vehiclesReality: [],
       vehiclesWay: [],
       computerEquipmentNeed: [],
       computerEquipmentReality: [],
-      population: [0]
+      population: []
     });
-    this.villageFormGroup = this.formBuilder.group({
-      population: [0]
-    })
-
   }
-
-  public saveInstitution() {
-    this.fullFormGroup.value.licenseDate = this.fullFormGroup.value.licenseDate.getTime();
-    this.fullFormGroup.value.startLicenseValidity = this.fullFormGroup.value.startLicenseValidity.getTime();
-    this.fullFormGroup.value.endLicenseValidity = this.fullFormGroup.value.endLicenseValidity.getTime();
-    this.fullFormGroup.value.lastAccreditation = this.fullFormGroup.value.lastAccreditation.getTime();
-    this.fullFormGroup.value.startAccreditationValidity = this.fullFormGroup.value.startAccreditationValidity.getTime();
-    this.fullFormGroup.value.endAccreditationValidity = this.fullFormGroup.value.endAccreditationValidity.getTime();
-    this.resourceFormGroup.value.equipment = parseInt(this.resourceFormGroup.value.equipment);
-    this.resourceFormGroup.value.medicamentEquipment = parseInt(this.resourceFormGroup.value.medicamentEquipment);
-
-    let institution = Object.assign({},
-      this.mainFormGroup.value,
-      this.contactFormGroup.value,
-      this.resourceFormGroup.value,
-      this.fullFormGroup.value,
-      
-    );
-    if (this.parentId)
-      institution.controlledBy = this.parentId;
-
-    if (institution.institutionType === "село") {
-      institution.population = this.villageFormGroup.value.population
-      institution.type = 4;
-    }
-    else
-      institution.type = parseInt('' + this.type);
-
-    this.institutionService.create(institution);
-    this.router.navigate(['']);
-  }
-
 }

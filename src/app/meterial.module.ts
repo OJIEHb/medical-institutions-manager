@@ -21,6 +21,7 @@ import {
     MatCardModule,
 } from '@angular/material';
 
+
 @NgModule({
   imports: [
     MatButtonModule,
@@ -40,7 +41,7 @@ import {
     MatNativeDateModule,
     MatTreeModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
   ],
   exports: [
     MatButtonModule,

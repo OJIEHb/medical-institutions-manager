@@ -18,7 +18,7 @@
                 [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
                 <mat-icon color="primary">add</mat-icon>
               </a>
-              <mat-icon color="primary">edit</mat-icon>
+              <a [routerLink]="['institutions/edit', institution.id]"><mat-icon color="primary">edit</mat-icon></a>
               <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
             </div>
           </li>
@@ -39,7 +39,7 @@
                   [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
                   <mat-icon color="primary">add</mat-icon>
                 </a>
-                <mat-icon color="primary">edit</mat-icon>
+                <a [routerLink]="['institutions/edit', institution.id]"><mat-icon color="primary">edit</mat-icon></a>
                 <mat-icon color="primary" (click)="onDeleteInstitutionClick(institution)">delete_forever</mat-icon>
               </div>
             </div>

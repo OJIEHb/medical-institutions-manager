@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard';
 import { LoginComponent } from './components/login/login.component';
 import { RemoveInstitutionDialogComponent } from './components/institution-hierarchy/remove-institution-dialog/remove-institution-dialog.component';
+import { routes } from '../routes';
 
 @NgModule({
   declarations: [
@@ -29,25 +30,7 @@ import { RemoveInstitutionDialogComponent } from './components/institution-hiera
     RemoveInstitutionDialogComponent
   ],
   imports: [
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: InstitutionHierarchyComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'institutions/add',
-        component: AddInstitutionComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'institutions',
-        component: InstitutionListComponent
-      }
-    ]),
+    RouterModule.forRoot(routes),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -59,9 +42,9 @@ import { RemoveInstitutionDialogComponent } from './components/institution-hiera
     MaterialModule
   ],
   providers: [
-    InstitutionService, 
+    InstitutionService,
     AuthService,
-    AuthGuard
+    AuthGuard,
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]

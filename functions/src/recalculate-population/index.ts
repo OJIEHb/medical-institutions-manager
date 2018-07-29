@@ -18,7 +18,7 @@ export const listener = functions.database.ref('/institutions/{id}')
                 const populationSum = keys.reduce((total, key) => {
                     return (institutions[key].controlledBy === id) ? total + institutions[key].totalPopulation : total;
                 }, 0);
-                await institutionsRef.child(id + '/totalPopulation').set(populationSum + institutions[id].population);
+                await institutionsRef.child(id + '/totalPopulation').set(populationSum + (institutions[id].population || 0));
                 id = institutions[id].controlledBy;
             }
         });

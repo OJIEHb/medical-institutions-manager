@@ -5,7 +5,7 @@ import { of } from "rxjs";
 import { Institution } from '../../models/institution';
 import { InstitutionService } from '../../services/institution.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '../../../../node_modules/@angular/material';
+import { MatDialog } from '@angular/material';
 import { RemoveInstitutionDialogComponent } from './remove-institution-dialog/remove-institution-dialog.component';
 import { AuthService } from '../../services/auth.service';
 
@@ -17,6 +17,7 @@ import { AuthService } from '../../services/auth.service';
 export class InstitutionHierarchyComponent {
   nestedTreeControl: NestedTreeControl<Institution>;
   nestedDataSource: MatTreeNestedDataSource<Institution>;
+  
   isLoggedIn: boolean = false;
 
   constructor(private institutionService: InstitutionService,
@@ -26,10 +27,10 @@ export class InstitutionHierarchyComponent {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
-    this.institutionService.getHierarchy()
+    this.institutionService.getAll()
       .subscribe(institutions => {
         let nodesState = this.getIsExpandedNode();
-        this.nestedDataSource.data = institutions;
+        this.nestedDataSource.data = this.institutionService.getHierarchy(institutions);
         this.setIsExpandedNode(nodesState);
       });
     this.authService.isLoggedIn()
