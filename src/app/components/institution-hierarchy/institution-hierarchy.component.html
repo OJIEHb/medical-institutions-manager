@@ -15,7 +15,7 @@
             <span class="spacer"></span>
             <div *ngIf="isLoggedIn">
               <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
-                [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
+                [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1, place: institution.place}">
                 <mat-icon color="primary">add</mat-icon>
               </a>
               <a [routerLink]="['institutions/edit', institution.id]" [queryParams]="{ type: institution.type }"><mat-icon color="primary">edit</mat-icon></a>
@@ -36,7 +36,7 @@
               <span class="spacer"></span>
               <div *ngIf="isLoggedIn">
                 <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
-                  [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1 }">
+                  [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1, place: institution.place}">
                   <mat-icon color="primary">add</mat-icon>
                 </a>
                 <a [routerLink]="['institutions/edit', institution.id]" [queryParams]="{ type: institution.type }"><mat-icon color="primary">edit</mat-icon></a>

@@ -15,6 +15,7 @@ export class AddInstitutionComponent {
   institutionFormGroup: FormGroup;
   parentId: string;
   type: number;
+  place: string;
   institution: Institution;
   isUpdating: boolean;
 
@@ -26,7 +27,9 @@ export class AddInstitutionComponent {
       .queryParams
       .subscribe(params => {
         this.parentId = params['parent'];
+        this.place = params['place'];
         this.type = params['type'] || 1;
+        console.log(params)
       });
 
 
@@ -48,9 +51,14 @@ export class AddInstitutionComponent {
     institution.equipment = +institution.equipment;
     institution.medicamentEquipment = +institution.medicamentEquipment;
 
-    if (this.parentId)
+    institution.regionType = this.getRegionType(this.place);
+    console.log(institution);
+    if (this.parentId){
+      institution.place = this.place;
       institution.controlledBy = this.parentId;
+    }
 
+    console.log(institution);
     if (institution.institutionType === "село")
       institution.type = 4;
     else
@@ -62,6 +70,7 @@ export class AddInstitutionComponent {
 
   public updateInstitution() {
     let institution = Object.assign(this.institution, this.institutionFormGroup.value);
+    institution.regionType = this.getRegionType(institution.place);
     this.institutionService.update(institution.id, institution);
     this.router.navigate(['']);
   }
@@ -102,7 +111,7 @@ export class AddInstitutionComponent {
       declaredAssistanceForms: [],
       license: false,
       licenseNumber: [],
-      licenseDate: [111111111],
+      licenseDate: [],
       startLicenseValidity: [],
       endLicenseValidity: [],
       accreditationCategoryType: [],
@@ -138,5 +147,22 @@ export class AddInstitutionComponent {
       computerEquipmentReality: [],
       population: []
     });
+  }
+
+  private getRegionType(place: string): number {
+    switch (place) {
+      case 'м. Черкаси':
+        return 1;
+      case 'м. Сміла':
+      case 'м. Умань':
+      case 'м. Ватутіне':
+        return 2;
+      case 'Обласні заклади охорони здоров’я':
+        return 4;
+      case 'Навчальні медичні заклади':
+        return 5;
+      default:
+        return 3;
+    }
   }
 }

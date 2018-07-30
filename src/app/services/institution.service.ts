@@ -3,6 +3,9 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { Institution } from '../models/institution';
 import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
+import { DatabaseReference } from '../../../node_modules/angularfire2/database/interfaces';
+import { Filter } from '../models/filter';
+import { filter } from '../../../node_modules/rxjs/operators';
 
 @Injectable()
 export class InstitutionService {
@@ -34,6 +37,22 @@ export class InstitutionService {
   public getById(id: string): Observable<Institution> {
     this.institution = this.db.object(this.institutionPath + '/' + id)
     return this.institution.valueChanges();
+  }
+
+  public getFiltredInstitutions(filter: Filter): Observable<Institution[]> {
+    return this.db.list(this.institutionPath, ref => this.getFilterRef(ref, filter))
+      .valueChanges() as Observable<Institution[]>;
+  }
+
+  private getFilterRef(ref: DatabaseReference, filter: Filter) {
+    switch (filter.predicate) {
+      case '>':
+        return ref.orderByChild(filter.key).startAt(filter.value);
+      case '<':
+        return ref.orderByChild(filter.key).endAt(filter.value);
+      case '=':
+        return ref.orderByChild(filter.key).equalTo(filter.value);
+    }
   }
 
   public delete(institution: Institution) {
