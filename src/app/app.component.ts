@@ -29,4 +29,14 @@ export class AppComponent implements OnInit{
   logout() {
     this.authService.logout();
   }
+
+  onCityMenuClick() {
+    this.showCityMenu = !this.showCityMenu;
+    this.showDistrictMenu = false;
+  }
+
+  onDistrictMenuClick() {
+    this.showDistrictMenu = !this.showDistrictMenu;
+    this.showCityMenu = false;
+  }
 }

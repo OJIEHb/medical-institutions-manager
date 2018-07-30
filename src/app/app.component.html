@@ -9,8 +9,8 @@
         <mat-list-item>
           <a routerLink="/">Райони Черкащини</a>
           <mat-icon class="menu-icon">domain</mat-icon>
-          <mat-icon *ngIf="!showDistrictMenu" (click)="showDistrictMenu = !showDistrictMenu">chevron_right</mat-icon>
-          <mat-icon *ngIf="showDistrictMenu" (click)="showDistrictMenu = !showDistrictMenu">expand_more</mat-icon>
+          <mat-icon *ngIf="!showDistrictMenu" (click)="onDistrictMenuClick()">chevron_right</mat-icon>
+          <mat-icon *ngIf="showDistrictMenu" (click)="onDistrictMenuClick()">expand_more</mat-icon>
         </mat-list-item>
         <mat-nav-list class="sidenav-submenu" *ngIf="showDistrictMenu">
           <a mat-list-item>Городищенський</a>
@@ -37,8 +37,8 @@
         <mat-list-item>
           <a routerLink="/">Mіста Черкащини</a>
           <mat-icon class="menu-icon">domain</mat-icon>
-          <mat-icon *ngIf="!showCityMenu" (click)="showCityMenu = !showCityMenu">chevron_right</mat-icon>
-          <mat-icon *ngIf="showCityMenu" (click)="showCityMenu = !showCityMenu">expand_more</mat-icon>
+          <mat-icon *ngIf="!showCityMenu" (click)="onCityMenuClick()">chevron_right</mat-icon>
+          <mat-icon *ngIf="showCityMenu" (click)="onCityMenuClick()">expand_more</mat-icon>
         </mat-list-item>
         <mat-nav-list class="sidenav-submenu" *ngIf="showCityMenu">
           <a mat-list-item>м. Сміла</a>
