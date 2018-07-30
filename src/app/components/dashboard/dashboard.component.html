@@ -1,0 +1,9 @@
+<div class="col-md-8 offset-md-2">
+  <div *ngIf="isLoggedIn">
+    <button mat-fab color="primary" style="margin-right: 20px; margin-bottom: 20px;" (click)="onAddInstitutionClick()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-label>Додати новий заклад</mat-label>
+  </div>
+  <institution-hierarchy [institutions]="institutions"></institution-hierarchy>
+</div>

@@ -4,7 +4,7 @@ import { Institution } from '../../../models/institution';
 import { InstitutionService } from '../../../services/institution.service';
 
 @Component({
-  selector: 'app-remove-institution-dialog',
+  selector: 'remove-institution-dialog',
   templateUrl: './remove-institution-dialog.component.html',
   styleUrls: ['./remove-institution-dialog.component.scss']
 })

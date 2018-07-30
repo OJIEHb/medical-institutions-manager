@@ -3,9 +3,8 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { Institution } from '../models/institution';
 import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
-import { DatabaseReference } from '../../../node_modules/angularfire2/database/interfaces';
+import { DatabaseReference } from 'angularfire2/database/interfaces';
 import { Filter } from '../models/filter';
-import { filter } from '../../../node_modules/rxjs/operators';
 
 @Injectable()
 export class InstitutionService {

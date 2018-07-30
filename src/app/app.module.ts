@@ -18,7 +18,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard';
 import { LoginComponent } from './components/login/login.component';
 import { RemoveInstitutionDialogComponent } from './components/institution-hierarchy/remove-institution-dialog/remove-institution-dialog.component';
-import { routes } from '../routes';
+import { routes } from './routes';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { routes } from '../routes';
     InstitutionListComponent,
     InstitutionHierarchyComponent,
     LoginComponent,
-    RemoveInstitutionDialogComponent
+    RemoveInstitutionDialogComponent,
+    DashboardComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
