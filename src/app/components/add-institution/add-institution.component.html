@@ -7,37 +7,8 @@
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Місце розташування" formControlName="place" required>
-          <mat-optgroup label="Міста">
-            <mat-option value="м. Черкаси">м. Черкаси</mat-option>
-            <mat-option value="м. Сміла">м. Сміла</mat-option>
-            <mat-option value="м. Умань">м. Умань</mat-option>
-            <mat-option value="м. Ватутіне">м. Ватутіне</mat-option>
-          </mat-optgroup>
-          <mat-optgroup label="Райони">
-            <mat-option value="Городищенський">Городищенський район</mat-option>
-            <mat-option value="Драбіський">Драбіський район</mat-option>
-            <mat-option value="Жашківський">Жашківський район</mat-option>
-            <mat-option value="Звенигородський район">Звенигородський район</mat-option>
-            <mat-option value="Золотоніський район">Золотоніський район</mat-option>
-            <mat-option value="Кам'янський район">Кам'янський район</mat-option>
-            <mat-option value="Канівський район">Канівський район</mat-option>
-            <mat-option value="Катеринопільський район">Катеринопільський район</mat-option>
-            <mat-option value="Корсунь-Шевченківський район">Корсунь-Шевченківський район</mat-option>
-            <mat-option value="Лисянський район">Лисянський район</mat-option>
-            <mat-option value="Маньківський район">Маньківський район</mat-option>
-            <mat-option value="Монастирищенський район">Монастирищенський район</mat-option>
-            <mat-option value="Смілянський район">Смілянський район</mat-option>
-            <mat-option value="Тальнівський район">Тальнівський район</mat-option>
-            <mat-option value="Уманський район">Уманський район</mat-option>
-            <mat-option value="Чигиринський район">Чигиринський район</mat-option>
-            <mat-option value="Черкаський район">Черкаський район</mat-option>
-            <mat-option value="Чорнобаївський район">Чорнобаївський район</mat-option>
-            <mat-option value="Христинівський район">Христинівський район</mat-option>
-            <mat-option value="Шполянський район">Шполянський район</mat-option>
-          </mat-optgroup>
-          <mat-optgroup label="Інші">
-            <mat-option value="Обласні заклади охорони здоров’я">Обласні заклади охорони здоров’я</mat-option>
-            <mat-option value="Навчальні медичні заклади">Навчальні медичні заклади</mat-option>
+          <mat-optgroup *ngFor="let group of placeGroups" [label]="group.name">
+            <mat-option *ngFor="let place of group.places" [value]="place.name">{{place.name}}</mat-option>
           </mat-optgroup>
         </mat-select>
       </mat-form-field>

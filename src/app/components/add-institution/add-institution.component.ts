@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { InstitutionPlaceService } from '../../services/institytion-place.service';
 
 @Component({
   selector: 'add-institution',
@@ -18,11 +19,13 @@ export class AddInstitutionComponent {
   place: string;
   institution: Institution;
   isUpdating: boolean;
+  placeGroups: any;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private placeService: InstitutionPlaceService) {
     this.route
       .queryParams
       .subscribe(params => {
@@ -43,6 +46,8 @@ export class AddInstitutionComponent {
             this.institutionFormGroup.patchValue(institution)
           });
     })
+
+    this.placeService.getByGroup().subscribe(groups => this.placeGroups = groups)
   }
 
   public saveInstitution() {
