@@ -155,19 +155,11 @@ export class AddInstitutionComponent {
   }
 
   private getRegionType(place: string): number {
-    switch (place) {
-      case 'м. Черкаси':
-        return 1;
-      case 'м. Сміла':
-      case 'м. Умань':
-      case 'м. Ватутіне':
-        return 2;
-      case 'Обласні заклади охорони здоров’я':
-        return 4;
-      case 'Навчальні медичні заклади':
-        return 5;
-      default:
-        return 3;
-    }
+    this.placeGroups.forEach(group => {
+      group.places.forEach(place => {
+        if (place.name === place) return place.regionType;
+      });
+    });
+    return 0;
   }
 }
