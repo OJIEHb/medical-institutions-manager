@@ -36,10 +36,8 @@ export class InstitutionHierarchyComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.institutions) {
-      console.log(this.institutions);
       let nodesState = this.getIsExpandedNode();
       this.nestedDataSource.data = this.institutionService.getHierarchy(this.institutions);
-      console.log(this.institutionService.getHierarchy(this.institutions));
       this.setIsExpandedNode(nodesState);
     }
   }

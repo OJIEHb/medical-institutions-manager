@@ -3,8 +3,7 @@ import { Institution } from '../../models/institution';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as moment from 'moment';
-import { InstitutionPlaceService } from '../../services/institytion-place.service';
+import { InstitutionPlaceService } from '../../services/institution-place.service';
 
 @Component({
   selector: 'add-institution',
@@ -32,7 +31,6 @@ export class AddInstitutionComponent {
         this.parentId = params['parent'];
         this.place = params['place'];
         this.type = params['type'] || 1;
-        console.log(params)
       });
 
 
@@ -56,14 +54,12 @@ export class AddInstitutionComponent {
     institution.equipment = +institution.equipment;
     institution.medicamentEquipment = +institution.medicamentEquipment;
 
-    institution.regionType = this.getRegionType(this.place);
-    console.log(institution);
     if (this.parentId){
       institution.place = this.place;
       institution.controlledBy = this.parentId;
     }
 
-    console.log(institution);
+    institution.regionType = this.getRegionType(institution.place);
     if (institution.institutionType === "село")
       institution.type = 4;
     else
@@ -154,12 +150,14 @@ export class AddInstitutionComponent {
     });
   }
 
-  private getRegionType(place: string): number {
+  private getRegionType(institutionPlace: string): number {
+    let regionType = 0;
     this.placeGroups.forEach(group => {
       group.places.forEach(place => {
-        if (place.name === place) return place.regionType;
+        if (place.name === institutionPlace) 
+          regionType = place.regionType;
       });
     });
-    return 0;
+    return regionType;
   }
 }

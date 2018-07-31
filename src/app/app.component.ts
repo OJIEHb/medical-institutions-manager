@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { InstitutionPlaceService } from './services/institution-place.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,12 @@ export class AppComponent implements OnInit{
   user: firebase.User;
   showDistrictMenu = false;
   showCityMenu = false;
+  places = [];
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private placeService: InstitutionPlaceService) {
+    this.placeService.getByRegionType()
+      .subscribe(places => this.places = places);
+  }
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(user => {

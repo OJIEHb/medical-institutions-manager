@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="institutions && institutions.length">
   <mat-card-content>
     <mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="hierarchy-tree">
       <mat-tree-node *matTreeNodeDef="let institution" matTreeNodeToggle>

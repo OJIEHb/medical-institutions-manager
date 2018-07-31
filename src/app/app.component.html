@@ -3,54 +3,33 @@
     <mat-toolbar color="primary">Меню</mat-toolbar>
     <div class="menu-container">
       <mat-nav-list class="menu-list">
-        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 1 }">м. Черкаси
+        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 1 }" (click)="drawer.toggle()">м. Черкаси
           <mat-icon class="menu-icon">location_city</mat-icon>
         </a>
         <mat-list-item>
-          <a [routerLink]="['/dashboard']" [queryParams]="{ regionType: 3 }">Райони Черкащини</a>
+          <a [routerLink]="['/dashboard']" [queryParams]="{ regionType: 3 }" (click)="drawer.toggle()">Райони Черкащини</a>
           <mat-icon class="menu-icon">domain</mat-icon>
           <mat-icon *ngIf="!showDistrictMenu" (click)="onDistrictMenuClick()">chevron_right</mat-icon>
           <mat-icon *ngIf="showDistrictMenu" (click)="onDistrictMenuClick()">expand_more</mat-icon>
         </mat-list-item>
         <mat-nav-list class="sidenav-submenu" *ngIf="showDistrictMenu">
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Городищенський район' }">Городищенський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Драбіський район' }">Драбіський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Жашківський район' }">Жашківський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Звенигородський район' }">Звенигородський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Золотоніський район' }">Золотоніський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Кам\'янський район' }">Кам'янський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Канівський район' }">Канівський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Катеринопільський район' }">Катеринопільський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Корсунь-Шевченківський район' }">Корсунь-Шевченківський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Лисянський район' }">Лисянський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Маньківський район' }">Маньківський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Монастирищенський район' }">Монастирищенський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Смілянський район' }">Смілянський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Тальнівський район' }">Тальнівський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Уманський район' }">Уманський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Чигиринський район' }">Чигиринський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Черкаський район' }">Черкаський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Чорнобаївський район' }">Чорнобаївський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Христинівський район' }">Христинівський</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'Шполянський район' }">Шполянський</a>
+          <a mat-list-item *ngFor="let place of places[3]" [routerLink]="['/dashboard']" [queryParams]="{ place: place.name}" (click)="drawer.toggle()">{{place.name}}</a>
         </mat-nav-list>
 
         <mat-list-item>
-          <a [routerLink]="['/dashboard']" [queryParams]="{ regionType: 2 }">Mіста Черкащини</a>
+          <a [routerLink]="['/dashboard']" [queryParams]="{ regionType: 2 }" (click)="drawer.toggle()">Mіста Черкащини</a>
           <mat-icon class="menu-icon">domain</mat-icon>
           <mat-icon *ngIf="!showCityMenu" (click)="onCityMenuClick()">chevron_right</mat-icon>
           <mat-icon *ngIf="showCityMenu" (click)="onCityMenuClick()">expand_more</mat-icon>
         </mat-list-item>
         <mat-nav-list class="sidenav-submenu" *ngIf="showCityMenu">
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'м. Сміла' }">м. Сміла</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'м. Ватутіне' }">м. Ватутіне</a>
-          <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ place: 'м. Умань' }">м. Умань</a>
+          <a mat-list-item *ngFor="let place of places[2]" [routerLink]="['/dashboard']" [queryParams]="{ place: place.name}" (click)="drawer.toggle()">{{place.name}}</a>
          </mat-nav-list>
        
-        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 4 }">Обласні заклади
+        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 4 }" (click)="drawer.toggle()">Обласні заклади
           <mat-icon class="menu-icon">local_hotel</mat-icon>
         </a>
-        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 5 }">Навчальні заклади
+        <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 5 }" (click)="drawer.toggle()">Навчальні заклади
           <mat-icon class="menu-icon">store</mat-icon>
         </a>
       </mat-nav-list>

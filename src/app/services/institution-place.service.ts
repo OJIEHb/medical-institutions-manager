@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class InstitutionPlaceService {
@@ -32,6 +32,19 @@ export class InstitutionPlaceService {
           groupsArray.push(groups[key]);
         })
         return groupsArray;
+      }))
+  }
+
+  public getByRegionType(): Observable<any[]> {
+    return this.institutionPlaces.valueChanges()
+      .pipe(map(places => {
+        let types = [];
+        places.forEach(place => {
+          if (!types[place.regionType])
+            types[place.regionType] = [];
+          types[place.regionType].push(place);
+        });
+        return types;
       }))
   }
 }

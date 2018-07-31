@@ -20,7 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RemoveInstitutionDialogComponent } from './components/institution-hierarchy/remove-institution-dialog/remove-institution-dialog.component';
 import { routes } from './routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InstitutionPlaceService } from './services/institytion-place.service';
+import { InstitutionPlaceService } from './services/institution-place.service';
 
 @NgModule({
   declarations: [
