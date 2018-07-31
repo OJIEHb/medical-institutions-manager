@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RemoveInstitutionDialogComponent } from './components/institution-hierarchy/remove-institution-dialog/remove-institution-dialog.component';
 import { routes } from './routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { InstitutionPlaceService } from './services/institytion-place.service';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     InstitutionService,
     AuthService,
     AuthGuard,
+    InstitutionPlaceService
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]
