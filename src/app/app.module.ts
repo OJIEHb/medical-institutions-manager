@@ -21,6 +21,7 @@ import { RemoveInstitutionDialogComponent } from './components/institution-hiera
 import { routes } from './routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InstitutionPlaceService } from './services/institution-place.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { InstitutionPlaceService } from './services/institution-place.service';
     InstitutionService,
     AuthService,
     AuthGuard,
-    InstitutionPlaceService
+    InstitutionPlaceService,
+    DatePipe
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]

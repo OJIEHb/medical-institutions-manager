@@ -287,22 +287,19 @@
           <input matInput placeholder="Номер ліцензії" formControlName="licenseNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Дата" formControlName="licenseDate">
-          <!-- <input matInput [matDatepicker]="picker" placeholder="Дата" formControlName="licenseDate">
+          <input matInput [matDatepicker]="picker" (dateChange)="onFieldDateChange('licenseDate')" placeholder="Дата" formControlName="licenseDate" readonly>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker> -->
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Початок терміну дії" formControlName="startLicenseValidity">
-          <!-- <input matInput [matDatepicker]="startLicensePicker" placeholder="Початок терміну дії" formControlName="startLicenseValidity">
+          <input matInput [matDatepicker]="startLicensePicker" (dateChange)="onFieldDateChange('startLicenseValidity')" placeholder="Початок терміну дії" formControlName="startLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="startLicensePicker"></mat-datepicker-toggle>
-          <mat-datepicker #startLicensePicker></mat-datepicker> -->
+          <mat-datepicker #startLicensePicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
-          <!-- <input matInput [matDatepicker]="endLicensePicker" placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
+          <input matInput [matDatepicker]="endLicensePicker" (dateChange)="onFieldDateChange('endLicenseValidity')" placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="endLicensePicker"></mat-datepicker-toggle>
-          <mat-datepicker #endLicensePicker></mat-datepicker> -->
+          <mat-datepicker #endLicensePicker></mat-datepicker>
         </mat-form-field>
       </div>
       <mat-form-field *ngIf="type == 1" class="full-width">
@@ -317,22 +314,19 @@
           <input matInput placeholder="Номер акредитаційної категорії" formControlName="accreditationСategoryNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
-          <!-- <input matInput [matDatepicker]="lastAccreditationPicker" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
+          <input matInput [matDatepicker]="lastAccreditationPicker" (dateChange)="onFieldDateChange('lastAccreditation')" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
           <mat-datepicker-toggle matSuffix [for]="lastAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #lastAccreditationPicker></mat-datepicker> -->
+          <mat-datepicker #lastAccreditationPicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
-          <!-- <input matInput [matDatepicker]="startAccreditationPicker" placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
+          <input matInput [matDatepicker]="startAccreditationPicker" (dateChange)="onFieldDateChange('startAccreditationValidity')" placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="startAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #startAccreditationPicker></mat-datepicker> -->
+          <mat-datepicker #startAccreditationPicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
-          <!-- <input matInput [matDatepicker]="endAccreditationPicker" placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
+          <input matInput [matDatepicker]="endAccreditationPicker" (dateChange)="onFieldDateChange('endAccreditationValidity')" placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="endAccreditationPicker"></mat-datepicker-toggle>
-          <mat-datepicker #endAccreditationPicker></mat-datepicker> -->
+          <mat-datepicker #endAccreditationPicker></mat-datepicker>
         </mat-form-field>
       </div>
       <div>

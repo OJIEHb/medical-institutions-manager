@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstitutionPlaceService } from '../../services/institution-place.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'add-institution',
@@ -24,7 +25,8 @@ export class AddInstitutionComponent {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private placeService: InstitutionPlaceService) {
+    private placeService: InstitutionPlaceService,
+    private datePipe: DatePipe) {
     this.route
       .queryParams
       .subscribe(params => {
@@ -50,7 +52,7 @@ export class AddInstitutionComponent {
 
   public saveInstitution() {
     let institution = this.institutionFormGroup.value as Institution;
-
+    console.log(institution);
     institution.equipment = +institution.equipment;
     institution.medicamentEquipment = +institution.medicamentEquipment;
 
@@ -74,6 +76,12 @@ export class AddInstitutionComponent {
     institution.regionType = this.getRegionType(institution.place);
     this.institutionService.update(institution.id, institution);
     this.router.navigate(['']);
+  }
+
+  public onFieldDateChange(field: string) {
+    let patch = {};
+    patch[field] = this.institutionFormGroup.value[field].toISOString();
+    this.institutionFormGroup.patchValue(patch);
   }
 
   private initForms() {
