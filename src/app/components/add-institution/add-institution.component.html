@@ -31,6 +31,7 @@
         <mat-select placeholder="Тип закладу" formControlName="institutionType" required>
           <mat-option *ngIf="type == 1" value="міська лікарня">Міська лікарня</mat-option>
           <mat-option *ngIf="type == 1" value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
+          <mat-option *ngIf="type == 1" value="міська консультативно-діагностична поліклініка">Міська консультативно-діагностична поліклініка</mat-option>
           <mat-option *ngIf="type == 1" value="міська інфекційна лікарня">Міська інфекційна лікарня</mat-option>
           <mat-option *ngIf="type == 1" value="пологовий будинок">Пологовий будинок</mat-option>
           <mat-option *ngIf="type == 1" value="дитяча лікарня">Дитяча лікарня</mat-option>
@@ -65,7 +66,9 @@
           <mat-option *ngIf="type == 1" value="аптека">Аптека</mat-option>
           <mat-option *ngIf="type == 1" value="ОСПК">ОСПК</mat-option>
           <mat-option *ngIf="type == 1" value="СМЕ">СМЕ</mat-option>
-          <mat-option *ngIf="type == 1" value="БД">БД</mat-option>
+          <mat-option *ngIf="type == 1" value="Будинок дитини">Будинок дитини</mat-option>
+          <mat-option *ngIf="type == 1" value="академія">академія</mat-option>
+          <mat-option *ngIf="type == 1" value="інші">Інші</mat-option>
           <mat-option *ngIf="type > 1" value="село">Село</mat-option>
         </mat-select>
       </mat-form-field>
@@ -82,10 +85,26 @@
         <input matInput placeholder="Код території КОАТУУ" formControlName="classifierObjectCode" required>
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
-        <input matInput placeholder="Форма власності" formControlName="ownership" required>
+        <mat-select placeholder="Форма власності" formControlName="ownership" required>
+          <mat-option value="10 Приватна власність">10 Приватна власність</mat-option>
+          <mat-option value="20 Колективна власніст">20 Колективна власність</mat-option>
+          <mat-option value="30 Державна власність">30 Державна власність</mat-option>
+          <mat-option value="31 Загальнодержавна власність">31 Загальнодержавна власність</mat-option>
+          <mat-option value="32 Комунальна власність">32 Комунальна власність</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
-        <input matInput placeholder="Код організаційно-правової форми" formControlName="legalFormCode" required>
+        <mat-select placeholder="Код організаційно-правової форми" formControlName="legalFormCode" required>
+          <mat-option value="120 Приватне підприємство">120 Приватне підприємство</mat-option>
+          <mat-option value="130 Колективне підприємство">130 Колективне підприємство</mat-option>
+          <mat-option value="140 Державне підприємство">140 Державне підприємство</mat-option>
+          <mat-option value="150 Комунальне підприємство">150 Комунальне підприємство</mat-option>
+          <mat-option value="425 Державна організація (установа, заклад)">425 Державна організація (установа, заклад)</mat-option>
+          <mat-option value="430 Комунальна організація (установа, заклад)">430 Комунальна організація (установа, заклад)</mat-option>
+          <mat-option value="610 Філія (інший відокремлений підрозділ)">610 Філія (інший відокремлений підрозділ)</mat-option>
+          <mat-option value="910 Підприємець - фізична особа">910 Підприємець - фізична особа</mat-option>
+          <mat-option value="Інші організаційно-правові форми">Інші організаційно-правові форми</mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-stroked-button matStepperNext>Далі</button>
@@ -109,7 +128,7 @@
       </mat-form-field>
       <div *ngIf="type == 1" formGroupName="headDoctor">
         <mat-form-field class="full-width">
-          <input matInput placeholder="ПІП головного лікаря (повністю)" formControlName="name">
+          <input matInput placeholder="ПІП головного лікаря (заступника)" formControlName="name">
         </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput placeholder="Робочий телефон" formControlName="workPhone">
