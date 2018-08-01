@@ -1,8 +1,10 @@
 <mat-card *ngIf="institution" class="col-md-8 offset-md-2">
   <mat-card-content>
     <mat-card-title>{{institution.fullName}}</mat-card-title>
+    <h6>Місце розташування: {{institution.place}}</h6>
+    <h6>Адреса: {{institution.fullAddress}}</h6>
     <h6>Населення: {{institution.totalPopulation}}</h6>
-    <h6>Населення: {{institution}}</h6>
+    <h6>Адреса: {{institution.fullAddress}}</h6>
     {{institution|json}}
   </mat-card-content>
 </mat-card>

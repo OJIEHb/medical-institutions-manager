@@ -13,6 +13,7 @@ import { Filter } from '../../models/filter';
 })
 export class DashboardComponent {
 
+  isLoaded = false;
   isLoggedIn: boolean = false;
   filter: Filter;
   institutions: Institution[];
@@ -29,10 +30,16 @@ export class DashboardComponent {
       .subscribe(params => {
         let filterKey = params['place'] ? 'place' : params['regionType'] ? 'regionType' : null;
         if (filterKey)
-          this.institutionsService.getFiltredInstitutions({ key: filterKey, predicate: '=', value: +params[filterKey] || params[filterKey]})
-            .subscribe(institutions => this.institutions = institutions);
+          this.institutionsService.getFiltredInstitutions({ key: filterKey, predicate: '=', value: +params[filterKey] || params[filterKey] })
+            .subscribe(institutions => {
+              this.institutions = institutions;
+              this.isLoaded = true;
+            });
         else
-          this.institutionsService.getAll().subscribe(institutions => this.institutions = institutions);
+          this.institutionsService.getAll().subscribe(institutions => {
+            this.institutions = institutions;
+            this.isLoaded = true;
+          });
       });
 
   }
