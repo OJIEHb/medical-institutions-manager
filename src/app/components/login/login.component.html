@@ -1,14 +1,15 @@
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="loginFormGroup">
+    <form [formGroup]="loginFormGroup" style >
+      <mat-label *ngIf="error" style="color:red; margin-bottom: 5px">Невірно введений логін або пароль!</mat-label>
       <mat-form-field class="full-width">
-        <input matInput placeholder="E-mail" formControlName="email" type="email" required>
+        <input matInput placeholder="E-mail" (keyup)="error = null" formControlName="email" type="email" required>
         <mat-error *ngIf="loginFormGroup.controls.email.hasError('email') || loginFormGroup.controls.email.hasError('required')">
           Будь ласка, введіть валідний e-mail
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Пароль" formControlName="password" type="password" required>
+        <input matInput placeholder="Пароль" (keyup)="error = null" formControlName="password" type="password" required>
         <mat-error *ngIf="loginFormGroup.controls.password.hasError('required')">
           Будь ласка, введіть пароль
         </mat-error>
