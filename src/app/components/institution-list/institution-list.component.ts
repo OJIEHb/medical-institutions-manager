@@ -4,7 +4,7 @@ import { Institution } from '../../models/institution';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-institution-list',
+  selector: 'institution-list',
   templateUrl: './institution-list.component.html',
   styleUrls: ['./institution-list.component.scss']
 })

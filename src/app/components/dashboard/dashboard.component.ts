@@ -7,7 +7,7 @@ import { InstitutionService } from '../../services/institution.service';
 import { Filter } from '../../models/filter';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

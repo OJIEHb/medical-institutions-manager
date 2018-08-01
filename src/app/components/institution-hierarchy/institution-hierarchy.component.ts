@@ -52,6 +52,10 @@ export class InstitutionHierarchyComponent implements OnChanges {
     });
   }
 
+  public onInstitutionClick(institution: Institution) {
+    this.router.navigate(["/institution", institution.id])
+  }
+
   private getIsExpandedNode(): Map<string, boolean> {
     let expanded = new Map<string, boolean>();
     this.nestedDataSource.data.forEach(element => {

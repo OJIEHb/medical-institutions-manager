@@ -6,7 +6,7 @@ import { catchError } from '../../../../node_modules/rxjs/operators';
 import { of } from '../../../../node_modules/rxjs';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

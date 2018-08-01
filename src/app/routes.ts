@@ -4,6 +4,7 @@ import { AddInstitutionComponent } from "./components/add-institution/add-instit
 import { AuthGuard } from "./services/auth-guard";
 import { InstitutionListComponent } from "./components/institution-list/institution-list.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { InstitutionComponent } from "./components/institution/institution.component";
 
 export const routes = [
     {
@@ -32,5 +33,9 @@ export const routes = [
     {
         path: 'institutions',
         component: InstitutionListComponent
+    },
+    {
+        path: 'institution/:id',
+        component: InstitutionComponent
     }
 ]
