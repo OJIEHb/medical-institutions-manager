@@ -2,13 +2,19 @@
   <mat-card-content>
     <form [formGroup]="loginFormGroup">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Логін" formControlName="email" required>
+        <input matInput placeholder="E-mail" formControlName="email" type="email" required>
+        <mat-error *ngIf="loginFormGroup.controls.email.hasError('email') || loginFormGroup.controls.email.hasError('required')">
+          Будь ласка, введіть валідний e-mail
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput placeholder="Пароль" formControlName="password" type="password" required>
+        <mat-error *ngIf="loginFormGroup.controls.password.hasError('required')">
+          Будь ласка, введіть пароль
+        </mat-error>
       </mat-form-field>
-      <div>
-        <button mat-stroked-button (click)="login()">Увійти</button>
+      <div style="margin-top: 5px;">
+        <button mat-stroked-button (click)="login()" [disabled]="!loginFormGroup.valid">Увійти</button>
       </div>
     </form>
   </mat-card-content>
