@@ -27,7 +27,7 @@
           <mat-option value="смт">СМТ</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field *ngIf="!isUpdating" class="full-width">
         <mat-select placeholder="Тип закладу" formControlName="institutionType" required>
           <mat-option *ngIf="type == 1" value="міська лікарня">Міська лікарня</mat-option>
           <mat-option *ngIf="type == 1" value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
@@ -287,7 +287,7 @@
           <input matInput placeholder="Номер ліцензії" formControlName="licenseNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" (dateChange)="onFieldDateChange('licenseDate')" placeholder="Дата" formControlName="licenseDate" readonly>
+          <input matInput [matDatepicker]="picker" (dateChange)="onFieldDateChange('licenseDate')" placeholder="Дата" formControlName="licenseDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
