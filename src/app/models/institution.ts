@@ -36,7 +36,7 @@ export class Institution {
   startLicenseValidity: Date;
   endLicenseValidity: Date;
   accreditationCategoryType: string;
-  accreditationСategoryNumber: string;
+  accreditationCategoryNumber: string;
   lastAccreditation: Date;
   startAccreditationValidity: Date;
   endAccreditationValidity: Date;

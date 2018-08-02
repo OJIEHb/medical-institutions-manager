@@ -124,7 +124,7 @@ export class AddInstitutionComponent {
       startLicenseValidity: [],
       endLicenseValidity: [],
       accreditationCategoryType: [],
-      accreditationСategoryNumber: [],
+      accreditationCategoryNumber: [],
       lastAccreditation: [],
       startAccreditationValidity: [],
       endAccreditationValidity: [],

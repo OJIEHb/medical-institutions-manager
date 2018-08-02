@@ -330,7 +330,7 @@
       </mat-form-field>
       <div *ngIf="institutionFormGroup.value.accreditationCategoryType === 'наявна'">
         <mat-form-field class="full-width">
-          <input matInput placeholder="Номер акредитаційної категорії" formControlName="accreditationСategoryNumber">
+          <input matInput placeholder="Номер акредитаційної категорії" formControlName="accreditationCategoryNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
           <input matInput [matDatepicker]="lastAccreditationPicker" (dateChange)="onFieldDateChange('lastAccreditation')" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">

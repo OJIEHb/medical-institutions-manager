@@ -18,6 +18,7 @@ export class InstitutionComponent {
       this.institutionService.getById(params['id'])
         .subscribe(institution => {
           this.institution = institution;
+          console.log(institution);
         })
     })
   }
