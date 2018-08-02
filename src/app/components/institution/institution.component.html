@@ -1,10 +1,76 @@
 <mat-card *ngIf="institution" class="col-md-8 offset-md-2">
   <mat-card-content>
     <mat-card-title>{{institution.fullName}}</mat-card-title>
-    <h6>Місце розташування: {{institution.place}}</h6>
-    <h6>Адреса: {{institution.fullAddress}}</h6>
-    <h6>Населення: {{institution.totalPopulation}}</h6>
-    <h6>Адреса: {{institution.fullAddress}}</h6>
-    {{institution|json}}
+    <h6><b>Місце розташування: </b> {{institution.place}}</h6>
+    <h6><b>Рівень підпорядкування: </b> {{institution.subordinationLevel}}</h6>
+    <h6><b>Тип населеного пункту місця розташування: </b> {{institution.placeType}}</h6>
+    <h6><b>Адреса: </b> {{institution.fullAddress}}</h6>
+    <h6><b>Населення: </b> {{institution.totalPopulation}}</h6>
+    <h6><b>Email установи: </b> {{institution.email}}</h6>
+    <h6><b>Контактний телефон закладу: </b> {{institution.phone}}</h6>
+    <h6><b>Факс: </b> {{institution.fax}}</h6>
+    <h6><b>Сайт в Internet: </b> {{institution.site}}</h6>
+    <h6><b>Статус юридичної особи: </b><span *ngIf = "institution.legalStatus">Так</span><span *ngIf = "!institution.legalStatus">Ні</span></h6>
+    <h6><b>Код ЄДРПОУ: </b> {{institution.stateRegisterCode}}</h6>
+    <h6><b>Код території КОАТУУ: </b> {{institution.classifierObjectCode}}</h6>
+    <h6><b>Форма власності: </b>{{institution.ownership}}</h6>
+    <h6><b>Код організаційно-правової форми (КОПФ): </b>{{institution.legalFormCode}}</h6>
+    <h6><b>ПІП головного лікаря: </b>{{institution.headDoctor.name}}</h6>
+    <h6><b>Робочий телефон: </b> {{institution.headDoctor.workPhone}}</h6>
+    <h6><b>Мобільний телефон: </b> {{institution.headDoctor.homePhone}}</h6>
+    <h6><b>ПІП секретар головного лікаря: </b> {{institution.headDoctorSecretary.name}}</h6>
+    <h6><b>Робочий телефон: </b> {{institution.headDoctorSecretary.workPhone}}</h6>
+    <h6><b>Приймальне відділення: </b> <span *ngIf = "institution.receptionOffice">Наявне</span><span *ngIf = "!institution.receptionOffice">Відсутнє</span></h6>
+    <h6><b>Телефон приймального відділення: </b> {{institution.receptionOfficePhone}}</h6>
+    <h6><b>Реєстратура амбулаторно-поліклінічного підрозділу: </b> <span *ngIf = "institution.registryOffice">Наявна</span><span *ngIf = "!institution.registryOffice">Відсутня</span></h6>
+    <h6><b>Телефон реєстратури: </b>{{institution.registryOfficePhone}}</h6>
+    <h6><b>Кількість населення, яке офіційно зареєстровано на території обслуговування закладу (постійне на 01.01): </b> {{institution.totalPopulation}}</h6>
+    <h6><b>Кількість населення, яке офіційно зареєстровано в населеному пункті: </b>{{institution.population}}</h6>
+    <h6><b>Рівень надання медичної допомоги: </b>{{institution.medicalCare}}</h6>
+    <h6><b>Планова ємність: </b> </h6>
+    <h6><b>- кількість ліжок стаціонару: </b> {{institution.hospitalBedsNumber}}</h6>
+    <h6><b>- планова ємність амбулаторно-поліклінічного підрозділу: </b> {{institution.hospitalCapacity}}</h6>
+    <h6><b>Тип закладу: </b>{{institution.institutionType}}</h6>
+    <h6><b>Види допомоги, які надає ЗОЗ: </b> {{institution.medicalAidTypes}}</h6>
+    <h6><b>Наявність ліцензії: </b> <span *ngIf = "institution.license">Так</span><span *ngIf = "!institution.license">Ні</span></h6>
+    <h6><b>Номер ліцензії: </b>{{institution.licenseNumber}}</h6>
+    <h6><b>Дата: </b> {{institution.licenseDate}}</h6>
+    <h6><b>Термін дії з: </b> {{institution.startLicenseValidity}} <b>по</b> {{institution.endLicenseValidity}}</h6>
+    <h6><b>Задекларовані види допомоги: </b> {{institution.declaredAssistanceForms}}</h6>
+    <h6><b>Акредитаційна категорія: </b> {{institution.accreditationCategoryType}}</h6>
+    <h6><b>Номер акредитаційної категорії: </b> </h6>
+    <h6><b>Дата останньої акредитації: </b> {{institution.lastAccreditation}}</h6>
+    <h6><b>Термін дії з: </b> {{institution.startAccreditationValidity}} <b>по</b> {{institution.endAccreditationValidity}}</h6>
+    <h6 align="center"><b>Ресурси закладу: </b> </h6>
+    <h6><b>Всього посад: </b> </h6>
+    <h6><b>Штатні: </b>{{institution.regularDoctorNumber}}</h6>
+    <h6><b>Зайняті: </b> {{institution.busyDoctorNumber}}</h6>
+    <h6><b>Фізичні особи: </b> {{institution.individualsDoctorNumber}}</h6>
+    <h6><b>Лікарі: </b> </h6>
+    <h6><b>Штатні: </b>{{institution.regularDoctorNumber}}</h6>
+    <h6><b>Зайняті: </b>{{institution.busyDoctorNumber}}</h6>
+    <h6><b>Фізичні особи: </b> {{institution.individualsDoctorNumber}}</h6>
+    <h6><b>Середній медичний персонал: </b> </h6>
+    <h6><b>Штатні: </b>{{institution.middleRegularPersonalNumber}}</h6>
+    <h6><b>Зайняті: </b>{{institution.middleBusyPersonalNumber}}</h6>
+    <h6><b>Фізичні особи: </b> {{institution.middleIndividualsPersonalNumber}}</h6>
+    <h6><b>Інший персонал: </b> </h6>
+    <h6><b>Штатні: </b>{{institution.otherRegularPersonalNumber}}</h6>
+    <h6><b>Зайняті: </b> {{institution.otherBusyPersonalNumber}}</h6>
+    <h6><b>Фізичні особи: </b>{{institution.otherIndividualsPersonalNumber}}</h6>
+    <h6><b>Характеристика забудови (типовий проект): </b> <span *ngIf = "institution.typicalBuilding">Так</span><span *ngIf = "!institution.typicalBuilding">Ні</span></h6>
+    <h6><b>Опалення: </b>{{institution.heatingType}}</h6>
+    <h6><b>Наявність централізованого холодного водопостачання: </b> <span *ngIf = "institution.coldWaterSupply">Так</span><span *ngIf = "!institution.coldWaterSupply">Ні</span></h6>
+    <h6><b>Наявність централізованого гарячого водопостачання: </b><span *ngIf = "institution.hotWaterSupply">Так</span><span *ngIf = "!institution.hotWaterSupply">Ні</span></h6>
+    <h6><b>Оснащеність медичним обладнанням та інвентарем: </b> {{institution.equipment}} %</h6>
+    <h6><b>Забезпеченість медикаментами для надання невідкладної допомоги: </b> {{institution.medicamentEquipment}} %</h6>
+    <h6><b>Транспортні засоби (автомобілі): </b></h6>
+    <h6><b>Потреба (кількість): </b> {{institution.vehiclesNeed}}</h6>
+    <h6><b>Наявність (кількість): </b> {{institution.vehiclesReality}}</h6>
+    <h6><b>В т.ч. на ходу: </b>{{institution.vehiclesWay}}</h6>
+    <h6><b>Наявність доступу до мережі Internet: </b> <span *ngIf = "institution.internetSupply">Так</span><span *ngIf = "!institution.internetSupply">Ні</span></h6>
+    <h6><b>Забезпеченість ЗОЗ комп'ютерною технікою: </b></h6>
+    <h6><b>Потреба (кількість): </b> {{institution.computerEquipmentNeed}}</h6>
+    <h6><b>Наявність (кількість): </b>{{institution.computerEquipmentReality}}</h6>
   </mat-card-content>
 </mat-card>
