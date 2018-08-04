@@ -5,6 +5,7 @@ import { AuthGuard } from "./services/auth-guard";
 import { InstitutionListComponent } from "./components/institution-list/institution-list.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { InstitutionComponent } from "./components/institution/institution.component";
+import { SearchComponent } from "./components/search/search.component";
 
 export const routes = [
     {
@@ -37,5 +38,9 @@ export const routes = [
     {
         path: 'institution/:id',
         component: InstitutionComponent
+    },
+    {
+        path: 'search',
+        component:SearchComponent
     }
 ]

@@ -23,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InstitutionPlaceService } from './services/institution-place.service';
 import { DatePipe } from '@angular/common';
 import { InstitutionComponent } from './components/institution/institution.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InstitutionComponent } from './components/institution/institution.compo
     LoginComponent,
     RemoveInstitutionDialogComponent,
     DashboardComponent,
-    InstitutionComponent
+    InstitutionComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

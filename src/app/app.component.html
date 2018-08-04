@@ -32,6 +32,9 @@
         <a mat-list-item [routerLink]="['/dashboard']" [queryParams]="{ regionType: 5 }" (click)="drawer.toggle()">Навчальні заклади
           <mat-icon class="menu-icon">store</mat-icon>
         </a>
+        <a mat-list-item [routerLink]="['/search']" (click)="drawer.toggle()">Пошук
+          <mat-icon class="menu-icon">search</mat-icon>
+        </a>
       </mat-nav-list>
     </div>
   </mat-sidenav>

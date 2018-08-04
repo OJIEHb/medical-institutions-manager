@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-3">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Місце розташування">
+        <mat-optgroup *ngFor="let group of placeGroups" [label]="group.name">
+          <mat-option *ngFor="let place of group.places" [value]="place.name">{{place.name}}</mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Рівень підпорядкування">
+        <mat-option value="міський">Міський</mat-option>
+        <mat-option value="районний">Районний</mat-option>
+        <mat-option value="обласний">Обласний</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Тип населеного пункту місця розташування">
+        <mat-option value="місто">Місто</mat-option>
+        <mat-option value="село">Село</mat-option>
+        <mat-option value="селище">Селище</mat-option>
+        <mat-option value="смт">СМТ</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-label>Населення:</mat-label>
+    <mat-slider class="full-width" min="1" max="1000" thumbLabel tickInterval="1">
+    </mat-slider>
+  </div>
+
+  <div class="col-md-7">
+    <mat-form-field class="full-width">
+      <input matInput [matAutocomplete]="auto" placeholder="Пошук" (input)="onSearchChange()" [(ngModel)]="search">
+      <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSearchChange()">
+        <mat-option *ngFor="let institution of filtredInstitutions" [value]="institution.fullName">
+          <span>{{institution.fullName}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-list>
+      <mat-list-item *ngFor="let institution of filtredInstitutions">
+        <h4 mat-line>{{institution.fullName}}</h4>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
