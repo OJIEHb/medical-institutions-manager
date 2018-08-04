@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstitutionPlaceService } from '../../services/institution-place.service';
-import { DatePipe } from '@angular/common';
+import { FormDataService } from '../../services/form-data.service';
 
 @Component({
   selector: 'add-institution',
@@ -20,13 +20,14 @@ export class AddInstitutionComponent {
   institution: Institution;
   isUpdating: boolean;
   placeGroups: any;
+  formData: any;
 
   constructor(private institutionService: InstitutionService,
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private placeService: InstitutionPlaceService,
-    private datePipe: DatePipe) {
+    private formDataService: FormDataService) {
     this.route
       .queryParams
       .subscribe(params => {
@@ -38,7 +39,7 @@ export class AddInstitutionComponent {
 
     this.initForms();
     this.route.params.subscribe(params => {
-      this.isUpdating = params['id']? true: false;
+      this.isUpdating = params['id'] ? true : false;
       if (params['id'])
         this.institutionService.getById(params['id'])
           .subscribe(institution => {
@@ -46,6 +47,8 @@ export class AddInstitutionComponent {
             this.institutionFormGroup.patchValue(institution)
           });
     })
+
+    this.formDataService.getFormData().subscribe(data => this.formData = data);
 
     this.placeService.getByGroup().subscribe(groups => this.placeGroups = groups)
   }
@@ -56,7 +59,7 @@ export class AddInstitutionComponent {
     institution.equipment = +institution.equipment;
     institution.medicamentEquipment = +institution.medicamentEquipment;
 
-    if (this.parentId){
+    if (this.parentId) {
       institution.place = this.place;
       institution.controlledBy = this.parentId;
     }
@@ -82,6 +85,10 @@ export class AddInstitutionComponent {
     let patch = {};
     patch[field] = this.institutionFormGroup.value[field].toISOString();
     this.institutionFormGroup.patchValue(patch);
+  }
+
+  private getFiltredTypes() {
+    return this.formData.institutionType.filter(item => item.types.includes(+this.type));
   }
 
   private initForms() {
@@ -115,7 +122,7 @@ export class AddInstitutionComponent {
       receptionOfficePhone: [],
       registryOffice: [false],
       registryOfficePhone: [],
-      medicalСare: [],
+      medicalCare: [],
       medicalAidTypes: [[]],
       declaredAssistanceForms: [],
       license: false,
@@ -162,7 +169,7 @@ export class AddInstitutionComponent {
     let regionType = 0;
     this.placeGroups.forEach(group => {
       group.places.forEach(place => {
-        if (place.name === institutionPlace) 
+        if (place.name === institutionPlace)
           regionType = place.regionType;
       });
     });

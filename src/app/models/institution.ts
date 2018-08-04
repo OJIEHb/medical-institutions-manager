@@ -26,7 +26,7 @@ export class Institution {
   registryOfficePhone: string;
   population: number;
   totalPopulation: number;
-  medicalСare: string;
+  medicalCare: string;
   іnstitutionType: string;
   medicalAidTypes: string[];
   declaredAssistanceForms: string;

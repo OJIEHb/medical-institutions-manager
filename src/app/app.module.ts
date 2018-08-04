@@ -24,6 +24,8 @@ import { InstitutionPlaceService } from './services/institution-place.service';
 import { DatePipe } from '@angular/common';
 import { InstitutionComponent } from './components/institution/institution.component';
 import { SearchComponent } from './components/search/search.component';
+import { FilterComponent } from './components/search/filter/filter.component';
+import { FormDataService } from './services/form-data.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { SearchComponent } from './components/search/search.component';
     RemoveInstitutionDialogComponent,
     DashboardComponent,
     InstitutionComponent,
-    SearchComponent
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -54,7 +57,8 @@ import { SearchComponent } from './components/search/search.component';
     AuthService,
     AuthGuard,
     InstitutionPlaceService,
-    DatePipe
+    DatePipe,
+    FormDataService
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]

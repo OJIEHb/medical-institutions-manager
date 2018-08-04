@@ -1,0 +1,270 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Місце розташування</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let place of placeGroups">
+        <mat-checkbox (change)="onMultiFilterClick($event.checked,'place',place.name)">{{place.name}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Тип закладу</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let subordinationLevel of formData.subordinationLevel">
+        <mat-checkbox>{{subordinationLevel}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Тип населеного пункту місця розташування</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let placeType of formData.placeType">
+        <mat-checkbox>{{placeType}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Форма власності</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let ownership of formData.ownership">
+        <mat-checkbox>{{ownership}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Код організаційно-правової форми</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let legalFormCode of formData.legalFormCode">
+        <mat-checkbox>{{legalFormCode}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Приймальне відділення</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Наявне</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Відсутнє</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Реєстратура амбулаторно-поліклінічного підрозділу</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Наявна</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Відсутня</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Кількість населення</mat-panel-title>
+    </mat-expansion-panel-header>
+    <h6 mat-line>Від:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+    <h6 mat-line>До:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Рівень надання медичної допомоги</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let medicalCare of formData.medicalCare">
+        <mat-checkbox>{{medicalCare}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Тип закладу</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let institutionType of formData.institutionType">
+        <mat-checkbox>{{institutionType.name}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Види меддопомоги</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let medicalAidTypes of formData.medicalAidTypes">
+        <mat-checkbox>{{medicalAidTypes}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Наявність ліцензії</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Наявна</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Відсутня</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Акредитаційна категорія</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Наявна</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Відсутня</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Не підлягає акредитації</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Типовий проект</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Так</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Ні</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Опалення</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let heatingType of formData.heatingType">
+        <mat-checkbox>{{heatingType}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Наявність холодного водопостачання</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Так</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Ні</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Наявність гарячого водопостачання</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Так</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Ні</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Онащеність медичним обаднанням</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>До 30%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 50%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 70%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 90%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>100%</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Забезпеченість медикаментами</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>До 30%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 50%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 70%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>До 90%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>100%</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Транспортні засоби</mat-panel-title>
+      </mat-expansion-panel-header>
+      <h6 mat-line>Від:</h6>
+      <mat-slider class="full-width" thumbLabel></mat-slider>
+      <h6 mat-line>До:</h6>
+      <mat-slider class="full-width" thumbLabel></mat-slider>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Наявність доступу до мережі Інтернет</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item>
+            <mat-checkbox>Так</mat-checkbox>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-checkbox>Ні</mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Забезпеченість комп'ютерною технікою</mat-panel-title>
+        </mat-expansion-panel-header>
+        <h6 mat-line>Від:</h6>
+        <mat-slider class="full-width" thumbLabel></mat-slider>
+        <h6 mat-line>До:</h6>
+        <mat-slider class="full-width" thumbLabel></mat-slider>
+      </mat-expansion-panel>
+</mat-accordion>

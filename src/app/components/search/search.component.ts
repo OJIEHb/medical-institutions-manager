@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
-import { InstitutionPlaceService } from '../../services/institution-place.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'search',
@@ -10,32 +10,45 @@ import { InstitutionPlaceService } from '../../services/institution-place.servic
 })
 export class SearchComponent {
 
-  private originalInstitutions: Institution[];
   public filtredInstitutions: Institution[];
-  public placeGroups: any;
+
   public search: string;
 
-  constructor(private institutionService: InstitutionService, private placeService: InstitutionPlaceService) {
+
+  private originalInstitutions: Institution[];
+  private filterParam = {};
+  constructor(private institutionService: InstitutionService, private router: Router) {
     this.institutionService.getAll()
       .subscribe(institutions => {
         this.originalInstitutions = institutions;
-        this.filtredInstitutions = this.filter(institutions);
+        this.filter(this.filterParam);
       });
-    this.placeService.getByGroup().subscribe(groups => this.placeGroups = groups);
   }
 
   public onSearchChange() {
-    this.filtredInstitutions = this.filter(this.originalInstitutions);
+    this.filter(this.filterParam);
     this.filtredInstitutions = this.filtredInstitutions
       .filter(institution => institution.fullName.toLowerCase().includes(this.search.toLocaleLowerCase()));
   }
 
   public onClearSearchClick() {
     this.search = '';
-    this.filtredInstitutions = this.filter(this.originalInstitutions);
+    this.filter(this.filterParam);
   }
 
-  private filter(institutions: Institution[]) {
-    return institutions;
+  public onInstitutionClick(institution: Institution) {
+    this.router.navigate(['/institution', institution.id])
+  }
+
+  public onFilterChange(filter) {
+    this.filter(filter);
+  }
+
+  private filter(filter) {
+    let filtred = this.originalInstitutions;
+    Object.keys(filter).forEach(key => {
+      filtred = filtred.filter(intitution => filter[key].length ? filter[key].includes(intitution[key]) : true);
+    })
+    this.filtredInstitutions = filtred;
   }
 }

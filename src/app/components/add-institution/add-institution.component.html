@@ -1,4 +1,4 @@
-<mat-horizontal-stepper class="col-md-10 offset-md-1" linear="true" #stepper>
+<mat-horizontal-stepper *ngIf="formData" class="col-md-10 offset-md-1" linear="true" #stepper>
   <mat-step [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Основна інформація</ng-template>
@@ -14,62 +14,17 @@
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Рівень підпорядкування" formControlName="subordinationLevel" required>
-          <mat-option value="міський">Міський</mat-option>
-          <mat-option value="районний">Районний</mat-option>
-          <mat-option value="обласний">Обласний</mat-option>
+          <mat-option *ngFor="let subordinationLevel of formData.subordinationLevel" [value]="subordinationLevel">{{subordinationLevel}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Тип населеного пункту місця розташування" formControlName="placeType" required>
-          <mat-option value="місто">Місто</mat-option>
-          <mat-option value="село">Село</mat-option>
-          <mat-option value="селище">Селище</mat-option>
-          <mat-option value="смт">СМТ</mat-option>
+          <mat-option *ngFor="let placeType of formData.placeType" [value]="placeType">{{placeType}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field *ngIf="!isUpdating" class="full-width">
         <mat-select placeholder="Тип закладу" formControlName="institutionType" required>
-          <mat-option *ngIf="type == 1" value="міська лікарня">Міська лікарня</mat-option>
-          <mat-option *ngIf="type == 1" value="міська лікарня ШМД">Міська лікарня ШМД</mat-option>
-          <mat-option *ngIf="type == 1" value="міська консультативно-діагностична поліклініка">Міська консультативно-діагностична поліклініка</mat-option>
-          <mat-option *ngIf="type == 1" value="міська інфекційна лікарня">Міська інфекційна лікарня</mat-option>
-          <mat-option *ngIf="type == 1" value="пологовий будинок">Пологовий будинок</mat-option>
-          <mat-option *ngIf="type == 1" value="дитяча лікарня">Дитяча лікарня</mat-option>
-          <mat-option *ngIf="type == 1" value="обласна лікарня">Обласна лікарня</mat-option>
-          <mat-option *ngIf="type == 1" value="обласна дитяча лікарня">Обласна дитяча лікарня</mat-option>
-          <mat-option *ngIf="type == 1" value="ОПЛ">ОПЛ</mat-option>
-          <mat-option *ngIf="type == 1" value="госпіталь ВВ">Госпіталь ВВ</mat-option>
-          <mat-option *ngIf="type == 1" value="міська поліклініка">Міська поліклініка</mat-option>
-          <mat-option *ngIf="type == 1" value="дитяча поліклініка">Дитяча поліклініка</mat-option>
-          <mat-option *ngIf="type == 1" value="ЦПМСД">ЦПМСД</mat-option>
-          <mat-option *ngIf="type == 1" value="юридична особа ЛА ОТГ">Юридична особа ЛА ОТГ</mat-option>
-          <mat-option *ngIf="type == 2" value="базова ЛА">Базова ЛА</mat-option>
-          <mat-option *ngIf="type == 2" value="ЛА">ЛА</mat-option>
-          <mat-option *ngIf="type == 2" value="АГ">АГ</mat-option>
-          <mat-option *ngIf="type == 2" value="АМ">АМ</mat-option>
-          <mat-option *ngIf="type == 3" value="ПЗ">ПЗ</mat-option>
-          <mat-option *ngIf="type == 3" value="ФАП">ФАП</mat-option>
-          <mat-option *ngIf="type == 3" value="ФП">ФП</mat-option>
-          <mat-option *ngIf="type == 1" value="ЦРЛ">ЦРЛ</mat-option>
-          <mat-option *ngIf="type == 1" value="самостійна РЛ">Самостійна РЛ</mat-option>
-          <mat-option *ngIf="type == 1" value="диспансер">Диспансер</mat-option>
-          <mat-option *ngIf="type == 1" value="стоматологічна поліклініка">Стоматологічна поліклініка</mat-option>
-          <mat-option *ngIf="type == 1" value="санаторій">Санаторій</mat-option>
-          <mat-option *ngIf="type == 1" value="ШМД">ШМД</mat-option>
-          <mat-option *ngIf="type == 1" value="ІАЦ">ІАЦ</mat-option>
-          <mat-option *ngIf="type == 1" value="МСЕК">МСЕК</mat-option>
-          <mat-option *ngIf="type == 1" value="центр здоров'я">Центр здоров'я</mat-option>
-          <mat-option *ngIf="type == 1" value="центр підвищення кваліфікації">Центр підвищення кваліфікації</mat-option>
-          <mat-option *ngIf="type == 1" value="коледж">Коледж</mat-option>
-          <mat-option *ngIf="type == 1" value="центр СНІД">Центр СНІД</mat-option>
-          <mat-option *ngIf="type == 1" value="центр планування сім'ї">Центр планування сім'ї</mat-option>
-          <mat-option *ngIf="type == 1" value="аптека">Аптека</mat-option>
-          <mat-option *ngIf="type == 1" value="ОСПК">ОСПК</mat-option>
-          <mat-option *ngIf="type == 1" value="СМЕ">СМЕ</mat-option>
-          <mat-option *ngIf="type == 1" value="Будинок дитини">Будинок дитини</mat-option>
-          <mat-option *ngIf="type == 1" value="академія">академія</mat-option>
-          <mat-option *ngIf="type == 1" value="інші">Інші</mat-option>
-          <mat-option *ngIf="type > 1" value="село">Село</mat-option>
+          <mat-option *ngFor="let institutionType of getFiltredTypes()" [value]="institutionType.name">{{institutionType.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -86,24 +41,12 @@
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Форма власності" formControlName="ownership" required>
-          <mat-option value="10 Приватна власність">10 Приватна власність</mat-option>
-          <mat-option value="20 Колективна власніст">20 Колективна власність</mat-option>
-          <mat-option value="30 Державна власність">30 Державна власність</mat-option>
-          <mat-option value="31 Загальнодержавна власність">31 Загальнодержавна власність</mat-option>
-          <mat-option value="32 Комунальна власність">32 Комунальна власність</mat-option>
+          <mat-option *ngFor="let ownership of formData.ownership" [value]="ownership">{{ownership}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <mat-select placeholder="Код організаційно-правової форми" formControlName="legalFormCode" required>
-          <mat-option value="120 Приватне підприємство">120 Приватне підприємство</mat-option>
-          <mat-option value="130 Колективне підприємство">130 Колективне підприємство</mat-option>
-          <mat-option value="140 Державне підприємство">140 Державне підприємство</mat-option>
-          <mat-option value="150 Комунальне підприємство">150 Комунальне підприємство</mat-option>
-          <mat-option value="425 Державна організація (установа, заклад)">425 Державна організація (установа, заклад)</mat-option>
-          <mat-option value="430 Комунальна організація (установа, заклад)">430 Комунальна організація (установа, заклад)</mat-option>
-          <mat-option value="610 Філія (інший відокремлений підрозділ)">610 Філія (інший відокремлений підрозділ)</mat-option>
-          <mat-option value="910 Підприємець - фізична особа">910 Підприємець - фізична особа</mat-option>
-          <mat-option value="Інші організаційно-правові форми">Інші організаційно-правові форми</mat-option>
+          <mat-option *ngFor="let legalFormCode of formData.legalFormCode" [value]="legalFormCode">{{legalFormCode}}</mat-option>
         </mat-select>
       </mat-form-field>
       <div>
@@ -198,12 +141,7 @@
       </mat-slide-toggle>
       <mat-form-field class="full-width">
         <mat-select placeholder="Опалення" formControlName="heatingType">
-          <mat-option value="централізоване">Централізоване</mat-option>
-          <mat-option value="індивідуальне: пічне">Індивідуальне (пічне)</mat-option>
-          <mat-option value="індивідуальне: котел на твердому паливі">Індивідуальне (котел на твердому паливі)</mat-option>
-          <mat-option value="індивідуальне: котел на рідкому паливі">Індивідуальне (котел на рідкому паливі)</mat-option>
-          <mat-option value="індивідуальне: газовий котел">Індивідуальне (газовий котел)</mat-option>
-          <mat-option value="індивідуальне: електронагрівач">Індивідуальне (електронагрівач)</mat-option>
+          <mat-option *ngFor="let heatingType of formData.heatingType" [value]="heatingType">{{heatingType}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-slide-toggle class="full-width" formControlName="coldWaterSupply">
@@ -274,25 +212,13 @@
         <input matInput placeholder="Телефон" formControlName="registryOfficePhone">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-select placeholder="Рівень надання медичної допомоги" formControlName="medicalСare">
-          <mat-option value="первинний">Первинний</mat-option>
-          <mat-option value="вторинний">Вторинний</mat-option>
-          <mat-option value="третинний">Третинний</mat-option>
-          <mat-option value="середня ланка">Середня ланка</mat-option>
-          <mat-option value="не визначено">Не визначено</mat-option>
+        <mat-select placeholder="Рівень надання медичної допомоги" formControlName="medicalCare">
+          <mat-option *ngFor="let medicalCare of formData.medicalCare" [value]="medicalCare">{{medicalCare}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-select placeholder="Види медичної допомоги, які надає ЗОЗ" formControlName="medicalAidTypes" multiple>
-          <mat-option value="Стаціонарна допомога">Стаціонарна допомога</mat-option>
-          <mat-option value="Амбулаторна допомога">Амбулаторна допомога</mat-option>
-          <mat-option value="Стоматологічна допомога">Стоматологічна допомога</mat-option>
-          <mat-option value="Допомога дорослому населенню">Допомога дорослому населенню</mat-option>
-          <mat-option value="Допомога дитячому населенню">Допомога дитячому населенню</mat-option>
-          <mat-option value="Профогляди">Профогляди</mat-option>
-          <mat-option value="Проводить експертизу ТН з видачею Л/Л">Проводить експертизу ТН з видачею Л/Л</mat-option>
-          <mat-option value="Наявна ліцензія на обіг наркотичних засобів, психоактивних речовин, прекурсорів">Наявна ліцензія на обіг наркотичних засобів, психоактивних речовин, прекурсорів</mat-option>
-          <mat-option value="Наявність госпрозрахункового відділення">Наявність госпрозрахункового відділення</mat-option>
+          <mat-option *ngFor="let medicalAidTypes of formData.medicalAidTypes" [value]="medicalAidTypes">{{medicalAidTypes}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field *ngIf="type == 1" class="full-width">
@@ -311,12 +237,14 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="startLicensePicker" (dateChange)="onFieldDateChange('startLicenseValidity')" placeholder="Початок терміну дії" formControlName="startLicenseValidity">
+          <input matInput [matDatepicker]="startLicensePicker" (dateChange)="onFieldDateChange('startLicenseValidity')" placeholder="Початок терміну дії"
+            formControlName="startLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="startLicensePicker"></mat-datepicker-toggle>
           <mat-datepicker #startLicensePicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="endLicensePicker" (dateChange)="onFieldDateChange('endLicenseValidity')" placeholder="Кінець терміну дії" formControlName="endLicenseValidity">
+          <input matInput [matDatepicker]="endLicensePicker" (dateChange)="onFieldDateChange('endLicenseValidity')" placeholder="Кінець терміну дії"
+            formControlName="endLicenseValidity">
           <mat-datepicker-toggle matSuffix [for]="endLicensePicker"></mat-datepicker-toggle>
           <mat-datepicker #endLicensePicker></mat-datepicker>
         </mat-form-field>
@@ -333,17 +261,20 @@
           <input matInput placeholder="Номер акредитаційної категорії" formControlName="accreditationCategoryNumber">
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="lastAccreditationPicker" (dateChange)="onFieldDateChange('lastAccreditation')" placeholder="Дата останньої акредитації" formControlName="lastAccreditation">
+          <input matInput [matDatepicker]="lastAccreditationPicker" (dateChange)="onFieldDateChange('lastAccreditation')" placeholder="Дата останньої акредитації"
+            formControlName="lastAccreditation">
           <mat-datepicker-toggle matSuffix [for]="lastAccreditationPicker"></mat-datepicker-toggle>
           <mat-datepicker #lastAccreditationPicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="startAccreditationPicker" (dateChange)="onFieldDateChange('startAccreditationValidity')" placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
+          <input matInput [matDatepicker]="startAccreditationPicker" (dateChange)="onFieldDateChange('startAccreditationValidity')"
+            placeholder="Початок терміну дії" formControlName="startAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="startAccreditationPicker"></mat-datepicker-toggle>
           <mat-datepicker #startAccreditationPicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="endAccreditationPicker" (dateChange)="onFieldDateChange('endAccreditationValidity')" placeholder="Кінець терміну дії" formControlName="endAccreditationValidity">
+          <input matInput [matDatepicker]="endAccreditationPicker" (dateChange)="onFieldDateChange('endAccreditationValidity')" placeholder="Кінець терміну дії"
+            formControlName="endAccreditationValidity">
           <mat-datepicker-toggle matSuffix [for]="endAccreditationPicker"></mat-datepicker-toggle>
           <mat-datepicker #endAccreditationPicker></mat-datepicker>
         </mat-form-field>

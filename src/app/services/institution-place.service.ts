@@ -14,6 +14,10 @@ export class InstitutionPlaceService {
     this.institutionPlaces = db.list(this.institutionPlacesPath);
   }
 
+  public getAll(): Observable<any[]> {
+    return this.institutionPlaces.valueChanges();
+  }
+
   public getByGroup(): Observable<any[]> {
     return this.institutionPlaces.valueChanges()
       .pipe(map(places => {
