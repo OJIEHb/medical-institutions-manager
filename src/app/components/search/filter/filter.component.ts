@@ -16,8 +16,8 @@ export class FilterComponent {
 
   private filter = {
     totalPopulation: { type: 'range', min:0, max:5000 },
-    vehiclesReality: { type: 'range', min:0, max:5000 },
-    computerEquipmentReality: { type: 'range', min:0, max:5000 },
+    vehiclesReality: { type: 'range', min:0, max:200 },
+    computerEquipmentReality: { type: 'range', min:0, max:200 }
   };
 
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {
@@ -35,7 +35,6 @@ export class FilterComponent {
       let index = this.filter[key].value.indexOf(value);
       this.filter[key].value.splice(index, 1);
     }
-    console.log(this.filter);
     this.filtered.emit(this.filter);
   }
 

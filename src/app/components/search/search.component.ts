@@ -59,26 +59,31 @@ export class SearchComponent {
     Object.keys(filter).forEach(key => {
       switch (filter[key].type) {
         case 'single':
-          filtred = filtred.filter(intitution => {
-            return filter[key].value.length ? filter[key].value.includes(intitution[key]) : true;
+          filtred = filtred.filter(institution => {
+            return filter[key].value.length ? filter[key].value.includes(institution[key]) : true;
           });
           break;
         case 'multi':
-          filtred = filtred.filter(intitution => {
-            if (intitution[key] && filter[key].value.length)
-              return intitution[key].reduce((acc, val) => filter[key].value.includes(val) ? true : acc, false)
+          filtred = filtred.filter(institution => {
+            if (institution[key] && filter[key].value.length)
+              return institution[key].reduce((acc, val) => filter[key].value.includes(val) ? true : acc, false)
             return filter[key].value.length ? false : true;
           });
           break;
         case 'range':
-          filtred = filtred.filter(intitution => {
-            if (filter[key].max && filter[key].min)
-              return intitution[key] <= filter[key].max && intitution[key] >= filter[key].min;
-            else if (filter[key].max)
-              return intitution[key] <= filter[key].max;
-            else if (filter[key].max)
-              return intitution[key] >= filter[key].min;
-            return true;
+          filtred = filtred.filter(institution => {
+            if (filter[key].max && filter[key].min) {
+              if (institution[key] >= 0) {
+                if (filter[key].max && filter[key].min)
+                  return +institution[key] <= filter[key].max && +institution[key] >= filter[key].min;
+                else if (filter[key].max)
+                  return institution[key] <= filter[key].max;
+                else
+                  return institution[key] >= filter[key].min;
+              }
+              else return false;
+            }
+            else return true;
           });
           break;
       }
