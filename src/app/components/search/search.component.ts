@@ -51,7 +51,18 @@ export class SearchComponent {
   private filter(filter) {
     let filtred = this.originalInstitutions;
     Object.keys(filter).forEach(key => {
-      filtred = filtred.filter(intitution => filter[key].length ? filter[key].includes(intitution[key]) : true);
+      switch (filter[key].type) {
+        case 'single':
+          filtred = filtred.filter(intitution => filter[key].value.length ? filter[key].value.includes(intitution[key]) : true);
+          break;
+        case 'multi':
+          filtred = filtred.filter(intitution => {
+            if (intitution[key] && filter[key].value.length)
+              return intitution[key].reduce((acc, val) => filter[key].value.includes(val) ? true : acc, false)
+            return filter[key].value.length ? false : true;
+          });
+          break;
+      }
     })
     this.filtredInstitutions = filtred;
   }
