@@ -5,7 +5,7 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item *ngFor="let place of placeGroups">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'place', place.name)">{{place.name}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'place', place.name)">{{place.name}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -15,7 +15,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let institutionType of formData.institutionType">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'institutionType', institutionType.name)">{{institutionType.name}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'institutionType', institutionType.name)">{{institutionType.name}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -25,7 +25,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let subordinationLevel of formData.subordinationLevel">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'subordinationLevel', subordinationLevel)">{{subordinationLevel}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'subordinationLevel', subordinationLevel)">{{subordinationLevel}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -35,7 +35,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let placeType of formData.placeType">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'placeType', placeType)">{{placeType}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'placeType', placeType)">{{placeType}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -45,7 +45,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let ownership of formData.ownership">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'ownership', ownership)">{{ownership}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'ownership', ownership)">{{ownership}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -55,7 +55,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let legalFormCode of formData.legalFormCode">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'legalFormCode', legalFormCode)">{{legalFormCode}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'legalFormCode', legalFormCode)">{{legalFormCode}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -65,10 +65,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'receptionOffice', true)">Наявне</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'receptionOffice', true)">Наявне</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'receptionOffice', false)">Відсутнє</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'receptionOffice', false)">Відсутнє</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -78,10 +78,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'registryOffice', true)">Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'registryOffice', true)">Наявна</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'registryOffice', false)">Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'registryOffice', false)">Відсутня</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -97,7 +97,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalCare of formData.medicalCare">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalCare', medicalCare)">{{medicalCare}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicalCare', medicalCare)">{{medicalCare}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -107,7 +107,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalAidTypes of formData.medicalAidTypes">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes, 'multi')">{{medicalAidTypes}}</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes)">{{medicalAidTypes}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -117,10 +117,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'license', true)">Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'license', true)">Наявна</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'license', false)">Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'license', false)">Відсутня</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -130,13 +130,13 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'accreditationCategoryType', 'наявна')">Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'наявна')">Наявна</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'accreditationCategoryType', 'відсутня')">Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'відсутня')">Відсутня</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'accreditationCategoryType', 'не підлягає акредитації')">Не підлягає акредитації</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'не підлягає акредитації')">Не підлягає акредитації</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -146,10 +146,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'typicalBuilding', true)">Так</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'typicalBuilding', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'typicalBuilding', false)">Ні</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'typicalBuilding', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -159,7 +159,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let heatingType of formData.heatingType">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'heatingType', heatingType)">{{heatingType}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'heatingType', heatingType)">{{heatingType}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -169,10 +169,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'coldWaterSupply', true)">Так</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'coldWaterSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'coldWaterSupply', false)">Ні</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'coldWaterSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -182,10 +182,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'hotWaterSupply', true)">Так</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'hotWaterSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'hotWaterSupply', false)">Ні</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'hotWaterSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -195,19 +195,19 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '30')">До 30%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '50')">До 50%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '50')">До 50%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '70')">До 70%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '70')">До 70%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '90')">До 90%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '90')">До 90%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '100')">100%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '100')">100%</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -217,19 +217,19 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '30')">До 30%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '50')">До 50%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '50')">До 50%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '70')">До 70%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '70')">До 70%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '90')">До 90%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '90')">До 90%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '100')">100%</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '100')">100%</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -245,10 +245,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'internetSupply', true)">Так</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'internetSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'internetSupply', false)">Ні</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'internetSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>

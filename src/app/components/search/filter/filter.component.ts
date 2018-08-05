@@ -15,7 +15,7 @@ export class FilterComponent {
   public placeGroups: any;
   public formData: any;
 
-  private filter = {
+  public filter = {
     totalPopulation: { type: 'range', min: 0, max: 5000 },
     vehiclesReality: { type: 'range', min: 0, max: 200 },
     computerEquipmentReality: { type: 'range', min: 0, max: 200 },
@@ -26,10 +26,23 @@ export class FilterComponent {
     this.formDataService.getFormData().subscribe(formData => this.formData = formData)
   }
 
-  public onMultiFilterClick(isChecked: boolean, key: string, value: any, type: string) {
+  public onSingleFilterClick(isChecked: boolean, key: string, value: any) {
     if (isChecked) {
       if (!this.filter[key])
-        this.filter[key] = { type: type || 'single', value: [] };
+        this.filter[key] = { type: 'single', value: [] };
+      this.filter[key].value.push(value);
+    }
+    else {
+      let index = this.filter[key].value.indexOf(value);
+      this.filter[key].value.splice(index, 1);
+    }
+    this.filtered.emit(this.filter);
+  }
+
+  public onMultiFilterClick(isChecked: boolean, key: string, value: any) {
+    if (isChecked) {
+      if (!this.filter[key])
+        this.filter[key] = { type: 'multi', value: [] };
       this.filter[key].value.push(value);
     }
     else {

@@ -53,20 +53,7 @@ export class SearchComponent {
       return this.filtredInstitutions.length;
     return 0;
   }
-
-  public getInitialValuesForSliders(): any {
-    let params = { totalPopulation: 5, vehiclesReality: 4, computerEquipmentReality: 2 }
-    this.filtredInstitutions
-      .filter(institution => institution.type === 1)
-      .forEach(institution => {
-        params.totalPopulation = institution.totalPopulation > params.totalPopulation ? institution.totalPopulation : params.totalPopulation;
-        params.totalPopulation = institution.vehiclesReality > params.vehiclesReality ? institution.vehiclesReality : params.vehiclesReality;
-        params.totalPopulation = institution.computerEquipmentReality > params.computerEquipmentReality ? institution.computerEquipmentReality : params.computerEquipmentReality;
-      });
-    console.log(params);
-    return params;
-  }
-
+  
   private filter(filter) {
     let filtred = this.originalInstitutions;
     Object.keys(filter).forEach(key => {
