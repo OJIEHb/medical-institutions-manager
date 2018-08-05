@@ -55,9 +55,6 @@ export class AddInstitutionComponent {
 
   public saveInstitution() {
     let institution = this.institutionFormGroup.value as Institution;
-    console.log(institution);
-    institution.equipment = +institution.equipment;
-    institution.medicamentEquipment = +institution.medicamentEquipment;
 
     if (this.parentId) {
       institution.place = this.place;

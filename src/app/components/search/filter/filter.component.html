@@ -110,7 +110,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalAidTypes of formData.medicalAidTypes">
-          <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes, 'multi')">{{medicalAidTypes}}</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes, 'multi')">{{medicalAidTypes}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -149,10 +149,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Так</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'typicalBuilding', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Ні</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'typicalBuilding', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -162,7 +162,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let heatingType of formData.heatingType">
-        <mat-checkbox>{{heatingType}}</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'heatingType', heatingType)">{{heatingType}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -172,10 +172,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Так</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'coldWaterSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Ні</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'coldWaterSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -185,32 +185,32 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Так</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'hotWaterSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Ні</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'hotWaterSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>Онащеність медичним обаднанням</mat-panel-title>
+      <mat-panel-title>Оснащеність медичним обаднанням</mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>До 30%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 50%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '50')">До 50%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 70%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '70')">До 70%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 90%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '90')">До 90%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>100%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'equipment', '100')">100%</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -220,19 +220,19 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>До 30%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 50%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '50')">До 50%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 70%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '70')">До 70%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>До 90%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '90')">До 90%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>100%</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicamentEquipment', '100')">100%</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -251,10 +251,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Так</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'internetSupply', true)">Так</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Ні</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'internetSupply', false)">Ні</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>

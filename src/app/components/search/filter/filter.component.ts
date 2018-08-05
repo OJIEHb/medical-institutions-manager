@@ -31,6 +31,7 @@ export class FilterComponent {
       let index = this.filter[key].value.indexOf(value);
       this.filter[key].value.splice(index, 1);
     }
+    console.log(this.filter);
     this.filtered.emit(this.filter);
   }
 }

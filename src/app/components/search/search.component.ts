@@ -53,7 +53,12 @@ export class SearchComponent {
     Object.keys(filter).forEach(key => {
       switch (filter[key].type) {
         case 'single':
-          filtred = filtred.filter(intitution => filter[key].value.length ? filter[key].value.includes(intitution[key]) : true);
+          filtred = filtred.filter(intitution =>{
+            console.log(filter[key].value)
+            console.log(intitution[key])
+            console.log(filter[key].value.includes(intitution[key]));
+            return filter[key].value.length ? filter[key].value.includes(intitution[key]) : true;
+          });
           break;
         case 'multi':
           filtred = filtred.filter(intitution => {
