@@ -15,11 +15,15 @@
     <h6>Код території КОАТУУ:  {{institution.classifierObjectCode}}</h6>
     <h6>Форма власності: {{institution.ownership}}</h6>
     <h6>Код організаційно-правової форми (КОПФ): {{institution.legalFormCode}}</h6>
-    <h6>ПІП головного лікаря: {{institution.headDoctor.name}}</h6>
-    <h6>Робочий телефон:  {{institution.headDoctor.workPhone}}</h6>
-    <h6>Мобільний телефон:  {{institution.headDoctor.homePhone}}</h6>
-    <h6>ПІП секретар головного лікаря:  {{institution.headDoctorSecretary.name}}</h6>
-    <h6>Робочий телефон:  {{institution.headDoctorSecretary.workPhone}}</h6>
+    <div *ngIf="institution.headDoctor">
+      <h6>ПІП головного лікаря: {{institution.headDoctor.name}}</h6>
+      <h6>Робочий телефон:  {{institution.headDoctor.workPhone}}</h6>
+      <h6>Мобільний телефон:  {{institution.headDoctor.homePhone}}</h6>
+    </div>
+    <div *ngIf="institution.headDoctorSecretary">
+      <h6>ПІП секретар головного лікаря:  {{institution.headDoctorSecretary.name}}</h6>
+      <h6>Робочий телефон:  {{institution.headDoctorSecretary.workPhone}}</h6>
+    </div>
     <h6>Приймальне відділення:  <span *ngIf = "institution.receptionOffice">Наявне</span><span *ngIf = "!institution.receptionOffice">Відсутнє</span></h6>
     <h6>Телефон приймального відділення:  {{institution.receptionOfficePhone}}</h6>
     <h6>Реєстратура амбулаторно-поліклінічного підрозділу:  <span *ngIf = "institution.registryOffice">Наявна</span><span *ngIf = "!institution.registryOffice">Відсутня</span></h6>

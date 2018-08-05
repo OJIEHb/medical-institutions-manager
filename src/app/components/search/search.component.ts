@@ -41,7 +41,11 @@ export class SearchComponent {
   }
 
   public onFilterChange(filter) {
+    this.filterParam = filter;
     this.filter(filter);
+    if (this.search)
+      this.filtredInstitutions = this.filtredInstitutions
+        .filter(institution => institution.fullName.toLowerCase().includes(this.search.toLocaleLowerCase()));
   }
 
   private filter(filter) {

@@ -14,31 +14,23 @@ export class FilterComponent {
   public placeGroups: any;
   public formData: any;
 
-  private filter = {
-    place: []
-  };
+  private filter = {};
 
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {
     this.placeService.getAll().subscribe(groups => this.placeGroups = groups);
     this.formDataService.getFormData().subscribe(formData => this.formData = formData)
   }
 
-  public onMultiFilterClick(isChecked: boolean, key: string, value: any) {
-    if (isChecked)
-      this.addMultiFiler(key, value);
-    else
-      this.removeMultiFiler(key, value);
+  public onSingleFilterClick(isChecked: boolean, key: string, value: any) {
+    if (isChecked) {
+      if (!this.filter[key])
+        this.filter[key] = [];
+      this.filter[key].push(value);
+    }
+    else {
+      let index = this.filter[key].indexOf(value);
+      this.filter[key].splice(index, 1);
+    }
     this.filtered.emit(this.filter);
   }
-
-  private addMultiFiler(key: string, value: any) {
-    this.filter[key].push(value);
-  }
-
-  private removeMultiFiler(key: string, value: any) {
-    let index = this.filter[key].indexOf(value);
-    this.filter[key].splice(index, 1);
-  }
-
-
 }

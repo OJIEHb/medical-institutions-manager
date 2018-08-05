@@ -5,7 +5,7 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item *ngFor="let place of placeGroups">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked,'place',place.name)">{{place.name}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'place', place.name)">{{place.name}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -14,8 +14,18 @@
       <mat-panel-title>Тип закладу</mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
+      <mat-list-item *ngFor="let institutionType of formData.institutionType">
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'institutionType', institutionType.name)">{{institutionType.name}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Рівень підпорядкування</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let subordinationLevel of formData.subordinationLevel">
-        <mat-checkbox>{{subordinationLevel}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'subordinationLevel', subordinationLevel)">{{subordinationLevel}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -25,7 +35,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let placeType of formData.placeType">
-        <mat-checkbox>{{placeType}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'placeType', placeType)">{{placeType}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -35,7 +45,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let ownership of formData.ownership">
-        <mat-checkbox>{{ownership}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'ownership', ownership)">{{ownership}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -45,7 +55,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let legalFormCode of formData.legalFormCode">
-        <mat-checkbox>{{legalFormCode}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'legalFormCode', legalFormCode)">{{legalFormCode}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -55,10 +65,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Наявне</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'receptionOffice', true)">Наявне</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Відсутнє</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'receptionOffice', false)">Відсутнє</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -68,10 +78,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'registryOffice', true)">Наявна</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'registryOffice', false)">Відсутня</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -90,17 +100,7 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalCare of formData.medicalCare">
-        <mat-checkbox>{{medicalCare}}</mat-checkbox>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>Тип закладу</mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-list *ngIf="formData">
-      <mat-list-item *ngFor="let institutionType of formData.institutionType">
-        <mat-checkbox>{{institutionType.name}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicalCare', medicalCare)">{{medicalCare}}</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -120,10 +120,10 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox>Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'license', true)">Наявна</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox>Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'license', false)">Відсутня</mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -237,34 +237,34 @@
     </mat-list>
   </mat-expansion-panel>
   <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Транспортні засоби</mat-panel-title>
-      </mat-expansion-panel-header>
-      <h6 mat-line>Від:</h6>
-      <mat-slider class="full-width" thumbLabel></mat-slider>
-      <h6 mat-line>До:</h6>
-      <mat-slider class="full-width" thumbLabel></mat-slider>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Наявність доступу до мережі Інтернет</mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-list>
-          <mat-list-item>
-            <mat-checkbox>Так</mat-checkbox>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-checkbox>Ні</mat-checkbox>
-          </mat-list-item>
-        </mat-list>
-      </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Забезпеченість комп'ютерною технікою</mat-panel-title>
-        </mat-expansion-panel-header>
-        <h6 mat-line>Від:</h6>
-        <mat-slider class="full-width" thumbLabel></mat-slider>
-        <h6 mat-line>До:</h6>
-        <mat-slider class="full-width" thumbLabel></mat-slider>
-      </mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Транспортні засоби</mat-panel-title>
+    </mat-expansion-panel-header>
+    <h6 mat-line>Від:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+    <h6 mat-line>До:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Наявність доступу до мережі Інтернет</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox>Так</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox>Ні</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Забезпеченість комп'ютерною технікою</mat-panel-title>
+    </mat-expansion-panel-header>
+    <h6 mat-line>Від:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+    <h6 mat-line>До:</h6>
+    <mat-slider class="full-width" thumbLabel></mat-slider>
+  </mat-expansion-panel>
 </mat-accordion>
