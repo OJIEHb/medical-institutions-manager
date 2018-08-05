@@ -23,6 +23,7 @@ import {
     MatProgressSpinnerModule,
     MatSliderModule,
     MatAutocompleteModule,
+    MatPaginatorModule,
 } from '@angular/material';
 
 
@@ -49,7 +50,8 @@ import {
     MatMenuModule,  
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -73,7 +75,8 @@ import {
     MatMenuModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule {}

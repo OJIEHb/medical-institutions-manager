@@ -14,9 +14,9 @@ export class SearchComponent {
 
   public search: string;
 
-
   private originalInstitutions: Institution[];
   private filterParam = {};
+
   constructor(private institutionService: InstitutionService, private router: Router) {
     this.institutionService.getAll()
       .subscribe(institutions => {
@@ -48,15 +48,18 @@ export class SearchComponent {
         .filter(institution => institution.fullName.toLowerCase().includes(this.search.toLocaleLowerCase()));
   }
 
+  public getPaginatorLength(): number {
+    if (this.filtredInstitutions)
+      return this.filtredInstitutions.length;
+    return 0;
+  }
+
   private filter(filter) {
     let filtred = this.originalInstitutions;
     Object.keys(filter).forEach(key => {
       switch (filter[key].type) {
         case 'single':
-          filtred = filtred.filter(intitution =>{
-            console.log(filter[key].value)
-            console.log(intitution[key])
-            console.log(filter[key].value.includes(intitution[key]));
+          filtred = filtred.filter(intitution => {
             return filter[key].value.length ? filter[key].value.includes(intitution[key]) : true;
           });
           break;
@@ -65,6 +68,17 @@ export class SearchComponent {
             if (intitution[key] && filter[key].value.length)
               return intitution[key].reduce((acc, val) => filter[key].value.includes(val) ? true : acc, false)
             return filter[key].value.length ? false : true;
+          });
+          break;
+        case 'range':
+          filtred = filtred.filter(intitution => {
+            if (filter[key].max && filter[key].min)
+              return intitution[key] <= filter[key].max && intitution[key] >= filter[key].min;
+            else if (filter[key].max)
+              return intitution[key] <= filter[key].max;
+            else if (filter[key].max)
+              return intitution[key] >= filter[key].min;
+            return true;
           });
           break;
       }

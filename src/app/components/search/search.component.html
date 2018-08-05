@@ -1,24 +1,28 @@
 <div class="row">
   <div class="col-md-4">
-    <div style="overflow: hidden; height: 80vh; border-bottom: 1px solid rgba(0,0,0,.14); border-top: 1px solid rgba(0,0,0,.14);">
-      <div class="menu-list">
+    <div class="filter-container">
+      <div class="scrollable-container">
         <filter (filtered)="onFilterChange($event)"></filter>
       </div>
     </div>
   </div>
 
-  <div class="col-md-7">
-    <mat-form-field class="full-width">
-      <input matInput [matAutocomplete]="auto" placeholder="Пошук" (input)="onSearchChange()" [(ngModel)]="search">
-      <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
-        <mat-icon>close</mat-icon>
-      </button>
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSearchChange()">
-        <mat-option *ngFor="let institution of filtredInstitutions" [value]="institution.fullName">
-          <span>{{institution.fullName}}</span>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+  <div class="col-md-8">
+    <div class="row">
+      <mat-form-field class="col-md-8">
+        <input matInput [matAutocomplete]="auto" placeholder="Пошук" (input)="onSearchChange()" [(ngModel)]="search">
+        <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSearchChange()">
+          <mat-option *ngFor="let institution of filtredInstitutions" [value]="institution.fullName">
+            <span>{{institution.fullName}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-paginator class="col-md-4" [length]="getPaginatorLength()" [hidePageSize]="true" [pageSize]="5">
+      </mat-paginator>
+    </div>
     <mat-list>
       <mat-list-item class="institution-item" *ngFor="let institution of filtredInstitutions" (click)="onInstitutionClick(institution)">
         <h4 mat-line>{{institution.fullName}}: {{institution.totalPopulation}}</h4>

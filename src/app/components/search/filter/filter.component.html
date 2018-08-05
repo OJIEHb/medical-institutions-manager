@@ -90,9 +90,17 @@
       <mat-panel-title>Кількість населення</mat-panel-title>
     </mat-expansion-panel-header>
     <h6 mat-line>Від:</h6>
-    <mat-slider class="full-width" thumbLabel></mat-slider>
+    <input class="full-width" type="range">
+    <!-- <mat-slider [(ngModel)]="filter.totalPopulation.min" 
+                (change)="onRangeFilterChange()" 
+                class="full-width" 
+                [max]="filter.totalPopulation.max" thumbLabel></mat-slider>
     <h6 mat-line>До:</h6>
-    <mat-slider class="full-width" thumbLabel></mat-slider>
+    <mat-slider [(ngModel)]="filter.totalPopulation.max" 
+                (change)="onRangeFilterChange()" 
+                class="full-width"
+                [min]="filter.totalPopulation.min"
+                max="1000" thumbLabel></mat-slider> -->
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>

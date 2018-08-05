@@ -14,7 +14,11 @@ export class FilterComponent {
   public placeGroups: any;
   public formData: any;
 
-  private filter = {};
+  private filter = {
+    totalPopulation: { type: 'range', min:0, max:5000 },
+    vehiclesReality: { type: 'range', min:0, max:5000 },
+    computerEquipmentReality: { type: 'range', min:0, max:5000 },
+  };
 
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {
     this.placeService.getAll().subscribe(groups => this.placeGroups = groups);
@@ -32,6 +36,10 @@ export class FilterComponent {
       this.filter[key].value.splice(index, 1);
     }
     console.log(this.filter);
+    this.filtered.emit(this.filter);
+  }
+
+  public onRangeFilterChange() {
     this.filtered.emit(this.filter);
   }
 }
