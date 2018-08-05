@@ -1,30 +1,68 @@
 <mat-card *ngIf="institution" class="col-md-8 offset-md-2">
   <mat-card-content>
     <mat-card-title>{{institution.fullName}}</mat-card-title>
-    <h6>Місце розташування:  {{institution.place}}</h6>
-    <h6>Рівень підпорядкування:  {{institution.subordinationLevel}}</h6>
-    <h6>Тип населеного пункту місця розташування:  {{institution.placeType}}</h6>
-    <h6>Адреса:  {{institution.fullAddress}}</h6>
-    <h6>Населення:  {{institution.totalPopulation}}</h6>
-    <h6>Email установи:  {{institution.email}}</h6>
-    <h6>Контактний телефон закладу:  {{institution.phone}}</h6>
-    <h6>Факс:  {{institution.fax}}</h6>
-    <h6>Сайт в Internet:  {{institution.site}}</h6>
-    <h6>Статус юридичної особи: <span *ngIf = "institution.legalStatus">Так</span><span *ngIf = "!institution.legalStatus">Ні</span></h6>
-    <h6>Код ЄДРПОУ:  {{institution.stateRegisterCode}}</h6>
-    <h6>Код території КОАТУУ:  {{institution.classifierObjectCode}}</h6>
-    <h6>Форма власності: {{institution.ownership}}</h6>
-    <h6>Код організаційно-правової форми (КОПФ): {{institution.legalFormCode}}</h6>
-    <div *ngIf="institution.headDoctor">
-      <h6>ПІП головного лікаря: {{institution.headDoctor.name}}</h6>
-      <h6>Робочий телефон:  {{institution.headDoctor.workPhone}}</h6>
-      <h6>Мобільний телефон:  {{institution.headDoctor.homePhone}}</h6>
-    </div>
-    <div *ngIf="institution.headDoctorSecretary">
-      <h6>ПІП секретар головного лікаря:  {{institution.headDoctorSecretary.name}}</h6>
-      <h6>Робочий телефон:  {{institution.headDoctorSecretary.workPhone}}</h6>
-    </div>
-    <h6>Приймальне відділення:  <span *ngIf = "institution.receptionOffice">Наявне</span><span *ngIf = "!institution.receptionOffice">Відсутнє</span></h6>
+    <mat-list>
+        <mat-list-item class="row">
+            <span class= col-md-6>Місце розташування:</span><span class= col-md-6>{{institution.place}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Рівень підпорядкування:</span><span class= col-md-6>{{institution.subordinationLevel}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Тип населеного пункту місця розташування:</span><span class= col-md-6>{{institution.placeType}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Адреса:</span><span class= col-md-6>{{institution.fullAddress}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Населення:</span><span class= col-md-6>{{institution.totalPopulation}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Email установи:</span><span class= col-md-6>{{institution.email}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Контактний телефон закладу:</span><span class= col-md-6>{{institution.phone}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Факс:</span><span class= col-md-6>{{institution.fax}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Сайт в Internet:</span><span class= col-md-6>{{institution.site}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Статус юридичної особи:</span><span class= col-md-6><span *ngIf = "institution.legalStatus">Так</span><span *ngIf = "!institution.legalStatus">Ні</span></span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Код ЄДРПОУ:</span><span class= col-md-6>{{institution.stateRegisterCode}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Код території КОАТУУ:</span><span class= col-md-6>{{institution.classifierObjectCode}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Форма власності:</span><span class= col-md-6>{{institution.ownership}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Код організаційно-правової форми (КОПФ):</span><span class= col-md-6>{{institution.legalFormCode}}</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="institution.headDoctor" class="row">
+            <span class= col-md-6>ПІП головного лікаря:</span><span class= col-md-6>{{institution.headDoctor.name}}</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="institution.headDoctor" class="row">
+            <span class= col-md-6>Робочий телефон:</span><span class= col-md-6>{{institution.headDoctor.workPhone}}</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="institution.headDoctor" class="row">
+            <span class= col-md-6>Мобільний телефон:</span><span class= col-md-6>{{institution.headDoctor.homePhone}}</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="institution.headDoctorSecretary" class="row">
+            <span class= col-md-6>ПІП секретар головного лікаря:</span><span class= col-md-6>{{institution.headDoctorSecretary.name}}</span>
+        </mat-list-item>
+        <mat-list-item *ngIf="institution.headDoctorSecretary" class="row">
+            <span class= col-md-6>Робочий телефон:</span><span class= col-md-6>{{institution.headDoctorSecretary.workPhone}}</span>
+        </mat-list-item>
+        <mat-list-item class="row">
+            <span class= col-md-6>Приймальне відділення:</span><span class= col-md-6><span *ngIf = "institution.receptionOffice">Наявне</span><span *ngIf = "!institution.receptionOffice">Відсутнє</span></span>
+        </mat-list-item>
+    </mat-list>
     <h6>Телефон приймального відділення:  {{institution.receptionOfficePhone}}</h6>
     <h6>Реєстратура амбулаторно-поліклінічного підрозділу:  <span *ngIf = "institution.registryOffice">Наявна</span><span *ngIf = "!institution.registryOffice">Відсутня</span></h6>
     <h6>Телефон реєстратури: {{institution.registryOfficePhone}}</h6>
