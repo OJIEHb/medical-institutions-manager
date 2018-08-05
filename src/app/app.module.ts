@@ -26,6 +26,7 @@ import { InstitutionComponent } from './components/institution/institution.compo
 import { SearchComponent } from './components/search/search.component';
 import { FilterComponent } from './components/search/filter/filter.component';
 import { FormDataService } from './services/form-data.service';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FormDataService } from './services/form-data.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    Ng5SliderModule
   ],
   providers: [
     InstitutionService,

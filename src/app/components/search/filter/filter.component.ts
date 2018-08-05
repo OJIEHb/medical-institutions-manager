@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { InstitutionPlaceService } from '../../../services/institution-place.service';
 import { FormDataService } from '../../../services/form-data.service';
+import { Institution } from '../../../models/institution';
 
 @Component({
   selector: 'filter',
@@ -15,9 +16,9 @@ export class FilterComponent {
   public formData: any;
 
   private filter = {
-    totalPopulation: { type: 'range', min:0, max:5000 },
-    vehiclesReality: { type: 'range', min:0, max:200 },
-    computerEquipmentReality: { type: 'range', min:0, max:200 }
+    totalPopulation: { type: 'range', min: 0, max: 5000 },
+    vehiclesReality: { type: 'range', min: 0, max: 200 },
+    computerEquipmentReality: { type: 'range', min: 0, max: 200 },
   };
 
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {

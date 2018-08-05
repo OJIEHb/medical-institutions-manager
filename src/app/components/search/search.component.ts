@@ -54,6 +54,19 @@ export class SearchComponent {
     return 0;
   }
 
+  public getInitialValuesForSliders(): any {
+    let params = { totalPopulation: 5, vehiclesReality: 4, computerEquipmentReality: 2 }
+    this.filtredInstitutions
+      .filter(institution => institution.type === 1)
+      .forEach(institution => {
+        params.totalPopulation = institution.totalPopulation > params.totalPopulation ? institution.totalPopulation : params.totalPopulation;
+        params.totalPopulation = institution.vehiclesReality > params.vehiclesReality ? institution.vehiclesReality : params.vehiclesReality;
+        params.totalPopulation = institution.computerEquipmentReality > params.computerEquipmentReality ? institution.computerEquipmentReality : params.computerEquipmentReality;
+      });
+    console.log(params);
+    return params;
+  }
+
   private filter(filter) {
     let filtred = this.originalInstitutions;
     Object.keys(filter).forEach(key => {
@@ -72,18 +85,16 @@ export class SearchComponent {
           break;
         case 'range':
           filtred = filtred.filter(institution => {
-            if (filter[key].max && filter[key].min) {
-              if (institution[key] >= 0) {
-                if (filter[key].max && filter[key].min)
-                  return +institution[key] <= filter[key].max && +institution[key] >= filter[key].min;
-                else if (filter[key].max)
-                  return institution[key] <= filter[key].max;
-                else
-                  return institution[key] >= filter[key].min;
+            if (filter[key].min || filter[key].max) {
+              if (filter[key].min && filter[key].max) {
+                return institution[key] >= filter[key].min && institution[key] <= filter[key].max;
+              } else if (filter[key].min) {
+                return institution[key] >= filter[key].min;
+              } else {
+                return institution[key] <= filter[key].max;
               }
-              else return false;
-            }
-            else return true;
+            } else
+              return true;
           });
           break;
       }

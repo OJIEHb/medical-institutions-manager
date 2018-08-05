@@ -151,14 +151,14 @@ export class AddInstitutionComponent {
       coldWaterSupply: [false],
       hotWaterSupply: [false],
       internetSupply: [false],
-      equipment: [],
-      medicamentEquipment: [],
-      vehiclesNeed: [],
-      vehiclesReality: [],
-      vehiclesWay: [],
-      computerEquipmentNeed: [],
-      computerEquipmentReality: [],
-      population: []
+      equipment: ['30'],
+      medicamentEquipment: ['30'],
+      vehiclesNeed: [0],
+      vehiclesReality: [0],
+      vehiclesWay: [0],
+      computerEquipmentNeed: [0],
+      computerEquipmentReality: [0],
+      population: [0]
     });
   }
 

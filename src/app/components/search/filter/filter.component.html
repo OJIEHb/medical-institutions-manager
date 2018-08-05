@@ -89,10 +89,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Кількість населення</mat-panel-title>
     </mat-expansion-panel-header>
-    <h6 mat-line>Від:</h6>
-    <mat-slider [(ngModel)]="filter.totalPopulation.min" (change)="onRangeFilterChange()" class="full-width" [max]="2000" thumbLabel></mat-slider>
-    <h6 mat-line>До:</h6>
-    <mat-slider [(ngModel)]="filter.totalPopulation.max" (change)="onRangeFilterChange()" class="full-width" [max]="2000" thumbLabel></mat-slider>
+    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.totalPopulation.min" [(highValue)]="filter.totalPopulation.max"></ng5-slider>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -240,12 +237,7 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Транспортні засоби</mat-panel-title>
     </mat-expansion-panel-header>
-    <h6 mat-line>Від: {{filter.vehiclesReality.min}}</h6>
-    <mat-slider [(ngModel)]="filter.vehiclesReality.min" (change)="onRangeFilterChange()" class="full-width" [max]="filter.vehiclesReality.max"
-      thumbLabel></mat-slider>
-    <h6 mat-line>До: {{filter.vehiclesReality.max}}</h6>
-    <mat-slider [(ngModel)]="filter.vehiclesReality.max" (change)="onRangeFilterChange()" class="full-width" [max]="200" [min]="filter.vehiclesReality.min"
-      thumbLabel></mat-slider>
+    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.vehiclesReality.min" [(highValue)]="filter.vehiclesReality.max"></ng5-slider>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -264,11 +256,6 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Забезпеченість комп'ютерною технікою</mat-panel-title>
     </mat-expansion-panel-header>
-    <h6 mat-line>Від: {{filter.computerEquipmentReality.min}}</h6>
-    <mat-slider [(ngModel)]="filter.computerEquipmentReality.min" (change)="onRangeFilterChange()" class="full-width" [max]="filter.computerEquipmentReality.max"
-      thumbLabel></mat-slider>
-    <h6 mat-line>До: {{filter.computerEquipmentReality.max}}</h6>
-    <mat-slider [(ngModel)]="filter.computerEquipmentReality.max" (change)="onRangeFilterChange()" class="full-width" [max]="200"
-      [min]="filter.computerEquipmentReality.min" thumbLabel></mat-slider>
+    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.computerEquipmentReality.min" [(highValue)]="filter.computerEquipmentReality.max"></ng5-slider>
   </mat-expansion-panel>
 </mat-accordion>
