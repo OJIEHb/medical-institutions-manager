@@ -5,6 +5,7 @@ import { InstitutionService } from '../../services/institution.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstitutionPlaceService } from '../../services/institution-place.service';
 import { FormDataService } from '../../services/form-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'add-institution',
@@ -27,7 +28,8 @@ export class AddInstitutionComponent {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private placeService: InstitutionPlaceService,
-    private formDataService: FormDataService) {
+    private formDataService: FormDataService,
+    private location: Location) {
     this.route
       .queryParams
       .subscribe(params => {
@@ -75,7 +77,7 @@ export class AddInstitutionComponent {
     let institution = Object.assign(this.institution, this.institutionFormGroup.value);
     institution.regionType = this.getRegionType(institution.place);
     this.institutionService.update(institution.id, institution);
-    this.router.navigate(['']);
+    this.location.back();
   }
 
   public onFieldDateChange(field: string) {
