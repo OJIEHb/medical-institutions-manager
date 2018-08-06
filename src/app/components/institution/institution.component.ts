@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
+import { ExcelService } from '../../services/excel.service';
 
 @Component({
   selector: 'institution',
@@ -12,7 +13,7 @@ export class InstitutionComponent {
 
   institution: Institution;
 
-  constructor(private route: ActivatedRoute, private institutionService: InstitutionService) { 
+  constructor(private route: ActivatedRoute, private institutionService: InstitutionService, private excelService: ExcelService) { 
     this.route.params
       .subscribe(params => {
       this.institutionService.getById(params['id'])
@@ -22,6 +23,7 @@ export class InstitutionComponent {
 
   public saveInstitutionExcel() {
     console.log("Ok")
+    this.excelService.getExcelFromInstitution(this.institution);
   }
 
 }

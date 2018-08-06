@@ -29,6 +29,7 @@ import { FormDataService } from './services/form-data.service';
 import { Ng5SliderModule } from 'ng5-slider';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { ExcelService } from './services/excel.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     DatePipe,
     FormDataService,
     { provide: MAT_DATE_LOCALE, useValue: 'ua-UA' },
+    ExcelService
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]
