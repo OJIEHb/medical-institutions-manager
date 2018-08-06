@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
@@ -16,11 +16,12 @@ export class InstitutionComponent {
     this.route.params
       .subscribe(params => {
       this.institutionService.getById(params['id'])
-        .subscribe(institution => {
-          this.institution = institution;
-          console.log(institution);
-        })
+        .subscribe(institution => this.institution = institution)
     })
+  }
+
+  public saveInstitutionExcel() {
+    console.log("Ok")
   }
 
 }

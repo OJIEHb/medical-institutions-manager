@@ -2,13 +2,14 @@
 	<mat-card-content>
 		<mat-card-title>
 			<div class="row">
-				<div class="col-md-11">
+				<div class="col-md-10">
 					<b>{{institution.fullName}}</b>
 				</div>
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<a [routerLink]="['/institutions/edit', institution.id]" [queryParams]="{ type: institution.type }">
 						<mat-icon color="primary">edit</mat-icon>
 					</a>
+					<mat-icon (click)="saveInstitutionExcel()" svgIcon="xlsx"></mat-icon>
 				</div>
 			</div>
 		</mat-card-title>
