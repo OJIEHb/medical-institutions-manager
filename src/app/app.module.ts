@@ -27,6 +27,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FilterComponent } from './components/search/filter/filter.component';
 import { FormDataService } from './services/form-data.service';
 import { Ng5SliderModule } from 'ng5-slider';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     AuthGuard,
     InstitutionPlaceService,
     DatePipe,
-    FormDataService
+    FormDataService,
+    { provide: MAT_DATE_LOCALE, useValue: 'ua-UA' }
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]
