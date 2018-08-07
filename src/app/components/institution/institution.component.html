@@ -13,62 +13,62 @@
 				</div>
 			</div>
 		</mat-card-title>
-		<mat-list>
-			<mat-list-item class="row">
+		<div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Місце розташування:</b>
 				</span>
 				<span class=col-md-6>{{institution.place}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Рівень підпорядкування:</b>
 				</span>
 				<span class=col-md-6>{{institution.subordinationLevel}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Тип населеного пункту місця розташування:</b>
 				</span>
 				<span class=col-md-6>{{institution.placeType}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Адреса:</b>
 				</span>
 				<span class=col-md-6>{{institution.fullAddress}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Населення:</b>
 				</span>
 				<span class=col-md-6>{{institution.totalPopulation}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Email установи:</b>
 				</span>
 				<span class=col-md-6>{{institution.email}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Контактний телефон закладу:</b>
 				</span>
 				<span class=col-md-6>{{institution.phone}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Факс:</b>
 				</span>
 				<span class=col-md-6>{{institution.fax}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Сайт в Internet:</b>
 				</span>
 				<span class=col-md-6>{{institution.site}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Статус юридичної особи:</b>
 				</span>
@@ -76,62 +76,93 @@
 					<span *ngIf="institution.legalStatus">Так</span>
 					<span *ngIf="!institution.legalStatus">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Код ЄДРПОУ:</b>
 				</span>
 				<span class=col-md-6>{{institution.stateRegisterCode}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Код території КОАТУУ:</b>
 				</span>
 				<span class=col-md-6>{{institution.classifierObjectCode}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Форма власності:</b>
 				</span>
 				<span class=col-md-6>{{institution.ownership}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Код організаційно-правової форми (КОПФ):</b>
 				</span>
 				<span class=col-md-6>{{institution.legalFormCode}}</span>
-			</mat-list-item>
-			<mat-list-item *ngIf="institution.headDoctor" class="row">
+			</div>
+			<div class="row">
+				<span class=col-md-6>
+					<b>ПІП головного лікаря (заступника):</b>
+				</span>
+				<span class=col-md-6>{{institution.headDoctorName}}</span>
+			</div>
+			<div class="row">
+				<span class=col-md-6>
+					<b>Робочий телефон:</b>
+				</span>
+				<span class=col-md-6>{{institution.headDoctorWorkPhone}}</span>
+			</div>
+			<div class="row">
+				<span class=col-md-6>
+					<b>Мобільний телефон:</b>
+				</span>
+				<span class=col-md-6>{{institution.headDoctorMobile}}</span>
+			</div>
+			<div class="row">
+				<span class=col-md-6>
+					<b>ПІП секретаря головного лікаря:</b>
+				</span>
+				<span class=col-md-6>{{institution.secretaryHeadDoctorName}}</span>
+			</div>
+			<div class="row">
+				<span class=col-md-6>
+					<b>Робочий телефон:</b>
+				</span>
+				<span class=col-md-6>{{institution.secretaryHeadDoctorPhone}}</span>
+			</div>
+			<!-- <div *ngIf="institution.headDoctor" class="row">
 				<span class=col-md-6>
 					<b>ПІП головного лікаря:</b>
 				</span>
 				<span class=col-md-6>{{institution.headDoctor.name}}</span>
-			</mat-list-item>
-			<mat-list-item *ngIf="institution.headDoctor" class="row">
+			</div>
+			<div *ngIf="institution.headDoctor" class="row">
 				<span class=col-md-6>
 					<b>Робочий телефон:</b>
 				</span>
 				<span class=col-md-6>{{institution.headDoctor.workPhone}}</span>
-			</mat-list-item>
-			<mat-list-item *ngIf="institution.headDoctor" class="row">
+			</div>
+			<div *ngIf="institution.headDoctor" class="row">
 				<span class=col-md-6>
 					<b>Мобільний телефон:</b>
 				</span>
 				<span class=col-md-6>{{institution.headDoctor.homePhone}}</span>
-			</mat-list-item>
-			<mat-list-item *ngIf="institution.headDoctorSecretary" class="row">
+			</div>
+			<div *ngIf="institution.headDoctorSecretary" class="row">
 				<span class=col-md-6>
 					<b>ПІП секретар головного лікаря:</b>
 				</span>
 				<span class=col-md-6>{{institution.headDoctorSecretary.name}}</span>
-			</mat-list-item>
-			<mat-list-item *ngIf="institution.headDoctorSecretary" class="row">
+			</div>
+			<div *ngIf="institution.headDoctorSecretary" class="row">
 				<span class=col-md-6>
 					<b>Робочий телефон:</b>
 				</span>
 				<span class=col-md-6>{{institution.headDoctorSecretary.workPhone}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div> -->
+			
+			<div class="row">
 				<span class=col-md-6>
 					<b>Приймальне відділення:</b>
 				</span>
@@ -139,14 +170,14 @@
 					<span *ngIf="institution.receptionOffice">Наявне</span>
 					<span *ngIf="!institution.receptionOffice">Відсутнє</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Телефон приймального відділення:</b>
 				</span>
 				<span class=col-md-6>{{institution.receptionOfficePhone}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Реєстратура амбулаторно-поліклінічного підрозділу:</b>
 				</span>
@@ -154,69 +185,69 @@
 					<span *ngIf="institution.registryOffice">Наявна</span>
 					<span *ngIf="!institution.registryOffice">Відсутня</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Телефон реєстратури:</b>
 				</span>
 				<span class=col-md-6>{{institution.registryOfficePhone}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Кількість населення, яке офіційно зареєстровано на території обслуговування закладу (постійне на 01.01):</b>
 				</span>
 				<span class=col-md-6>{{institution.totalPopulation}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Кількість населення, яке офіційно зареєстровано в населеному пункті:</b>
 				</span>
 				<span class=col-md-6>{{institution.population}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Рівень надання медичної допомоги:</b>
 				</span>
 				<span class=col-md-6>{{institution.medicalCare}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Планова ємність:</b>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>- кількість ліжок стаціонару:</b>
 				</span>
 				<span class=col-md-6>{{institution.hospitalBedsNumber}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>- планова ємність амбулаторно-поліклінічного підрозділу:</b>
 				</span>
 				<span class=col-md-6>{{institution.hospitalCapacity}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Тип закладу:</b>
 				</span>
 				<span class=col-md-6>{{institution.institutionType}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6></span>
 				<span class=col-md-6></span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Види допомоги, які надає ЗОЗ:</b>
 				</span>
 				<span class=col-md-6>{{institution.medicalAidTypes}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6></span>
 				<span class=col-md-6></span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність ліцензії:</b>
 				</span>
@@ -224,58 +255,58 @@
 					<span *ngIf="institution.license">Так</span>
 					<span *ngIf="!institution.license">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Номер ліцензії:</b>
 				</span>
 				<span class=col-md-6>{{institution.licenseNumber}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Дата:</b>
 				</span>
 				<span class=col-md-6>{{institution.licenseDate| date:'dd-MM-yyyy'}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Термін дії:</b>
 				</span>
 				<span class=col-md-6>{{institution.startLicenseValidity| date:'dd-MM-yyyy'}}
 					<b> - </b>{{institution.endLicenseValidity| date:'dd-MM-yyyy'}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Задекларовані види допомоги:</b>
 				</span>
 				<span class=col-md-6>{{institution.declaredAssistanceForms}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Акредитаційна категорія:</b>
 				</span>
 				<span class=col-md-6>{{institution.accreditationCategoryType}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Номер акредитаційної категорії:</b>
 				</span>
 				<span class=col-md-6>{{institution.accreditationCategoryNumber}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Дата останньої акредитації:</b>
 				</span>
 				<span class=col-md-6>{{institution.lastAccreditation| date:'dd-MM-yyyy'}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Термін дії:</b>
 				</span>
 				<span class=col-md-6>{{institution.startAccreditationValidity| date:'dd-MM-yyyy'}}
 					<b> - </b>{{institution.endAccreditationValidity| date:'dd-MM-yyyy'}}</span>
-			</mat-list-item>
-		</mat-list>
+			</div>
+		</div>
 		<h6 align="center">
 			<b>Ресурси закладу: </b>
 		</h6>
@@ -325,8 +356,8 @@
 					<b>Фізичні особи: </b>{{institution.otherIndividualsPersonalNumber}}</h6>
 			</div>
 		</div>
-		<mat-list>
-			<mat-list-item class="row">
+		<div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Характеристика забудови (типовий проект):</b>
 				</span>
@@ -334,14 +365,14 @@
 					<span *ngIf="institution.typicalBuilding">Так</span>
 					<span *ngIf="!institution.typicalBuilding">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Опалення:</b>
 				</span>
 				<span class=col-md-6>{{institution.heatingType}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність централізованого холодного водопостачання:</b>
 				</span>
@@ -349,8 +380,8 @@
 					<span *ngIf="institution.coldWaterSupply">Так</span>
 					<span *ngIf="!institution.coldWaterSupply">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність централізованого гарячого водопостачання:</b>
 				</span>
@@ -358,44 +389,44 @@
 					<span *ngIf="institution.hotWaterSupply">Так</span>
 					<span *ngIf="!institution.hotWaterSupply">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Оснащеність медичним обладнанням та інвентарем:</b>
 				</span>
 				<span class=col-md-6>{{institution.equipment}} %</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Забезпеченість медикаментами для надання невідкладної допомоги:</b>
 				</span>
 				<span class=col-md-6>{{institution.medicamentEquipment}} %</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Транспортні засоби (автомобілі):</b>
 				</span>
 				<span class=col-md-6></span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Потреба (кількість):</b>
 				</span>
 				<span class=col-md-6>{{institution.vehiclesNeed}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність (кількість):</b>
 				</span>
 				<span class=col-md-6>{{institution.vehiclesReality}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>В т.ч. на ходу:</b>
 				</span>
 				<span class=col-md-6>{{institution.vehiclesWay}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність доступу до мережі Internet:</b>
 				</span>
@@ -403,25 +434,25 @@
 					<span *ngIf="institution.internetSupply">Так</span>
 					<span *ngIf="!institution.internetSupply">Ні</span>
 				</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Забезпеченість ЗОЗ комп'ютерною технікою:</b>
 				</span>
 				<span class=col-md-6></span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Потреба (кількість):</b>
 				</span>
 				<span class=col-md-6>{{institution.computerEquipmentNeed}}</span>
-			</mat-list-item>
-			<mat-list-item class="row">
+			</div>
+			<div class="row">
 				<span class=col-md-6>
 					<b>Наявність (кількість):</b>
 				</span>
 				<span class=col-md-6>{{institution.computerEquipmentReality}}</span>
-			</mat-list-item>
-		</mat-list>
+			</div>
+		</div>
 	</mat-card-content>
 </mat-card>
