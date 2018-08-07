@@ -108,15 +108,20 @@ export class AddInstitutionComponent {
       phone: [],
       fax: [],
       site: [],
-      headDoctor: this.formBuilder.group({
-        name: [],
-        workPhone: [],
-        homePhone: []
-      }),
-      headDoctorSecretary: this.formBuilder.group({
-        name: [],
-        workPhone: []
-      }),
+      // headDoctor: this.formBuilder.group({
+      //   name: [],
+      //   workPhone: [],
+      //   homePhone: []
+      // }),
+      // headDoctorSecretary: this.formBuilder.group({
+      //   name: [],
+      //   workPhone: []
+      // }),
+      headDoctorName:[],
+      headDoctorWorkPhone:[],
+      headDoctorMobile:[],
+      secretaryHeadDoctorName:[],
+      secretaryHeadDoctorPhone:[],
       receptionOffice: [false],
       receptionOfficePhone: [],
       registryOffice: [false],

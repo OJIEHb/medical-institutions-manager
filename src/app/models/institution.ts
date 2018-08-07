@@ -18,8 +18,13 @@ export class Institution {
   classifierObjectCode: string;
   ownership: string;
   legalFormCode: string;
-  headDoctor: Contact;
-  headDoctorSecretary: Contact;
+  headDoctorName:string;
+  headDoctorWorkPhone:string;
+  headDoctorMobile:string;
+  secretaryHeadDoctorName:string;
+  secretaryHeadDoctorPhone:string;
+  // headDoctor: Contact;
+  // headDoctorSecretary: Contact;
   receptionOffice: boolean;
   receptionOfficePhone: string;
   registryOffice: boolean;
