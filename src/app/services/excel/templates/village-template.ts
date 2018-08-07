@@ -1,6 +1,6 @@
 import { Institution } from "../../../models/institution";
 
-export function getVillageTemplate(institution: Institution) {
+export function getVillageTemplate(institution: Institution): any {
 	return [
 		{
 			label: "Адреса",
@@ -13,7 +13,7 @@ export function getVillageTemplate(institution: Institution) {
 		}, {
 			label: "Тип закладу",
 			value: institution.institutionType || '-',
-			cellStyle: { font: { italic: true }, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
+			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}
 	];
 }

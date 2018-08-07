@@ -1,6 +1,6 @@
 import { Institution } from "../../../models/institution";
 
-export function getHospitalTemplate(institution: Institution) {
+export function getHospitalTemplate(institution: Institution): any {
 	return [
 		{
 			label: "Місце розташування",
