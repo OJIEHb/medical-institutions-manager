@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from '../../../node_modules/angularfire2/database';
-import { Observable } from '../../../node_modules/rxjs';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class FormDataService {

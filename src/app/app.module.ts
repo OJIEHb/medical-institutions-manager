@@ -28,8 +28,9 @@ import { FilterComponent } from './components/search/filter/filter.component';
 import { FormDataService } from './services/form-data.service';
 import { Ng5SliderModule } from 'ng5-slider';
 import { MAT_DATE_LOCALE } from '@angular/material';
-import { HttpClientModule } from '../../node_modules/@angular/common/http';
-import { ExcelService } from './services/excel.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ExcelService } from './services/excel/excel.service';
+import { InstitutionExcelService } from './services/excel/institution-excel.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ExcelService } from './services/excel.service';
     DatePipe,
     FormDataService,
     { provide: MAT_DATE_LOCALE, useValue: 'ua-UA' },
-    ExcelService
+    ExcelService,
+    InstitutionExcelService
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]

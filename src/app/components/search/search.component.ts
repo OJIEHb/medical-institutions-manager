@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search',

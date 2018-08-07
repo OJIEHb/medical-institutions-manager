@@ -49,12 +49,12 @@
           <mat-option *ngFor="let legalFormCode of formData.legalFormCode" [value]="legalFormCode">{{legalFormCode}}</mat-option>
         </mat-select>
       </mat-form-field>
-         <div>
+      <div>
         <button mat-stroked-button matStepperNext>Далі</button>
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Контактна інформація</ng-template>
       <mat-form-field *ngIf="type < 3" class="full-width">
@@ -110,7 +110,7 @@
     </form>
   </mat-step>
 
-  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Ресури закладу</ng-template>
       <mat-form-field *ngIf="type == 1" class="full-width">
@@ -211,7 +211,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'село'" [stepControl]="institutionFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Повна інформація</ng-template>
       <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="receptionOffice">
@@ -301,7 +301,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step *ngIf="institutionFormGroup.value.institutionType === 'село'" [stepControl]="institutionFormGroup">
+  <mat-step *ngIf="institutionFormGroup.value.institutionType === 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
       <ng-template matStepLabel>Ресури</ng-template>
       <mat-form-field class="full-width">

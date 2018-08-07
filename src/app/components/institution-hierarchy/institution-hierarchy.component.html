@@ -7,7 +7,7 @@
           <span class="institution" (click)="onInstitutionClick(institution)">{{institution.fullName}} : {{institution.totalPopulation}}</span>
           <span class="spacer"></span>
           <div *ngIf="isLoggedIn">
-            <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+            <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'Юридична особа ЛА ОТГ'"
               [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1, place: institution.place}">
               <mat-icon color="primary">add</mat-icon>
             </a>
@@ -30,7 +30,7 @@
             <span class="institution" (click)="onInstitutionClick(institution)">{{institution.fullName}} : {{institution.totalPopulation}}</span>
             <span class="spacer"></span>
             <div *ngIf="isLoggedIn">
-              <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'юридична особа ЛА ОТГ'"
+              <a *ngIf="institution.type == 2 || institution.type == 3 || institution.institutionType === 'ЦПМСД' || institution.institutionType === 'Юридична особа ЛА ОТГ'"
                 [routerLink]="['/institutions/add']" [queryParams]="{ parent: institution.id, type: institution.type + 1, place: institution.place}">
                 <mat-icon color="primary">add</mat-icon>
               </a>

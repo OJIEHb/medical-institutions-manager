@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
-import { ExcelService } from '../../services/excel.service';
+import { ExcelService } from '../../services/excel/excel.service';
 
 @Component({
   selector: 'institution',
@@ -30,7 +30,7 @@ export class InstitutionComponent {
   }
 
   public onEditInstitutionClick() {
-    this.router.navigate(['/institutions/edit', this.institution.id]);
+    this.router.navigate(['/institutions/edit', this.institution.id], {queryParams: { type: this.institution.type }});
   }
 
 }
