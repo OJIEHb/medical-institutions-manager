@@ -63,6 +63,10 @@ export class AddInstitutionComponent {
       institution.controlledBy = this.parentId;
     }
 
+    institution.totalBusyPersonalNumber = (institution.busyDoctorNumber || 0) + (institution.middleBusyPersonalNumber || 0) + (institution.otherBusyPersonalNumber);
+    institution.totalIndividualsPersonalNumber = (institution.individualsDoctorNumber || 0) + (institution.middleIndividualsPersonalNumber || 0) + (institution.otherIndividualsPersonalNumber || 0);
+    institution.totalRegularPersonalNumber = (institution.regularDoctorNumber || 0) + (institution.middleRegularPersonalNumber || 0) + (institution.otherRegularPersonalNumber || 0);
+
     institution.regionType = this.getRegionType(institution.place);
     if (institution.institutionType === "село")
       institution.type = 4;
@@ -76,6 +80,11 @@ export class AddInstitutionComponent {
   public updateInstitution() {
     let institution = Object.assign(this.institution, this.institutionFormGroup.value);
     institution.regionType = this.getRegionType(institution.place);
+
+    institution.totalBusyPersonalNumber = (institution.busyDoctorNumber || 0) + (institution.middleBusyPersonalNumber || 0) + (institution.otherBusyPersonalNumber);
+    institution.totalIndividualsPersonalNumber = (institution.individualsDoctorNumber || 0) + (institution.middleIndividualsPersonalNumber || 0) + (institution.otherIndividualsPersonalNumber || 0);
+    institution.totalRegularPersonalNumber = (institution.regularDoctorNumber || 0) + (institution.middleRegularPersonalNumber || 0) + (institution.otherRegularPersonalNumber || 0);
+    
     this.institutionService.update(institution.id, institution);
     this.location.back();
   }
@@ -108,20 +117,11 @@ export class AddInstitutionComponent {
       phone: [],
       fax: [],
       site: [],
-      // headDoctor: this.formBuilder.group({
-      //   name: [],
-      //   workPhone: [],
-      //   homePhone: []
-      // }),
-      // headDoctorSecretary: this.formBuilder.group({
-      //   name: [],
-      //   workPhone: []
-      // }),
-      headDoctorName:[],
-      headDoctorWorkPhone:[],
-      headDoctorMobile:[],
-      secretaryHeadDoctorName:[],
-      secretaryHeadDoctorPhone:[],
+      headDoctorName: [],
+      headDoctorWorkPhone: [],
+      headDoctorMobile: [],
+      secretaryHeadDoctorName: [],
+      secretaryHeadDoctorPhone: [],
       receptionOffice: [false],
       receptionOfficePhone: [],
       registryOffice: [false],
