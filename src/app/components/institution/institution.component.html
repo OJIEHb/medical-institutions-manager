@@ -5,7 +5,7 @@
 				<div class="col-md-10">
 					<b>{{institution.fullName}}</b>
 				</div>
-				<div class="col-md-2">
+				<div *ngIf="isLoggedIn" class="col-md-2">
 					<mat-icon class="institution-icon" (click)="onEditInstitutionClick()" color="primary">edit</mat-icon>
 					<mat-icon class="institution-icon" (click)="saveInstitutionExcel()" svgIcon="xlsx"></mat-icon>
 				</div>

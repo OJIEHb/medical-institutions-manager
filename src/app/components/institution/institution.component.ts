@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
 import { ExcelService } from '../../services/excel/excel.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'institution',
@@ -12,16 +13,19 @@ import { ExcelService } from '../../services/excel/excel.service';
 export class InstitutionComponent {
 
   institution: Institution;
+  isLoggedIn: boolean = false;
 
   constructor(private route: ActivatedRoute, 
       private institutionService: InstitutionService, 
       private excelService: ExcelService,
-      private router: Router) { 
+      private router: Router,
+      private authService: AuthService) { 
     this.route.params
       .subscribe(params => {
       this.institutionService.getById(params['id'])
         .subscribe(institution => this.institution = institution)
-    })
+    });
+    this.authService.isLoggedIn().subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
   }
 
   public saveInstitutionExcel() {
