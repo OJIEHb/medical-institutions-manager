@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { UUID } from 'angular2-uuid';
 import { DatabaseReference } from 'angularfire2/database/interfaces';
 import { Filter } from '../models/filter';
+import { map } from '../../../node_modules/rxjs/operators';
 
 @Injectable()
 export class InstitutionService {
@@ -30,7 +31,10 @@ export class InstitutionService {
   }
 
   public getAll(): Observable<Institution[]> {
-    return this.institutions.valueChanges();
+    return this.institutions.valueChanges()
+      .pipe(map(institutions => institutions.sort((a, b) => {
+        return a.fullName.toLowerCase() > b.fullName.toLowerCase() ? 1 : a.fullName.toLowerCase() < b.fullName.toLowerCase() ? -1 : 0;
+      })));
   }
 
   public getById(id: string): Observable<Institution> {
