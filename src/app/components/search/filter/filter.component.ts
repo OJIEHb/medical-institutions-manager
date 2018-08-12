@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { InstitutionPlaceService } from '../../../services/institution-place.service';
 import { FormDataService } from '../../../services/form-data.service';
-import { Institution } from '../../../models/institution';
 
 @Component({
   selector: 'filter',
@@ -27,6 +26,7 @@ export class FilterComponent {
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {
     this.placeService.getAll().subscribe(groups => this.placeGroups = groups);
     this.formDataService.getFormData().subscribe(formData => this.formData = formData);
+    this.filtered.emit(this.filter);
   }
 
   public onSingleFilterClick(isChecked: boolean, key: string, value: any) {

@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-md-4">
+    <button class="clear-button" mat-raised-button color="accent" (click)="clearFilter()">
+      Очистити фільтр
+    </button>
     <div class="filter-container">
       <div class="scrollable-container">
-        <filter [data]="filterData" (filtered)="onFilterChange($event)"></filter>
+        <filter *ngIf="showFilter" #filter [data]="filterData" (filtered)="onFilterChange($event)"></filter>
       </div>
     </div>
   </div>

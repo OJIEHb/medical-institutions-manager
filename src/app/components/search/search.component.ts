@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
 import { Router } from '@angular/router';
+import { FilterComponent } from './filter/filter.component';
 
 @Component({
   selector: 'search',
@@ -10,23 +11,26 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent {
 
+  @ViewChild('filter') filterComponent: FilterComponent;
+
   public filtredInstitutions: Institution[];
   public filterData = {
-    totalPopulation: { type: 'range', min: 0, max: 0},
+    totalPopulation: { type: 'range', min: 0, max: 0 },
     vehiclesReality: { type: 'range', min: 0, max: 0 },
     computerEquipmentReality: { type: 'range', min: 0, max: 0 }
   };
   public search: string;
+  public showFilter = true;
 
   private originalInstitutions: Institution[];
   private filterParam = {};
 
-  constructor(private institutionService: InstitutionService, private router: Router) {
+  constructor(private institutionService: InstitutionService, private router: Router, private changeDetector: ChangeDetectorRef) {
     this.institutionService.getAll()
       .subscribe(institutions => {
         this.originalInstitutions = institutions;
-	this.getFilterData(institutions);
-	this.filter(this.filterParam);
+        this.getFilterData(institutions);
+        this.filter(this.filterParam);
       });
   }
 
@@ -59,13 +63,21 @@ export class SearchComponent {
     return 0;
   }
 
+  public clearFilter() {
+    this.showFilter = !this.showFilter;
+    this.changeDetector.detectChanges();
+    this.showFilter = !this.showFilter;
+    this.changeDetector.detectChanges();
+    this.filterParam = {};
+    this.onSearchChange();
+  }
+
   private getFilterData(institutions: Institution[]): any {
     this.filterData.totalPopulation.max = Math.max.apply(Math, institutions.map(institution => institution.totalPopulation));
     this.filterData.vehiclesReality.max = Math.max.apply(Math, institutions.map(institution => institution.vehiclesReality));
     this.filterData.computerEquipmentReality.max = Math.max.apply(Math, institutions.map(institution => institution.computerEquipmentReality));
   }
-  
-  
+
   private filter(filter) {
     let filtred = this.originalInstitutions;
     Object.keys(filter).forEach(key => {
