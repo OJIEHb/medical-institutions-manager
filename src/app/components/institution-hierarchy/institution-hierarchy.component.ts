@@ -1,7 +1,6 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { of, Observable } from "rxjs";
 import { Institution } from '../../models/institution';
 import { InstitutionService } from '../../services/institution.service';
 import { Router } from '@angular/router';
@@ -44,7 +43,7 @@ export class InstitutionHierarchyComponent implements OnChanges {
 
   hasNestedChild = (_: number, institution: Institution) => institution.controlledInstitutions;
 
-  private getChildren = (institution: Institution) => of(institution.controlledInstitutions);
+  private getChildren = (institution: Institution) => institution.controlledInstitutions;
 
   public onDeleteInstitutionClick(institution: Institution) {
     this.dialog.open(RemoveInstitutionDialogComponent, {

@@ -13,7 +13,7 @@
 
 .filter-container {
   overflow: hidden; 
-  height: 72vh; 
+  height: calc(80vh - 46px); 
   border-bottom: 1px solid rgba(0,0,0,.14); 
   border-top: 1px solid rgba(0,0,0,.14);
 }
