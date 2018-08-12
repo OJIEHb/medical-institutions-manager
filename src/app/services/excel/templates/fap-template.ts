@@ -36,7 +36,7 @@ export function getFapTemplate(institution: Institution): any {
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Види допомоги, які надає ЗОЗ",
-			value: institution.medicalAidTypes.join(", "),
+			value: institution.medicalAidTypes ? institution.medicalAidTypes.join(", ") : '-',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Ресурси закладу",
