@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 export class SearchComponent {
 
   public filtredInstitutions: Institution[];
-
+  public filterData = {
+    totalPopulation: { type: 'range', min: 0, max: 0},
+    vehiclesReality: { type: 'range', min: 0, max: 0 },
+    computerEquipmentReality: { type: 'range', min: 0, max: 0 }
+  };
   public search: string;
 
   private originalInstitutions: Institution[];
@@ -21,7 +25,8 @@ export class SearchComponent {
     this.institutionService.getAll()
       .subscribe(institutions => {
         this.originalInstitutions = institutions;
-        this.filter(this.filterParam);
+	this.getFilterData(institutions);
+	this.filter(this.filterParam);
       });
   }
 
@@ -53,6 +58,13 @@ export class SearchComponent {
       return this.filtredInstitutions.length;
     return 0;
   }
+
+  private getFilterData(institutions: Institution[]): any {
+    this.filterData.totalPopulation.max = Math.max.apply(Math, institutions.map(institution => institution.totalPopulation));
+    this.filterData.vehiclesReality.max = Math.max.apply(Math, institutions.map(institution => institution.vehiclesReality));
+    this.filterData.computerEquipmentReality.max = Math.max.apply(Math, institutions.map(institution => institution.computerEquipmentReality));
+  }
+  
   
   private filter(filter) {
     let filtred = this.originalInstitutions;

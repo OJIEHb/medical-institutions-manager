@@ -15,7 +15,9 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let institutionType of formData.institutionType">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'institutionType', institutionType.name)">{{institutionType.name}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'institutionType', institutionType.name)">
+          {{institutionType.name}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -25,7 +27,9 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let subordinationLevel of formData.subordinationLevel">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'subordinationLevel', subordinationLevel)">{{subordinationLevel}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'subordinationLevel', subordinationLevel)">
+          {{subordinationLevel}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -35,7 +39,8 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let placeType of formData.placeType">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'placeType', placeType)">{{placeType}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'placeType', placeType)">{{placeType}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -45,7 +50,8 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let ownership of formData.ownership">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'ownership', ownership)">{{ownership}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'ownership', ownership)">{{ownership}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -55,7 +61,8 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let legalFormCode of formData.legalFormCode">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'legalFormCode', legalFormCode)">{{legalFormCode}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'legalFormCode', legalFormCode)">{{legalFormCode}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -89,7 +96,31 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Кількість населення</mat-panel-title>
     </mat-expansion-panel-header>
-    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.totalPopulation.min" [(highValue)]="filter.totalPopulation.max"></ng5-slider>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.totalPopulation.min"
+                 (change)="onRangeFilterChange('totalPopulation')"
+                 type="number"
+                 matInput
+                 [max]="rangeData.totalPopulation.max"
+                 placeholder="Від">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.totalPopulation.max"
+                 (change)="onRangeFilterChange('totalPopulation')"
+                 type="number"
+                 matInput
+                 [max]="data.totalPopulation.max"
+                 placeholder="До">
+        </mat-form-field>
+      </div>
+    </div>
+    <ng5-slider (valueChange)="onRangeFilterChange('totalPopulation')" [(value)]="rangeData.totalPopulation.min"
+                [(highValue)]="rangeData.totalPopulation.max"
+                [options]="{ floor: data.totalPopulation.min, ceil: data.totalPopulation.max}"></ng5-slider>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -97,7 +128,8 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalCare of formData.medicalCare">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicalCare', medicalCare)">{{medicalCare}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicalCare', medicalCare)">{{medicalCare}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -107,7 +139,9 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let medicalAidTypes of formData.medicalAidTypes">
-        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes)">{{medicalAidTypes}}</mat-checkbox>
+        <mat-checkbox (change)="onMultiFilterClick($event.checked, 'medicalAidTypes', medicalAidTypes)">
+          {{medicalAidTypes}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -130,13 +164,18 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'наявна')">Наявна</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'наявна')">Наявна
+        </mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'відсутня')">Відсутня</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'відсутня')">Відсутня
+        </mat-checkbox>
       </mat-list-item>
       <mat-list-item>
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'не підлягає акредитації')">Не підлягає акредитації</mat-checkbox>
+        <mat-checkbox
+          (change)="onSingleFilterClick($event.checked, 'accreditationCategoryType', 'не підлягає акредитації')">Не
+          підлягає акредитації
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -159,7 +198,8 @@
     </mat-expansion-panel-header>
     <mat-list *ngIf="formData">
       <mat-list-item *ngFor="let heatingType of formData.heatingType">
-        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'heatingType', heatingType)">{{heatingType}}</mat-checkbox>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'heatingType', heatingType)">{{heatingType}}
+        </mat-checkbox>
       </mat-list-item>
     </mat-list>
   </mat-expansion-panel>
@@ -237,7 +277,32 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Транспортні засоби</mat-panel-title>
     </mat-expansion-panel-header>
-    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.vehiclesReality.min" [(highValue)]="filter.vehiclesReality.max"></ng5-slider>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.vehiclesReality.min"
+                 (change)="onRangeFilterChange('vehiclesReality')"
+                 type="number"
+                 matInput
+                 [max]="rangeData.vehiclesReality.max"
+                 placeholder="Від">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.vehiclesReality.max"
+                 (change)="onRangeFilterChange('vehiclesReality')"
+                 type="number"
+                 matInput
+                 [max]="data.vehiclesReality.max"
+                 placeholder="До">
+        </mat-form-field>
+      </div>
+    </div>
+    <ng5-slider (valueChange)="onRangeFilterChange('vehiclesReality')"
+                [(value)]="rangeData.vehiclesReality.min"
+                [(highValue)]="rangeData.vehiclesReality.max"
+                [options]="{ floor: data.vehiclesReality.min, ceil: data.vehiclesReality.max}"></ng5-slider>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -256,6 +321,31 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Забезпеченість комп'ютерною технікою</mat-panel-title>
     </mat-expansion-panel-header>
-    <ng5-slider (valueChange)="onRangeFilterChange()" [(value)]="filter.computerEquipmentReality.min" [(highValue)]="filter.computerEquipmentReality.max"></ng5-slider>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.computerEquipmentReality.min"
+                 (change)="onRangeFilterChange('computerEquipmentReality')"
+                 type="number"
+                 matInput
+                 [max]="rangeData.computerEquipmentReality.max"
+                 placeholder="Від">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="rangeData.computerEquipmentReality.max"
+                 (change)="onRangeFilterChange('computerEquipmentReality')"
+                 type="number"
+                 matInput
+                 [max]="data.computerEquipmentReality.max"
+                 placeholder="До">
+        </mat-form-field>
+      </div>
+    </div>
+    <ng5-slider (valueChange)="onRangeFilterChange('computerEquipmentReality')"
+                [(value)]="rangeData.computerEquipmentReality.min"
+                [(highValue)]="rangeData.computerEquipmentReality.max"
+                [options]="{ floor: data.computerEquipmentReality.min, ceil: data.computerEquipmentReality.max}"></ng5-slider>
   </mat-expansion-panel>
 </mat-accordion>

@@ -9,21 +9,24 @@ import { Institution } from '../../../models/institution';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-
+  
+  @Input() data: any;
   @Output() filtered = new EventEmitter<any>();
 
   public placeGroups: any;
   public formData: any;
 
-  public filter = {
-    totalPopulation: { type: 'range', min: 0, max: 5000 },
-    vehiclesReality: { type: 'range', min: 0, max: 200 },
-    computerEquipmentReality: { type: 'range', min: 0, max: 200 },
+  public filter = {};
+
+  public rangeData = {
+    totalPopulation: { min: 0, max: 0 },
+    vehiclesReality: { min: 0, max: 0 },
+    computerEquipmentReality: { min: 0, max: 0 },
   };
 
   constructor(private placeService: InstitutionPlaceService, private formDataService: FormDataService) {
     this.placeService.getAll().subscribe(groups => this.placeGroups = groups);
-    this.formDataService.getFormData().subscribe(formData => this.formData = formData)
+    this.formDataService.getFormData().subscribe(formData => this.formData = formData);
   }
 
   public onSingleFilterClick(isChecked: boolean, key: string, value: any) {
@@ -33,7 +36,7 @@ export class FilterComponent {
       this.filter[key].value.push(value);
     }
     else {
-      let index = this.filter[key].value.indexOf(value);
+      const index = this.filter[key].value.indexOf(value);
       this.filter[key].value.splice(index, 1);
     }
     this.filtered.emit(this.filter);
@@ -46,13 +49,14 @@ export class FilterComponent {
       this.filter[key].value.push(value);
     }
     else {
-      let index = this.filter[key].value.indexOf(value);
+      const index = this.filter[key].value.indexOf(value);
       this.filter[key].value.splice(index, 1);
     }
     this.filtered.emit(this.filter);
   }
 
-  public onRangeFilterChange() {
+  public onRangeFilterChange(key: string) {
+    this.filter[key] = { type: 'range', min: this.rangeData[key].min, max: this.rangeData[key].max };
     this.filtered.emit(this.filter);
   }
 }
