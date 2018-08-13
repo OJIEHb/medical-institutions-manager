@@ -3,6 +3,7 @@ import { InstitutionService } from '../../services/institution.service';
 import { Institution } from '../../models/institution';
 import { Router } from '@angular/router';
 import { FilterComponent } from './filter/filter.component';
+import { MatPaginator } from '../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'search',
@@ -12,6 +13,7 @@ import { FilterComponent } from './filter/filter.component';
 export class SearchComponent {
 
   @ViewChild('filter') filterComponent: FilterComponent;
+  @ViewChild('paginator') paginator: MatPaginator;
 
   public filtredInstitutions: Institution[];
   public filterData = {
@@ -21,6 +23,8 @@ export class SearchComponent {
   };
   public search: string;
   public showFilter = true;
+  public paginatedInstitutions: Institution[];
+  public pageSize = 5;
 
   private originalInstitutions: Institution[];
   private filterParam = {};
@@ -38,6 +42,8 @@ export class SearchComponent {
     this.filter(this.filterParam);
     this.filtredInstitutions = this.filtredInstitutions
       .filter(institution => institution.fullName.toLowerCase().includes(this.search.toLocaleLowerCase()));
+    this.paginator.pageIndex = 0;
+    this.paginatedInstitutions = this.filtredInstitutions.slice(0, this.pageSize);
   }
 
   public onClearSearchClick() {
@@ -47,6 +53,12 @@ export class SearchComponent {
 
   public onInstitutionClick(institution: Institution) {
     this.router.navigate(['/institution', institution.id])
+  }
+
+  public onPageChange(page) {
+    this.pageSize = page.pageSize;
+    this.paginatedInstitutions = this.filtredInstitutions.slice((page.pageIndex * page.pageSize), (page.pageIndex * page.pageSize) + page.pageSize);
+    console.log(this.pageSize);
   }
 
   public onFilterChange(filter) {
@@ -111,5 +123,7 @@ export class SearchComponent {
       }
     })
     this.filtredInstitutions = filtred;
+    this.paginator.pageIndex = 0;
+    this.paginatedInstitutions = this.filtredInstitutions.slice(0, this.pageSize);
   }
 }

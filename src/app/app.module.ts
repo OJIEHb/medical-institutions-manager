@@ -27,10 +27,11 @@ import { SearchComponent } from './components/search/search.component';
 import { FilterComponent } from './components/search/filter/filter.component';
 import { FormDataService } from './services/form-data.service';
 import { Ng5SliderModule } from 'ng5-slider';
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE, MatPaginatorIntl } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { ExcelService } from './services/excel/excel.service';
 import { InstitutionExcelService } from './services/excel/institution-excel.service';
+import { getPaginatorIntl } from './paginator-intl';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { InstitutionExcelService } from './services/excel/institution-excel.serv
     DatePipe,
     FormDataService,
     { provide: MAT_DATE_LOCALE, useValue: 'ua-UA' },
+    { provide: MatPaginatorIntl, useValue: getPaginatorIntl() },
     ExcelService,
     InstitutionExcelService
   ],
