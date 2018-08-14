@@ -12,19 +12,19 @@
 			</div>
 		</mat-card-title>
 		<div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Місце розташування:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.place}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Рівень підпорядкування:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.subordinationLevel}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Тип населеного пункту місця розташування:</b>
 				</span>
@@ -36,37 +36,31 @@
 				</span>
 				<span class="col-md-6 institution-field">{{institution.fullAddress}}</span>
 			</div>
-			<div class="row">
-				<span class="col-md-6 institution-field">
-					<b>Населення:</b>
-				</span>
-				<span class="col-md-6 institution-field">{{institution.totalPopulation}}</span>
-			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Email установи:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.email}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Контактний телефон закладу:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.phone}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Факс:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.fax}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Сайт в Internet:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.site}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Статус юридичної особи:</b>
 				</span>
@@ -75,61 +69,61 @@
 					<span *ngIf="!institution.legalStatus">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Код ЄДРПОУ:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.stateRegisterCode}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Код території КОАТУУ:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.classifierObjectCode}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Форма власності:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.ownership}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Код організаційно-правової форми (КОПФ):</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.legalFormCode}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>ПІП головного лікаря (заступника):</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.headDoctorName}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Робочий телефон:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.headDoctorWorkPhone}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Мобільний телефон:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.headDoctorMobile}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>ПІП секретаря головного лікаря:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.secretaryHeadDoctorName}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Робочий телефон:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.secretaryHeadDoctorPhone}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Приймальне відділення:</b>
 				</span>
@@ -138,13 +132,13 @@
 					<span *ngIf="!institution.receptionOffice">Відсутнє</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Телефон приймального відділення:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.receptionOfficePhone}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Реєстратура амбулаторно-поліклінічного підрозділу:</b>
 				</span>
@@ -153,7 +147,7 @@
 					<span *ngIf="!institution.registryOffice">Відсутня</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Телефон реєстратури:</b>
 				</span>
@@ -171,24 +165,24 @@
 				</span>
 				<span class="col-md-6 institution-field">{{institution.population}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Рівень надання медичної допомоги:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.medicalCare}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Планова ємність:</b>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>- кількість ліжок стаціонару:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.hospitalBedsNumber}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>- планова ємність амбулаторно-поліклінічного підрозділу:</b>
 				</span>
@@ -200,21 +194,13 @@
 				</span>
 				<span class="col-md-6 institution-field">{{institution.institutionType}}</span>
 			</div>
-			<div class="row">
-				<span class="col-md-6 institution-field"></span>
-				<span class="col-md-6 institution-field"></span>
-			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Види допомоги, які надає ЗОЗ:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.medicalAidTypes}}</span>
 			</div>
-			<div class="row">
-				<span class="col-md-6 institution-field"></span>
-				<span class="col-md-6 institution-field"></span>
-			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Наявність ліцензії:</b>
 				</span>
@@ -223,50 +209,50 @@
 					<span *ngIf="!institution.license">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Номер ліцензії:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.licenseNumber}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Дата:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.licenseDate| date:'dd-MM-yyyy'}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Термін дії:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.startLicenseValidity| date:'dd-MM-yyyy'}}
 					<b> - </b>{{institution.endLicenseValidity| date:'dd-MM-yyyy'}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Задекларовані види допомоги:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.declaredAssistanceForms}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Акредитаційна категорія:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.accreditationCategoryType}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Номер акредитаційної категорії:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.accreditationCategoryNumber}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Дата останньої акредитації:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.lastAccreditation| date:'dd-MM-yyyy'}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type == 1">
 				<span class="col-md-6 institution-field">
 					<b>Термін дії:</b>
 				</span>
@@ -274,10 +260,10 @@
 					<b> - </b>{{institution.endAccreditationValidity| date:'dd-MM-yyyy'}}</span>
 			</div>
 		</div>
-		<h6 align="center">
+		<h6 align="center" *ngIf="institution.type < 4">
 			<b>Ресурси закладу: </b>
 		</h6>
-		<div class="row">
+		<div class="row" *ngIf="institution.type < 4">
 			<div class="col-md-3">
 				<h6>
 					<b>Всього посад: </b>
@@ -324,7 +310,7 @@
 			</div>
 		</div>
 		<div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Характеристика забудови (типовий проект):</b>
 				</span>
@@ -333,13 +319,13 @@
 					<span *ngIf="!institution.typicalBuilding">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Опалення:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.heatingType}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Наявність централізованого холодного водопостачання:</b>
 				</span>
@@ -348,7 +334,7 @@
 					<span *ngIf="!institution.coldWaterSupply">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Наявність централізованого гарячого водопостачання:</b>
 				</span>
@@ -357,43 +343,43 @@
 					<span *ngIf="!institution.hotWaterSupply">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Оснащеність медичним обладнанням та інвентарем:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.equipment}} %</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Забезпеченість медикаментами для надання невідкладної допомоги:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.medicamentEquipment}} %</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Транспортні засоби (автомобілі):</b>
 				</span>
 				<span class="col-md-6 institution-field"></span>
 			</div>
-			<div class="row">
+			<div class="row"  *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Потреба (кількість):</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.vehiclesNeed}}</span>
 			</div>
-			<div class="row">
+			<div class="row"  *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>Наявність (кількість):</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.vehiclesReality}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 3">
 				<span class="col-md-6 institution-field">
 					<b>В т.ч. на ходу:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.vehiclesWay}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Наявність доступу до мережі Internet:</b>
 				</span>
@@ -402,19 +388,19 @@
 					<span *ngIf="!institution.internetSupply">Ні</span>
 				</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Забезпеченість ЗОЗ комп'ютерною технікою:</b>
 				</span>
 				<span class="col-md-6 institution-field"></span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Потреба (кількість):</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.computerEquipmentNeed}}</span>
 			</div>
-			<div class="row">
+			<div class="row" *ngIf="institution.type < 4">
 				<span class="col-md-6 institution-field">
 					<b>Наявність (кількість):</b>
 				</span>

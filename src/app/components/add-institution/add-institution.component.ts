@@ -68,7 +68,7 @@ export class AddInstitutionComponent {
     institution.totalRegularPersonalNumber = (institution.regularDoctorNumber || 0) + (institution.middleRegularPersonalNumber || 0) + (institution.otherRegularPersonalNumber || 0);
 
     institution.regionType = this.getRegionType(institution.place);
-    if (institution.institutionType === "село")
+    if (institution.institutionType === "Село")
       institution.type = 4;
     else
       institution.type = +this.type;
