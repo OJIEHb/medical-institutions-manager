@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { RemoveInstitutionDialogComponent } from './remove-institution-dialog/remove-institution-dialog.component';
 import { AuthService } from '../../services/auth.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'institution-hierarchy',
@@ -21,11 +22,14 @@ export class InstitutionHierarchyComponent implements OnChanges {
   nestedDataSource: MatTreeNestedDataSource<Institution>;
 
   isLoggedIn: boolean = false;
+  licenseEnd = [];
+  licenseAlertIsShowed = false;
 
   constructor(private institutionService: InstitutionService,
     public dialog: MatDialog,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private toastService: ToastService) {
     this.nestedTreeControl = new NestedTreeControl<Institution>(this.getChildren);
     this.nestedDataSource = new MatTreeNestedDataSource();
 
@@ -37,7 +41,16 @@ export class InstitutionHierarchyComponent implements OnChanges {
     if (this.institutions) {
       let nodesState = this.getIsExpandedNode();
       this.nestedDataSource.data = this.institutionService.getHierarchy(this.institutions);
+
       this.setIsExpandedNode(nodesState);
+
+      this.licenseEnd = this.institutions.reduce((acc, institution) => {
+        if (institution.license && new Date(institution.endLicenseValidity).getTime() <= new Date().getTime())
+          acc.push(institution);
+        return acc;
+      }, []);
+
+      this.showLicenseAlert();
     }
   }
 
@@ -75,5 +88,19 @@ export class InstitutionHierarchyComponent implements OnChanges {
           this.nestedTreeControl.expand(child);
       })
     });
+  }
+
+  private showLicenseAlert() {
+    if (this.licenseEnd.length && !this.licenseAlertIsShowed) {
+      this.licenseAlertIsShowed = true;
+      this.toastService.dismissAll();
+      setTimeout(() => {
+        this.licenseEnd.forEach(institution => {
+          this.toastService.showWarning('Увага! Закінчилась ліцензія', institution.fullName, () => {
+            this.router.navigate(['/institutions/edit', institution.id], { queryParams: { type: institution.type } });
+          });
+        })
+      }, 250)
+    }
   }
 }

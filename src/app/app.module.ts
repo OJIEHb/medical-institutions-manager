@@ -32,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExcelService } from './services/excel/excel.service';
 import { InstitutionExcelService } from './services/excel/institution-excel.service';
 import { getPaginatorIntl } from './paginator-intl';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastService } from './services/toast.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { getPaginatorIntl } from './paginator-intl';
   ],
   imports: [
     RouterModule.forRoot(routes),
+    ToastrModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -70,7 +73,8 @@ import { getPaginatorIntl } from './paginator-intl';
     { provide: MAT_DATE_LOCALE, useValue: 'ua-UA' },
     { provide: MatPaginatorIntl, useValue: getPaginatorIntl() },
     ExcelService,
-    InstitutionExcelService
+    InstitutionExcelService,
+    ToastService
   ],
   entryComponents: [RemoveInstitutionDialogComponent],
   bootstrap: [AppComponent]
