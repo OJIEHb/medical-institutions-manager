@@ -95,7 +95,7 @@ export class InstitutionHierarchyComponent implements OnChanges {
     setTimeout(() => {
       this.institutions.forEach(institution => {
         if (institution.license && new Date(institution.endLicenseValidity).getTime() <= new Date().getTime())
-          this.toastService.showWarning('Увага! Закінчилась ліцензія', institution.fullName, () => {
+          this.toastService.showWarning('Закінчився термін дії ліцензії', institution.fullName, () => {
             this.router.navigate(['/institutions/edit', institution.id], { queryParams: { type: institution.type } });
           });
       })
@@ -106,7 +106,7 @@ export class InstitutionHierarchyComponent implements OnChanges {
     setTimeout(() => {
       this.institutions.forEach(institution => {
         if (institution.accreditationCategoryType == 'наявна' && new Date(institution.endAccreditationValidity).getTime() <= new Date().getTime())
-          this.toastService.showWarning('Увага! Закінчилась акредитація', institution.fullName, () => {
+          this.toastService.showWarning('Закінчився термін дії акредитації', institution.fullName, () => {
             this.router.navigate(['/institutions/edit', institution.id], { queryParams: { type: institution.type } });
           });
       })
