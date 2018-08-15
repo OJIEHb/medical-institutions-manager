@@ -4,6 +4,7 @@ import { Institution } from '../../models/institution';
 import { Router } from '@angular/router';
 import { FilterComponent } from './filter/filter.component';
 import { MatPaginator } from '../../../../node_modules/@angular/material';
+import { ExcelService } from '../../services/excel/excel.service';
 
 @Component({
   selector: 'search',
@@ -29,7 +30,7 @@ export class SearchComponent {
   private originalInstitutions: Institution[];
   private filterParam = {};
 
-  constructor(private institutionService: InstitutionService, private router: Router, private changeDetector: ChangeDetectorRef) {
+  constructor(private institutionService: InstitutionService, private router: Router, private changeDetector: ChangeDetectorRef, private excelService: ExcelService) {
     this.institutionService.getAll()
       .subscribe(institutions => {
         this.originalInstitutions = institutions;
@@ -58,7 +59,6 @@ export class SearchComponent {
   public onPageChange(page) {
     this.pageSize = page.pageSize;
     this.paginatedInstitutions = this.filtredInstitutions.slice((page.pageIndex * page.pageSize), (page.pageIndex * page.pageSize) + page.pageSize);
-    console.log(this.pageSize);
   }
 
   public onFilterChange(filter) {
@@ -82,6 +82,10 @@ export class SearchComponent {
     this.changeDetector.detectChanges();
     this.filterParam = {};
     this.onSearchChange();
+  }
+
+  public saveInstitutionsExcel() {
+    this.excelService.getExcelFromFiltredInstitutions(this.filtredInstitutions, this.filterParam);
   }
 
   private getFilterData(institutions: Institution[]): any {

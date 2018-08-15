@@ -3,9 +3,12 @@ import { Institution } from '../../models/institution';
 import * as Excel from 'exceljs/dist/exceljs.min';
 import { saveAs } from 'file-saver';
 import { InstitutionExcelService } from './institution-excel.service';
+import { getHeaders } from './headers';
 
 @Injectable()
 export class ExcelService {
+
+  private headers: Map<string, string> = new Map();
 
   constructor(private institutionTemplateService: InstitutionExcelService) { }
 
@@ -30,6 +33,33 @@ export class ExcelService {
     worksheet.getCell('A1').font = { bold: true, size: 16, underline: true }
     workbook.xlsx.writeBuffer().then(data => {
       saveAs(new Blob([data], { type: "application/octet-stream" }), institution.fullName + '.xlsx')
+    })
+  }
+
+  public getExcelFromFiltredInstitutions(institutions: Institution[], filter) {
+    const workbook = new Excel.Workbook();
+    let worksheet = workbook.addWorksheet();
+    let keys = Array.from(new Set(['fullName', 'phone', 'stateRegisterCode', 'institutionType', 'medicalCare', 'headDoctorName'].concat(Object.keys(filter))));
+    worksheet.addRow(keys.map(key => getHeaders().get(key))).font = { bold: true };
+    institutions.forEach(institution => {
+      worksheet.addRow(keys.map(key => {
+        if (institution[key] === true)
+          return 'Так';
+        else if (institution[key] === false)
+          return '';
+        else if (Array.isArray(institution[key]))
+          return institution[key] ? institution[key].join(", ") : '-';
+        else
+          return institution[key];
+      }));
+    });
+    keys.forEach((key, i) => {
+      worksheet.getColumn(i + 1).width = 15;
+      worksheet.getColumn(i + 1).alignment = { vertical: 'top', wrapText: true }
+    })
+    worksheet.getColumn(1).width = 50;
+    workbook.xlsx.writeBuffer().then(data => {
+      saveAs(new Blob([data], { type: "application/octet-stream" }), 'Медичні заклади.xlsx')
     })
   }
 }

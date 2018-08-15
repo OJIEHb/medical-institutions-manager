@@ -12,7 +12,7 @@
 
   <div class="col-md-8">
     <div class="row">
-      <mat-form-field class="col-md-7">
+      <mat-form-field class="col-md-6">
         <input matInput [matAutocomplete]="auto" placeholder="Пошук" (input)="onSearchChange()" [(ngModel)]="search">
         <button mat-button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
           <mat-icon>close</mat-icon>
@@ -23,8 +23,11 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <mat-paginator #paginator class="col-md-5" [length]="getPaginatorLength()" [pageSizeOptions]="[5, 10, 20, 50]" [pageSize]="pageSize" (page)="onPageChange($event)">
-      </mat-paginator>
+      <div class="col-md-6 row">
+        <mat-icon class="excel-icon" (click)="saveInstitutionsExcel()" svgIcon="xlsx"></mat-icon>
+        <mat-paginator #paginator [length]="getPaginatorLength()" [pageSizeOptions]="[5, 10, 20, 50]" [pageSize]="pageSize" (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
     </div>
     <mat-list>
       <mat-list-item class="institution-item" *ngFor="let institution of paginatedInstitutions" (click)="onInstitutionClick(institution)">
