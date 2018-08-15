@@ -24,6 +24,7 @@ export class InstitutionHierarchyComponent implements OnChanges {
   isLoggedIn: boolean = false;
   licenseEnd = [];
   licenseAlertIsShowed = false;
+  accreditationAlertIsShowed = false;
 
   constructor(private institutionService: InstitutionService,
     public dialog: MatDialog,
@@ -44,13 +45,13 @@ export class InstitutionHierarchyComponent implements OnChanges {
 
       this.setIsExpandedNode(nodesState);
 
-      this.licenseEnd = this.institutions.reduce((acc, institution) => {
-        if (institution.license && new Date(institution.endLicenseValidity).getTime() <= new Date().getTime())
-          acc.push(institution);
-        return acc;
-      }, []);
-
-      this.showLicenseAlert();
+      if (!this.licenseAlertIsShowed && !this.accreditationAlertIsShowed) {
+        this.toastService.dismissAll();
+        this.licenseAlertIsShowed = true;
+        this.accreditationAlertIsShowed = true;
+        this.showLicenseAlert();
+        this.showAccreditationAlert();
+      }
     }
   }
 
@@ -91,16 +92,24 @@ export class InstitutionHierarchyComponent implements OnChanges {
   }
 
   private showLicenseAlert() {
-    if (this.licenseEnd.length && !this.licenseAlertIsShowed) {
-      this.licenseAlertIsShowed = true;
-      this.toastService.dismissAll();
-      setTimeout(() => {
-        this.licenseEnd.forEach(institution => {
+    setTimeout(() => {
+      this.institutions.forEach(institution => {
+        if (institution.license && new Date(institution.endLicenseValidity).getTime() <= new Date().getTime())
           this.toastService.showWarning('Увага! Закінчилась ліцензія', institution.fullName, () => {
             this.router.navigate(['/institutions/edit', institution.id], { queryParams: { type: institution.type } });
           });
-        })
-      }, 250)
-    }
+      })
+    }, 250)
+  }
+
+  private showAccreditationAlert() {
+    setTimeout(() => {
+      this.institutions.forEach(institution => {
+        if (institution.accreditationCategoryType == 'наявна' && new Date(institution.endAccreditationValidity).getTime() <= new Date().getTime())
+          this.toastService.showWarning('Увага! Закінчилась акредитація', institution.fullName, () => {
+            this.router.navigate(['/institutions/edit', institution.id], { queryParams: { type: institution.type } });
+          });
+      })
+    }, 250)
   }
 }
