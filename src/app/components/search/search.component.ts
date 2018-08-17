@@ -25,7 +25,7 @@ export class SearchComponent {
   public search: string;
   public showFilter = true;
   public paginatedInstitutions: Institution[];
-  public pageSize = 5;
+  public pageSize = 10;
 
   private originalInstitutions: Institution[];
   private filterParam = {};
