@@ -5,9 +5,9 @@
 				<div class="col-md-9">
 					<b>{{institution.fullName}}</b>
 				</div>
-				<div *ngIf="isLoggedIn" class="col-md-3">
-					<mat-icon class="institution-icon" (click)="onEditInstitutionClick()" color="primary">edit</mat-icon>
-					<mat-icon class="institution-icon" (click)="saveInstitutionExcel()" svgIcon="xlsx"></mat-icon>
+				<div class="col-md-3">
+					<mat-icon *ngIf="isLoggedIn" class="institution-icon" (click)="onEditInstitutionClick()" color="primary">edit</mat-icon>
+					<mat-icon *ngIf="isLoggedIn" class="institution-icon" (click)="saveInstitutionExcel()" svgIcon="xlsx"></mat-icon>
 					<a matTooltip="Приблизне розміщення медичного закладу на карті"
 					matTooltipPosition="above"
 					[href]="'https://www.google.com/maps/search/ukraine' + (institution.zipcode ? '+' + institution.zipcode : '')" target="_blank">
