@@ -106,6 +106,7 @@ export class AddInstitutionComponent {
       placeType: [],
       institutionType: [],
       fullName: [],
+      zipcode: [],
       fullAddress: [],
       legalStatus: [false],
       stateRegisterCode: [],

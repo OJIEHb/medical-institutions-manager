@@ -28,6 +28,9 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width">
+        <input matInput placeholder="Поштовий індекс" formControlName="zipcode" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
         <input matInput placeholder="Повна юридична адреса" formControlName="fullAddress" required>
       </mat-form-field>
       <mat-slide-toggle *ngIf="type == 1" class="full-width" formControlName="legalStatus" required>

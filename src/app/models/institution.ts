@@ -7,6 +7,7 @@ export class Institution {
   placeType: string;
   regionType: number;
   fullName: string;
+  zipcode: string;
   fullAddress: string;
   institutionType: string;
   email: string;
