@@ -8,7 +8,7 @@
 				<div *ngIf="isLoggedIn" class="col-md-3">
 					<mat-icon class="institution-icon" (click)="onEditInstitutionClick()" color="primary">edit</mat-icon>
 					<mat-icon class="institution-icon" (click)="saveInstitutionExcel()" svgIcon="xlsx"></mat-icon>
-					<a [href]="'https://www.google.com/maps/search/ukraine+' + institution.zipcode" target="_blank">
+					<a [href]="'https://www.google.com/maps/search/ukraine' + (institution.zipcode ? '+' + institution.zipcode : '')" target="_blank">
 						<mat-icon class="institution-icon" color="primary">place</mat-icon>
 					</a>
 				</div>
