@@ -25,6 +25,7 @@ import {
   MatSliderModule,
   MatAutocompleteModule,
   MatPaginatorModule,
+  MatTooltipModule,
   MatIconRegistry,
 } from '@angular/material';
 
@@ -78,7 +79,8 @@ import {
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatSliderModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule,
   ]
 })
 export class MaterialModule {
