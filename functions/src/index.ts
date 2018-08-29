@@ -4,4 +4,4 @@ import * as CalculatePopulation from './recalculate-population'
 
 admin.initializeApp(functions.config().firebase)
 
-export const calculatePopulation = CalculatePopulation.listener
+export const calculatePopulation = CalculatePopulation.onWrite
