@@ -103,38 +103,40 @@
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
       </mat-form-field>
-      <mat-form-field *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'юридична особа ЛА ОТГ'"
+      <mat-form-field *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'Юридична особа ЛА ОТГ'"
         class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
           formControlName="population">
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Лікарі (штатні)" formControlName="regularDoctorNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Лікарі (зайняті)" formControlName="busyDoctorNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Лікарі (фіз.особи)" formControlName="individualsDoctorNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Середній м/п (штатні)" formControlName="middleRegularPersonalNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Середній м/п (зайняті)" formControlName="middleBusyPersonalNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Середній м/п (фіз.особи)" formControlName="middleIndividualsPersonalNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Інший персонал (штатні)" formControlName="otherRegularPersonalNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Інший персонал (зайняті)" formControlName="otherBusyPersonalNumber">
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <input type="number" min="0" matInput placeholder="Інший персонал (фіз.особи)" formControlName="otherIndividualsPersonalNumber">
-      </mat-form-field>
+      <div *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'Юридична особа ЛА ОТГ'">
+        <mat-form-field class="full-width" *ngIf="type < 3">
+          <input type="number" min="0" matInput placeholder="Лікарі (штатні)" formControlName="regularDoctorNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width" *ngIf="type < 3">
+          <input type="number" min="0" matInput placeholder="Лікарі (зайняті)" formControlName="busyDoctorNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width" *ngIf="type < 3">
+          <input type="number" min="0" matInput placeholder="Лікарі (фіз.особи)" formControlName="individualsDoctorNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Середній м/п (штатні)" formControlName="middleRegularPersonalNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Середній м/п (зайняті)" formControlName="middleBusyPersonalNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Середній м/п (фіз.особи)" formControlName="middleIndividualsPersonalNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Інший персонал (штатні)" formControlName="otherRegularPersonalNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Інший персонал (зайняті)" formControlName="otherBusyPersonalNumber">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input type="number" min="0" matInput placeholder="Інший персонал (фіз.особи)" formControlName="otherIndividualsPersonalNumber">
+        </mat-form-field>
+      </div>
       <mat-slide-toggle class="full-width" formControlName="typicalBuilding">
         Характеристика забудови: типовий проект
       </mat-slide-toggle>
