@@ -17,10 +17,12 @@ export const onWrite = functions.database.ref(path)
 
 async function updatePopulation(ref, id, institutions) {
     const institution = institutions.find(i => i.id === id);
-    const population = institution.totalPopulation;
-    calculateInstitutionPopulation(institution, institutions);
-    if (institution.totalPopulation !== population)
-        await savePopulation(ref, institution.id, institution.totalPopulation);
+    if (institution) {
+        const population = institution.totalPopulation;
+        calculateInstitutionPopulation(institution, institutions);
+        if (institution.totalPopulation !== population)
+            await savePopulation(ref, institution.id, institution.totalPopulation);
+    }
 }
 
 function calculateInstitutionPopulation(institution, institutions) {
