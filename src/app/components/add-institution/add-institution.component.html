@@ -289,7 +289,7 @@
   </mat-step>
   <mat-step *ngIf="institutionFormGroup.value.institutionType === 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
-      <ng-template matStepLabel>Ресури</ng-template>
+      <ng-template matStepLabel>Ресурси</ng-template>
       <mat-form-field class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території на 01.01"
           formControlName="population">
