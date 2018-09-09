@@ -214,19 +214,19 @@
 					<span *ngIf="!institution.license">Ні</span>
 				</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.license">
 				<span class="col-md-6 institution-field">
 					<b>Номер ліцензії:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.licenseNumber}}</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.license">
 				<span class="col-md-6 institution-field">
 					<b>Дата:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.licenseDate| date:'dd-MM-yyyy'}}</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.license">
 				<span class="col-md-6 institution-field">
 					<b>Термін дії:</b>
 				</span>
@@ -245,19 +245,19 @@
 				</span>
 				<span class="col-md-6 institution-field">{{institution.accreditationCategoryType}}</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.accreditationCategoryType === 'наявна'">
 				<span class="col-md-6 institution-field">
 					<b>Номер акредитаційної категорії:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.accreditationCategoryNumber}}</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.accreditationCategoryType === 'наявна'">
 				<span class="col-md-6 institution-field">
 					<b>Дата останньої акредитації:</b>
 				</span>
 				<span class="col-md-6 institution-field">{{institution.lastAccreditation| date:'dd-MM-yyyy'}}</span>
 			</div>
-			<div class="row" *ngIf="institution.type == 1">
+			<div class="row" *ngIf="institution.type == 1 && institution.accreditationCategoryType === 'наявна'">
 				<span class="col-md-6 institution-field">
 					<b>Термін дії:</b>
 				</span>

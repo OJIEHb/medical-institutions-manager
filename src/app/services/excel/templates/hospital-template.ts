@@ -108,11 +108,11 @@ export function getHospitalTemplate(institution: Institution): any {
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Номер ліцензії",
-			value: institution.licenseNumber || '-',
+			value: institution.license ? institution.licenseNumber || '-' : '-',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Дата",
-			value: institution.licenseDate ? new Date(institution.licenseDate).toLocaleDateString() : '--.--.----',
+			value: institution.license && institution.licenseDate ? new Date(institution.licenseDate).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Термін дії:",
@@ -120,11 +120,11 @@ export function getHospitalTemplate(institution: Institution): any {
 			cellStyle: { font: { bold: true }, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "з",
-			value: institution.startLicenseValidity ? new Date(institution.startLicenseValidity).toLocaleDateString() : '--.--.----',
+			value: institution.license && institution.startLicenseValidity ? new Date(institution.startLicenseValidity).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
 		}, {
 			label: "по",
-			value: institution.endLicenseValidity ? new Date(institution.endLicenseValidity).toLocaleDateString() : '--.--.----',
+			value: institution.license && institution.endLicenseValidity ? new Date(institution.endLicenseValidity).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
 		}, {
 			label: "Задекларовані види допомоги",
@@ -136,11 +136,11 @@ export function getHospitalTemplate(institution: Institution): any {
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Номер акредитаційної категорії",
-			value: institution.accreditationCategoryNumber || '-',
+			value: institution.accreditationCategoryType === 'наявна' ? institution.accreditationCategoryNumber || '-' : '-',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Дата останньої акредитації",
-			value: institution.lastAccreditation ? new Date(institution.lastAccreditation).toLocaleDateString() : '--.--.----',
+			value: institution.accreditationCategoryType === 'наявна' && institution.lastAccreditation ? new Date(institution.lastAccreditation).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Термін дії:",
@@ -148,11 +148,11 @@ export function getHospitalTemplate(institution: Institution): any {
 			cellStyle: { font: { bold: true }, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "з",
-			value: institution.startAccreditationValidity ? new Date(institution.startAccreditationValidity).toLocaleDateString() : '--.--.----',
+			value: institution.accreditationCategoryType === 'наявна' && institution.startAccreditationValidity ? new Date(institution.startAccreditationValidity).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
 		}, {
 			label: "по",
-			value: institution.endAccreditationValidity ? new Date(institution.endAccreditationValidity).toLocaleDateString() : '--.--.----',
+			value: institution.accreditationCategoryType === 'наявна' && institution.endAccreditationValidity ? new Date(institution.endAccreditationValidity).toLocaleDateString() : '--.--.----',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
 		}, {
 			label: "Ресурси закладу",
