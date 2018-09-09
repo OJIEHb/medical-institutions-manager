@@ -103,7 +103,10 @@
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова ємність амбулаторно-поліклінічного підрозділу" formControlName="hospitalCapacity">
       </mat-form-field>
-      <mat-form-field *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'Юридична особа ЛА ОТГ'"
+      <mat-form-field *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && 
+                             institutionFormGroup.value.institutionType !== 'Юридична особа ЛА ОТГ' &&
+                             institutionFormGroup.value.place !== 'Обласні заклади охорони здоров\'я' &&
+                             institutionFormGroup.value.place !== 'Навчальні медичні заклади'"
         class="full-width">
         <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
           formControlName="population">
