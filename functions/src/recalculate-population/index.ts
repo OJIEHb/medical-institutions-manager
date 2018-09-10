@@ -61,7 +61,7 @@ function getAllChildren(id, institutions) {
     const firstLevelChildren = institutions.filter(i => i.controlledBy === id);
     let children = [];
     firstLevelChildren.forEach(i => {
-        children = institutions.filter(insititution => insititution.controlledBy === i.id);
+        children = children.concat(institutions.filter(insititution => insititution.controlledBy === i.id));
     });
     return children.concat(firstLevelChildren);
 }

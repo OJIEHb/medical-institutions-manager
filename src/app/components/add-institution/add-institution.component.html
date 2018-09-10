@@ -96,7 +96,7 @@
 
   <mat-step *ngIf="institutionFormGroup.value.institutionType !== 'Село'" [stepControl]="institutionFormGroup">
     <form class="col-md-6 offset-md-3" [formGroup]="institutionFormGroup">
-      <ng-template matStepLabel>Ресури закладу</ng-template>
+      <ng-template matStepLabel>Ресурси закладу</ng-template>
       <mat-form-field *ngIf="type == 1" class="full-width">
         <input type="number" min="0" matInput placeholder="Планова кількість ліжок стаціонару" formControlName="hospitalBedsNumber">
       </mat-form-field>
