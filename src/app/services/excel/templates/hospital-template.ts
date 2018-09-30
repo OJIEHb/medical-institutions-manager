@@ -240,11 +240,11 @@ export function getHospitalTemplate(institution: Institution): any {
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Оснащеність медичним обладнанням та інвентарем",
-			value: institution.equipment == 100 ? '100 %' : 'до ' + institution.equipment + ' %',
+			value: institution.equipment == 100 ? '100 %' : institution.equipment == 0 ? '0 %' : 'до ' + institution.equipment + ' %',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Забезпеченість медикаментами для надання невідкладної допомоги",
-			value: institution.medicamentEquipment == 100 ? '100 %' : 'до ' + institution.medicamentEquipment + ' %',
+			value: institution.medicamentEquipment == 100 ? '100 %' : institution.medicamentEquipment == 0 ? '0 %' : 'до ' + institution.medicamentEquipment + ' %',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }
 		}, {
 			label: "Транспортні засоби (автомобілі)",

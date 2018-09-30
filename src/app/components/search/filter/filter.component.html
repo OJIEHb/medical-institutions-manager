@@ -235,6 +235,9 @@
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '0')">0%</mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
         <mat-checkbox (change)="onSingleFilterClick($event.checked, 'equipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>
       <mat-list-item>
@@ -256,6 +259,9 @@
       <mat-panel-title>Забезпеченість медикаментами</mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
+      <mat-list-item>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '0')">0%</mat-checkbox>
+      </mat-list-item>
       <mat-list-item>
         <mat-checkbox (change)="onSingleFilterClick($event.checked, 'medicamentEquipment', '30')">До 30%</mat-checkbox>
       </mat-list-item>

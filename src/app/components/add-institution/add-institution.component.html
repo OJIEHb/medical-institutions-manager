@@ -159,6 +159,7 @@
       </mat-slide-toggle>
       <mat-form-field *ngIf="type < 3" class="full-width">
         <mat-select placeholder="Оснащеність медичним обладнанням та інвентарем" formControlName="equipment">
+          <mat-option value=0>0%</mat-option>
           <mat-option value=30>до 30%</mat-option>
           <mat-option value=50>до 50%</mat-option>
           <mat-option value=70>до 70%</mat-option>
@@ -168,6 +169,7 @@
       </mat-form-field>
       <mat-form-field *ngIf="type < 3" class="full-width">
         <mat-select placeholder="Забезпеченість медикаментамидля надання невідкладної допомоги" formControlName="medicamentEquipment">
+          <mat-option value=0>0%</mat-option>
           <mat-option value=30>до 30%</mat-option>
           <mat-option value=50>до 50%</mat-option>
           <mat-option value=70>до 70%</mat-option>

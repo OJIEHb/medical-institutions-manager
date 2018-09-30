@@ -26,6 +26,18 @@ export function getHeaders(): Map<string, string> {
     headers.set('stateRegisterCode', 'Код ЄДРПОУ');
     headers.set('phone', 'Контактний телефон');
     headers.set('headDoctorName', 'ПІП головного лікаря');
+    headers.set('regularDoctorNumber', 'Лікарі (штатні)');
+    headers.set('busyDoctorNumber', 'Лікарі (зайняті)');
+    headers.set('individualsDoctorNumber', 'Лікарі (фізичні особи)');
+    headers.set('middleRegularPersonalNumber', 'Середній медперсонал (штатні)');
+    headers.set('middleBusyPersonalNumber', 'Середній медперсонал (зайняті)');
+    headers.set('middleIndividualsPersonalNumber', 'Середній медперсонал (фізичні особи)');
+    headers.set('otherRegularPersonalNumber', 'Інший персонал (штатні)');
+    headers.set('otherBusyPersonalNumber', 'Інший персонал (зайняті)');
+    headers.set('otherIndividualsPersonalNumber', 'Інший персонал (фізичні особи)');
+    headers.set('totalRegularPersonalNumber', 'Всього (штатні)');
+    headers.set('totalBusyPersonalNumber', 'Всього (зайняті)');
+    headers.set('totalIndividualsPersonalNumber', 'Всього (фізичні особи)');
     
     return headers;
 }
