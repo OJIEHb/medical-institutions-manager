@@ -39,7 +39,31 @@ export class ExcelService {
   public getExcelFromFiltredInstitutions(institutions: Institution[], filter) {
     const workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet();
-    let keys = Array.from(new Set(['fullName', 'phone', 'stateRegisterCode', 'institutionType', 'medicalCare', 'headDoctorName', 'regularDoctorNumber', 'busyDoctorNumber', 'individualsDoctorNumber', 'middleRegularPersonalNumber', 'middleBusyPersonalNumber', 'middleIndividualsPersonalNumber', 'otherRegularPersonalNumber', 'otherBusyPersonalNumber', 'otherIndividualsPersonalNumber', 'totalRegularPersonalNumber', 'totalBusyPersonalNumber', 'totalIndividualsPersonalNumber'].concat(Object.keys(filter))));
+    let keys = Array.from(new Set([
+      'fullName',
+      'phone',
+      'stateRegisterCode',
+      'institutionType',
+      'medicalCare',
+      'headDoctorName',
+      'regularDoctorNumber',
+      'busyDoctorNumber',
+      'individualsDoctorNumber',
+      'middleRegularPersonalNumber',
+      'middleBusyPersonalNumber',
+      'middleIndividualsPersonalNumber',
+      'otherRegularPersonalNumber',
+      'otherBusyPersonalNumber',
+      'otherIndividualsPersonalNumber',
+      'totalRegularPersonalNumber',
+      'totalBusyPersonalNumber',
+      'totalIndividualsPersonalNumber',
+      'vehiclesNeed',
+      'vehiclesReality',
+      'vehiclesWay',
+      'computerEquipmentNeed',
+      'computerEquipmentReality'
+    ].concat(Object.keys(filter))));
     worksheet.addRow(keys.map(key => getHeaders().get(key))).font = { bold: true };
     institutions.forEach(institution => {
       worksheet.addRow(keys.map(key => {

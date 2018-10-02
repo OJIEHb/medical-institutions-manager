@@ -18,8 +18,8 @@ export function getHeaders(): Map<string, string> {
     headers.set('heatingType', 'Опалення');
     headers.set('coldWaterSupply', 'Наявність холодного водопостачання');    
     headers.set('hotWaterSupply', 'Наявність гарячого водопостачання');
-    headers.set('equipment', 'Оснащеність медичним обаднанням');
-    headers.set('medicamentEquipment', 'Забезпеченість медикаментами');
+    headers.set('equipment', 'Оснащеність медичним обаднанням, %');
+    headers.set('medicamentEquipment', 'Забезпеченість медикаментами, %');
     headers.set('vehiclesReality', 'Транспортні засоби');
     headers.set('internetSupply', 'Наявність доступу до мережі Інтернет');
     headers.set('computerEquipmentReality', 'Забезпеченість комп\'ютерною технікою');
@@ -38,6 +38,11 @@ export function getHeaders(): Map<string, string> {
     headers.set('totalRegularPersonalNumber', 'Всього (штатні)');
     headers.set('totalBusyPersonalNumber', 'Всього (зайняті)');
     headers.set('totalIndividualsPersonalNumber', 'Всього (фізичні особи)');
+    headers.set('vehiclesNeed', 'Транспорті засоби (потреба)');
+    headers.set('vehiclesReality', 'Транспорті засоби (наявність)');
+    headers.set('vehiclesWay', 'Транспорті засоби (на ходу)');
+    headers.set('computerEquipmentNeed', 'Комп\'ютерна техніка (потреба)');
+    headers.set('computerEquipmentReality', 'Комп\'ютерна техніка (наявність)');
     
     return headers;
 }
