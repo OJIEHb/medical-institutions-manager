@@ -16,5 +16,9 @@
 .institution {
   height: 21px;
   cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 85%; 
+  white-space: nowrap;
 }
   
