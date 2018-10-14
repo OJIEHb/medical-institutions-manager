@@ -56,7 +56,7 @@ export class FilterComponent {
   }
 
   public onRangeFilterChange(key: string) {
-    this.filter[key] = { type: 'range', min: this.rangeData[key].min, max: this.rangeData[key].max };
+    this.filter[key] = { type: 'range', min: this.rangeData[key].min || 0, max: this.rangeData[key].max || 0 };
     this.filtered.emit(this.filter);
   }
 }
