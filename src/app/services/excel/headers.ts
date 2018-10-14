@@ -1,7 +1,8 @@
 export function getHeaders(): Map<string, string> {
     let headers = new Map<string, string>();
     headers.set('fullName', 'Назва');
-    headers.set('totalPopulation', 'Населення');
+    headers.set('totalPopulation', 'Населення, яке зареєстровано на території обслуговування закладу');
+    headers.set('population', 'Населення, яке зареєстровано в населеному пункті');
     headers.set('place', 'Місце розташування');
     headers.set('institutionType', 'Тип закладу');
     headers.set('subordinationLevel', 'Рівень підпорядкування');

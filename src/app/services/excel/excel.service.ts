@@ -44,6 +44,8 @@ export class ExcelService {
       'phone',
       'stateRegisterCode',
       'institutionType',
+      'totalPopulation',
+      'population',
       'medicalCare',
       'headDoctorName',
       'regularDoctorNumber',
