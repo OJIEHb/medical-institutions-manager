@@ -108,7 +108,7 @@
                              institutionFormGroup.value.place !== 'Обласні заклади охорони здоров\'я' &&
                              institutionFormGroup.value.place !== 'Навчальні медичні заклади'"
         class="full-width">
-        <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано на території обслуговування закладу на 01.01"
+        <input type="number" min="0" matInput placeholder="Кількість населення, яке офіційно зареєстровано в населеному пункті"
           formControlName="population">
       </mat-form-field>
       <div *ngIf="institutionFormGroup.value.institutionType !== 'ЦПМСД' && institutionFormGroup.value.institutionType !== 'Юридична особа ЛА ОТГ'">

@@ -24,8 +24,6 @@ export class Institution {
   headDoctorMobile:string;
   secretaryHeadDoctorName:string;
   secretaryHeadDoctorPhone:string;
-  // headDoctor: Contact;
-  // headDoctorSecretary: Contact;
   receptionOffice: boolean;
   receptionOfficePhone: string;
   registryOffice: boolean;
@@ -33,7 +31,6 @@ export class Institution {
   population: number;
   totalPopulation: number;
   medicalCare: string;
-  іnstitutionType: string;
   medicalAidTypes: string[];
   declaredAssistanceForms: string;
   license: boolean;

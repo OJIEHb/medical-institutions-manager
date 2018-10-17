@@ -85,7 +85,7 @@ export class SearchComponent {
   }
 
   public saveInstitutionsExcel() {
-    this.excelService.getExcelFromFiltredInstitutions(this.filtredInstitutions, this.filterParam);
+    this.excelService.getExcelFromFiltredInstitutions(this.filtredInstitutions);
   }
 
   private getFilterData(institutions: Institution[]): any {

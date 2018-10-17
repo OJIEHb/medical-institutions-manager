@@ -36,39 +36,13 @@ export class ExcelService {
     })
   }
 
-  public getExcelFromFiltredInstitutions(institutions: Institution[], filter) {
+  public getExcelFromFiltredInstitutions(institutions: Institution[]) {
     const workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet();
-    let keys = Array.from(new Set([
-      'fullName',
-      'phone',
-      'stateRegisterCode',
-      'institutionType',
-      'totalPopulation',
-      'population',
-      'medicalCare',
-      'headDoctorName',
-      'regularDoctorNumber',
-      'busyDoctorNumber',
-      'individualsDoctorNumber',
-      'middleRegularPersonalNumber',
-      'middleBusyPersonalNumber',
-      'middleIndividualsPersonalNumber',
-      'otherRegularPersonalNumber',
-      'otherBusyPersonalNumber',
-      'otherIndividualsPersonalNumber',
-      'totalRegularPersonalNumber',
-      'totalBusyPersonalNumber',
-      'totalIndividualsPersonalNumber',
-      'vehiclesNeed',
-      'vehiclesReality',
-      'vehiclesWay',
-      'computerEquipmentNeed',
-      'computerEquipmentReality'
-    ].concat(Object.keys(filter))));
-    worksheet.addRow(keys.map(key => getHeaders().get(key))).font = { bold: true };
+    let headers = Array.from(getHeaders());
+    worksheet.addRow(headers.map(([key, value]) => value)).font = { bold: true };
     institutions.forEach(institution => {
-      worksheet.addRow(keys.map(key => {
+      worksheet.addRow(headers.map(([key, value])  => {
         if (institution[key] === true)
           return 'Так';
         else if (institution[key] === false)
@@ -79,11 +53,12 @@ export class ExcelService {
           return institution[key];
       }));
     });
-    keys.forEach((key, i) => {
-      worksheet.getColumn(i + 1).width = 15;
+    headers.forEach((header, i) => {
+      worksheet.getColumn(i + 1).width = 18;
       worksheet.getColumn(i + 1).alignment = { vertical: 'top', wrapText: true }
     })
     worksheet.getColumn(1).width = 50;
+    worksheet.getColumn(13).width = 35;
     workbook.xlsx.writeBuffer().then(data => {
       saveAs(new Blob([data], { type: "application/octet-stream" }), 'Медичні заклади.xlsx')
     })
