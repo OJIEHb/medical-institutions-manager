@@ -193,6 +193,24 @@
 				</span>
 				<span class="col-md-6 institution-field">{{institution.hospitalCapacity}}</span>
 			</div>
+      <div class="row" *ngIf="institution.type < 3">
+				<span class="col-md-6 institution-field">
+					<b>Технічний стан забудови станом на 31.12:</b>
+				</span>
+        <span class="col-md-6 institution-field">{{institution.technicalCondition}}</span>
+      </div>
+      <div class="row" *ngIf="institution.type < 3">
+				<span class="col-md-6 institution-field">
+					<b>Загальна площа стаціонару:</b>
+				</span>
+        <span class="col-md-6 institution-field">{{institution.totalHospitalArea}}</span>
+      </div>
+      <div class="row" *ngIf="institution.type < 3">
+				<span class="col-md-6 institution-field">
+					<b>Загальна площа амбулаторії:</b>
+				</span>
+        <span class="col-md-6 institution-field">{{institution.totalAmbulanceArea}}</span>
+      </div>
 			<div class="row">
 				<span class="col-md-6 institution-field">
 					<b>Тип закладу:</b>

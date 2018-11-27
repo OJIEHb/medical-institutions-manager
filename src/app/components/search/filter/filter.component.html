@@ -354,4 +354,24 @@
                 [(highValue)]="rangeData.computerEquipmentReality.max"
                 [options]="{ floor: data.computerEquipmentReality.min, ceil: data.computerEquipmentReality.max}"></ng5-slider>
   </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Технічний стан забудови</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'technicalCondition', 'Задовільний')">Задовільний
+        </mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox (change)="onSingleFilterClick($event.checked, 'technicalCondition', 'Аварійний')">Аварійний
+        </mat-checkbox>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-checkbox
+          (change)="onSingleFilterClick($event.checked, 'technicalCondition', 'Потребує кап. ремонту')">Потребує кап. ремонту
+        </mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 </mat-accordion>

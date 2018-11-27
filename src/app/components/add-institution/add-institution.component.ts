@@ -166,7 +166,10 @@ export class AddInstitutionComponent {
       vehiclesWay: [0],
       computerEquipmentNeed: [0],
       computerEquipmentReality: [0],
-      population: [0]
+      population: [0],
+      technicalCondition: [''],
+      totalHospitalArea: ['0'],
+      totalAmbulanceArea: ['0'],
     });
   }
 

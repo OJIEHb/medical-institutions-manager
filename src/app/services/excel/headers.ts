@@ -2,6 +2,7 @@ export function getHeaders(): Map<string, string> {
     let headers = new Map<string, string>();
     headers.set('fullName', 'Назва');
     headers.set('place', 'Місце розташування');
+    headers.set('fullAddress', 'Адреса');
     headers.set('institutionType', 'Тип закладу');
     headers.set('totalPopulation', 'Населення, яке зареєстровано на території обслуговування закладу');
     headers.set('population', 'Населення, яке зареєстровано в населеному пункті');
@@ -47,5 +48,8 @@ export function getHeaders(): Map<string, string> {
     headers.set('computerEquipmentReality', 'Комп\'ютерна техніка (наявність)');
     headers.set('hospitalBedsNumber', 'Кількість ліжок стаціонару');
     headers.set('hospitalCapacity', 'Планова ємність амбулаторно-поліклінічного підрозділу');
+    headers.set('technicalCondition', 'Технічний стан забудови станом на 31.12');
+    headers.set('totalHospitalArea', 'Загальна площа стаціонару');
+    headers.set('totalAmbulanceArea', 'Загальна площа амбулаторії');
     return headers;
 }

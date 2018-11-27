@@ -95,6 +95,18 @@ export function getHospitalTemplate(institution: Institution): any {
 			value: institution.hospitalCapacity || 0,
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
 		}, {
+      label: "Технічний стан забудови станом на 31.12",
+      value: institution.technicalCondition || '-',
+      cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
+    }, {
+      label: "Загальна площа стаціонару",
+      value: institution.totalHospitalArea || 0,
+      cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
+    }, {
+      label: "Загальна площа амбулаторії",
+      value: institution.totalAmbulanceArea || 0,
+      cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'right', wrapText: true } }
+    }, {
 			label: "Тип закладу",
 			value: institution.institutionType || '-',
 			cellStyle: { font: {}, alignment: { vertical: 'center', horizontal: 'left', wrapText: true } }

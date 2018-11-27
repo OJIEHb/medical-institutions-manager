@@ -1,5 +1,3 @@
-import { Contact } from "./contact";
-
 export class Institution {
   id: string;
   place: string;
@@ -72,6 +70,9 @@ export class Institution {
   controlledInstitutions: Institution[];
   controlledBy: string;
   type: number;
+  technicalCondition: string;
+  totalHospitalArea: number;
+  totalAmbulanceArea: number;
 
   public getRegionType(): number {
     switch (this.place) {

@@ -285,6 +285,19 @@
           <mat-datepicker #endAccreditationPicker></mat-datepicker>
         </mat-form-field>
       </div>
+      <mat-form-field *ngIf="type == 1 || type == 2" class="full-width">
+        <mat-select placeholder="Технічний стан забудови станом на 31.12" formControlName="technicalCondition">
+          <mat-option value="Задовільний">Задовільний</mat-option>
+          <mat-option value="Аварійний">Аварійний</mat-option>
+          <mat-option value="Потребує кап. ремонту">Потребує кап. ремонту</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="type == 1 || type == 2" class="full-width">
+        <input matInput type="number" placeholder="Загальна площа стаціонару" formControlName="totalHospitalArea">
+      </mat-form-field>
+      <mat-form-field *ngIf="type == 1 || type == 2" class="full-width">
+        <input matInput type="number" placeholder="Загальна площа амбулаторії" formControlName="totalAmbulanceArea">
+      </mat-form-field>
       <div>
         <button mat-stroked-button matStepperPrevious style="margin-right: 10px;">Назад</button>
         <button *ngIf="!isUpdating" mat-stroked-button (click)="saveInstitution()">Зберегти</button>
