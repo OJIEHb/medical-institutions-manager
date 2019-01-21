@@ -85,7 +85,8 @@ export class SearchComponent {
   }
 
   public saveInstitutionsExcel() {
-    this.excelService.getExcelFromFiltredInstitutions(this.filtredInstitutions);
+    const institutions = this.institutionService.getHierarchy([...this.filtredInstitutions]);
+    this.excelService.getExcelFromFiltredInstitutions(institutions);
   }
 
   private getFilterData(institutions: Institution[]): any {

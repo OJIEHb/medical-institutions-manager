@@ -20,7 +20,7 @@ export class InstitutionService {
   }
 
   public create(institution: Institution): string {
-    let id = UUID.UUID();
+    const id = UUID.UUID();
     institution.id = id;
     this.institutions.set(id, institution);
     return id;
@@ -63,7 +63,7 @@ export class InstitutionService {
       .subscribe(async institutions => {
         await this.deleteControlledInstitutions(institution.id, institutions);
         await this.institutions.remove(institution.id);
-      })
+      });
   }
 
   private deleteControlledInstitutions(controlledId: string, institutions: Institution[]) {
@@ -72,7 +72,7 @@ export class InstitutionService {
         this.deleteControlledInstitutions(institution.id, institutions);
         await this.institutions.remove(institution.id);
       }
-    })
+    });
   }
 
   public getHierarchy(institutions: Institution[]): Institution[] {
@@ -83,13 +83,15 @@ export class InstitutionService {
     });
     for (let i = 0; i < institutions.length; i++) {
       if (institutions[i].controlledBy) {
-        let parentIndex = institutions.findIndex(parentInstitution => parentInstitution.id === institutions[i].controlledBy);
-        if (!institutions[parentIndex].controlledInstitutions) {
-          institutions[parentIndex].controlledInstitutions = [];
+        const parentIndex = institutions.findIndex(parentInstitution => parentInstitution.id === institutions[i].controlledBy);
+        if (parentIndex >= 0) {
+          if (!institutions[parentIndex].controlledInstitutions) {
+            institutions[parentIndex].controlledInstitutions = [];
+          }
+          institutions[parentIndex].controlledInstitutions.push(institutions[i]);
+          institutions.splice(i, 1);
+          i--;
         }
-        institutions[parentIndex].controlledInstitutions.push(institutions[i]);
-        institutions.splice(i, 1);
-        i--;
       }
     }
     return institutions;
