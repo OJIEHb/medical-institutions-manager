@@ -35,6 +35,9 @@
         <a mat-list-item [routerLink]="['/search']" (click)="drawer.toggle()">Пошук
           <mat-icon class="menu-icon">search</mat-icon>
         </a>
+        <a mat-list-item (click)="refresh();drawer.toggle();">Оновити
+          <mat-icon class="menu-icon">refresh</mat-icon>
+        </a>
       </mat-nav-list>
     </div>
   </mat-sidenav>

@@ -3,6 +3,7 @@ import { AuthService } from './services/auth.service';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { InstitutionPlaceService } from './services/institution-place.service';
+import {InstitutionService} from './services/institution.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,10 @@ export class AppComponent implements OnInit{
   showCityMenu = false;
   places = [];
 
-  constructor(private authService: AuthService, private router: Router, private placeService: InstitutionPlaceService) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private placeService: InstitutionPlaceService,
+              private institutionService: InstitutionService) {
     this.placeService.getByRegionType()
       .subscribe(places => this.places = places);
   }
@@ -43,5 +47,9 @@ export class AppComponent implements OnInit{
   onDistrictMenuClick() {
     this.showDistrictMenu = !this.showDistrictMenu;
     this.showCityMenu = false;
+  }
+
+  refresh() {
+    this.institutionService.refresh();
   }
 }

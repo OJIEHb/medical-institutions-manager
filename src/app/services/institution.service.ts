@@ -10,12 +10,15 @@ import { map } from '../../../node_modules/rxjs/operators';
 @Injectable()
 export class InstitutionService {
 
+  private resourcesFields = ['regularDoctorNumber', 'busyDoctorNumber', 'individualsDoctorNumber', 'middleRegularPersonalNumber', 'middleBusyPersonalNumber', 'middleIndividualsPersonalNumber', 'otherRegularPersonalNumber', 'otherBusyPersonalNumber', 'otherIndividualsPersonalNumber', 'totalRegularPersonalNumber', 'totalBusyPersonalNumber', 'totalIndividualsPersonalNumber'];
+
   private institutionPath: string = '/institutions';
 
   private institutions: AngularFireList<Institution> = null;
   private institution: AngularFireObject<Institution>;
 
   constructor(private db: AngularFireDatabase) {
+    this.db = db;
     this.institutions = db.list(this.institutionPath);
   }
 
@@ -95,5 +98,28 @@ export class InstitutionService {
       }
     }
     return institutions;
+  }
+
+  public refresh() {
+    this.getAll()
+      .subscribe(institutions => {
+        institutions.sort((a, b) => b.type - a.type)
+          .forEach(institution => {
+            const children = institutions.filter(i => i.controlledBy === institution.id);
+            const resources = children.reduce((res, i) => {
+              this.resourcesFields.forEach(field => {
+                if (!res[field]) {
+                  res[field] = i[field] || 0;
+                } else {
+                  res[field] += i[field] || 0;
+                }
+              });
+              return res;
+            }, {});
+            const population = children.reduce((acc, i) => acc + (i.totalPopulation || 0), 0);
+            institution.totalPopulation = population + (institution.population || 0);
+            this.update(institution.id, Object.assign(institution, resources));
+          });
+      });
   }
 }
